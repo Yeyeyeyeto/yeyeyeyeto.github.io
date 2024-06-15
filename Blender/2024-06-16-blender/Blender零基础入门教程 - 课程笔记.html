@@ -1,0 +1,1281 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+    <head>
+    <meta charset="utf-8">
+
+    
+
+    <!-- 渲染优化 -->
+    <meta name="renderer" content="webkit">
+    <meta name="force-rendering" content="webkit">
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
+    <meta name="HandheldFriendly" content="True" >
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+    <!--icon-->
+
+    
+    
+    
+    
+    
+
+
+    <!-- meta -->
+
+
+<title>Blender零基础入门教程 - 课程笔记 | YEYEYETO</title>
+
+
+
+
+
+    <!-- OpenGraph -->
+ 
+    <meta name="description" content="01 基础操作1.1 基础设置编辑 - 偏好设置 - 可修改文字大小、编辑 - 偏好设置 - 视图切换 - 围绕选择物体旋转编辑 - 偏好设置 - 视图切换 - 缩放至鼠标位置编辑 - 偏好设置 - 键位映射 - 3D视图 - 拖动时的饼菜单  1.2 控制1.2.1 视角控制鼠标中建  旋转：按住  平移：Shift + 按住 缩放：滚轮  按钮（视图右上角）  旋转：坐标系 缩放：放大镜 平移">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Blender零基础入门教程 - 课程笔记">
+<meta property="og:url" content="https://yeyeyeyeto.github.io/Blender/2024-06-16-blender/Blender%E9%9B%B6%E5%9F%BA%E7%A1%80%E5%85%A5%E9%97%A8%E6%95%99%E7%A8%8B%20-%20%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0.html">
+<meta property="og:site_name" content="YEYEYETO">
+<meta property="og:description" content="01 基础操作1.1 基础设置编辑 - 偏好设置 - 可修改文字大小、编辑 - 偏好设置 - 视图切换 - 围绕选择物体旋转编辑 - 偏好设置 - 视图切换 - 缩放至鼠标位置编辑 - 偏好设置 - 键位映射 - 3D视图 - 拖动时的饼菜单  1.2 控制1.2.1 视角控制鼠标中建  旋转：按住  平移：Shift + 按住 缩放：滚轮  按钮（视图右上角）  旋转：坐标系 缩放：放大镜 平移">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://yeyeyeyeto.github.io/images/20240610013932.png">
+<meta property="og:image" content="https://yeyeyeyeto.github.io/images/20240610043508.png">
+<meta property="og:image" content="https://yeyeyeyeto.github.io/images/20240611212504.png">
+<meta property="og:image" content="https://yeyeyeyeto.github.io/images/20240612023519.png">
+<meta property="og:image" content="https://yeyeyeyeto.github.io/images/20240612125831.png">
+<meta property="article:published_time" content="2024-06-15T21:01:43.000Z">
+<meta property="article:modified_time" content="2024-06-15T13:21:39.585Z">
+<meta property="article:author" content="Eternal">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://yeyeyeyeto.github.io/images/20240610013932.png">
+
+
+    
+<link rel="stylesheet" href="/css/style/main.css">
+ 
+
+    
+    
+        <link rel="stylesheet" id="hl-default-theme" href="/css/highlight/highlight.css" media="none" >
+        
+            <link rel="stylesheet" id="hl-dark-theme" href="/css/highlight/highlight.dark.css" media="none">
+        
+    
+
+    
+    
+
+    
+    
+<link rel="stylesheet" href="/css/style/dark.css">
+
+    
+<script src="/js/darkmode.js"></script>
+
+
+
+     
+
+    <!-- custom head -->
+
+<meta name="generator" content="Hexo 7.2.0"></head>
+
+    <body>
+        <div id="app" tabindex="-1">
+            <header class="header">
+    <div class="header__left">
+        <a href="/" class="button">
+            <span class="logo__text">YEYEYEYETO</span>
+        </a>
+    </div>
+    <div class="header__right">
+        
+            <div class="navbar__menus">
+                
+                    <a href="/" class="navbar-menu button">首页</a>
+                
+                    <a href="/tags/" class="navbar-menu button">标签</a>
+                
+                    <a href="/categories/" class="navbar-menu button">分类</a>
+                
+                    <a href="/archives/" class="navbar-menu button">归档</a>
+                
+                    <a href="/about/" class="navbar-menu button">关于</a>
+                
+            </div>
+        
+        
+        
+    <a href="/search/" id="btn-search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1024 1024" width="24" height="24" fill="currentColor" stroke="currentColor" stroke-width="32"><path d="M192 448c0-141.152 114.848-256 256-256s256 114.848 256 256-114.848 256-256 256-256-114.848-256-256z m710.624 409.376l-206.88-206.88A318.784 318.784 0 0 0 768 448c0-176.736-143.264-320-320-320S128 271.264 128 448s143.264 320 320 320a318.784 318.784 0 0 0 202.496-72.256l206.88 206.88 45.248-45.248z"></path></svg>
+    </a>
+
+
+        
+        
+    <a href="javaScript:void(0);" id="btn-toggle-dark">
+        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path></svg>
+    </a>
+
+
+        
+            <a class="dropdown-icon button" id="btn-dropdown" tabindex="0"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" width='24' height='24' fill="none" stroke="currentColor" stroke-width="0.7" stroke-linecap="round" stroke-linejoin="round"><path fill="currentColor" d="M3.314,4.8h13.372c0.41,0,0.743-0.333,0.743-0.743c0-0.41-0.333-0.743-0.743-0.743H3.314c-0.41,0-0.743,0.333-0.743,0.743C2.571,4.467,2.904,4.8,3.314,4.8z M16.686,15.2H3.314c-0.41,0-0.743,0.333-0.743,0.743s0.333,0.743,0.743,0.743h13.372c0.41,0,0.743-0.333,0.743-0.743S17.096,15.2,16.686,15.2z M16.686,9.257H3.314c-0.41,0-0.743,0.333-0.743,0.743s0.333,0.743,0.743,0.743h13.372c0.41,0,0.743-0.333,0.743-0.743S17.096,9.257,16.686,9.257z"></path></svg></a>
+            <div class="dropdown-menus" id="dropdown-menus">
+                
+                    <a href="/" class="dropdown-menu button">首页</a>
+                
+                    <a href="/tags/" class="dropdown-menu button">标签</a>
+                
+                    <a href="/categories/" class="dropdown-menu button">分类</a>
+                
+                    <a href="/archives/" class="dropdown-menu button">归档</a>
+                
+                    <a href="/about/" class="dropdown-menu button">关于</a>
+                
+            </div>
+        
+    </div>
+</header>
+
+
+            <main class="main">
+    
+
+<div class="post-title">
+    <h1 class="post-title__text">
+        Blender零基础入门教程 - 课程笔记
+    </h1>
+    <div class="post-title__meta">
+        <a href="/archives/2024/06/" class="post-meta__date button">2024-06-15</a>
+        
+    <span class="separate-dot"></span><a href="/categories/Blender/" class="button">Blender</a>
+
+ 
+        
+    
+    
+
+
+ 
+
+ 
+    </div>
+</div>
+
+
+    <aside class="post-side">
+        <div class="post-side__toc">
+            <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#01-%E5%9F%BA%E7%A1%80%E6%93%8D%E4%BD%9C"><span class="toc-text">01 基础操作</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-1-%E5%9F%BA%E7%A1%80%E8%AE%BE%E7%BD%AE"><span class="toc-text">1.1 基础设置</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#1-2-%E6%8E%A7%E5%88%B6"><span class="toc-text">1.2 控制</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#1-2-1-%E8%A7%86%E8%A7%92%E6%8E%A7%E5%88%B6"><span class="toc-text">1.2.1 视角控制</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#1-2-2-%E7%89%A9%E4%BD%93%E6%8E%A7%E5%88%B6"><span class="toc-text">1.2.2 物体控制</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#1-2-3-%E8%A7%86%E5%9B%BE%E5%88%87%E6%8D%A2"><span class="toc-text">1.2.3 视图切换</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#1-3-%E7%90%86%E8%A7%A3%E7%95%8C%E9%9D%A2"><span class="toc-text">1.3 理解界面</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#1-3-1-%E7%95%8C%E9%9D%A2%E6%9E%84%E6%88%90%E5%92%8C%E6%95%B4%E7%90%86"><span class="toc-text">1.3.1 界面构成和整理</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#1-3-2-%E6%B8%B8%E6%A0%87%E5%92%8C%E5%8E%9F%E7%82%B9"><span class="toc-text">1.3.2 游标和原点</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#1-3-3-%E5%9D%90%E6%A0%87%E7%B3%BB%E5%92%8C%E8%BD%B4%E5%BF%83%E7%82%B9"><span class="toc-text">1.3.3 坐标系和轴心点</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#02-%E5%BB%BA%E6%A8%A1"><span class="toc-text">02 建模</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#2-1-%E7%82%B9%E7%BA%BF%E9%9D%A2%E7%9A%84%E9%80%89%E6%8B%A9%E4%B8%8E%E6%8E%A7%E5%88%B6"><span class="toc-text">2.1 点线面的选择与控制</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#2-1-1-%E7%BC%96%E8%BE%91%E6%A8%A1%E5%BC%8F%E7%9A%84%E5%88%87%E6%8D%A2"><span class="toc-text">2.1.1 编辑模式的切换</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#2-1-2-%E7%82%B9%E7%BA%BF%E9%9D%A2%E7%9A%84%E5%88%87%E6%8D%A2%E3%80%81%E9%80%89%E6%8B%A9%E3%80%81%E6%8E%A7%E5%88%B6"><span class="toc-text">2.1.2 点线面的切换、选择、控制</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#2-1-3-%E6%B3%95%E5%90%91%E5%92%8C%E6%B3%95%E7%BA%BF%E7%9A%84%E6%A6%82%E5%BF%B5"><span class="toc-text">2.1.3 法向和法线的概念</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-2-%E5%8D%81%E5%A4%A7%E5%BB%BA%E6%A8%A1%E6%93%8D%E4%BD%9C"><span class="toc-text">2.2 十大建模操作</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#2-2-1-%E5%9F%BA%E7%A1%80%E6%93%8D%E4%BD%9C%EF%BC%9A%E7%A7%BB%E5%8A%A8-%E6%97%8B%E8%BD%AC-%E7%BC%A9%E6%94%BE"><span class="toc-text">2.2.1 基础操作：移动&#x2F;旋转&#x2F;缩放</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#2-2-2-%E5%9B%9B%E5%A4%A7%EF%BC%9A%E6%8C%A4%E5%87%BA-%E5%90%91%E5%86%85%E6%8C%A4%E5%87%BA-%E5%80%92%E8%A7%92-%E5%BE%AA%E7%8E%AF%E5%88%87%E5%89%B2"><span class="toc-text">2.2.2 四大：挤出&#x2F;向内挤出&#x2F;倒角&#x2F;循环切割</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#2-2-3-%E5%85%AD%E5%B0%8F%EF%BC%9A%E5%90%88%E5%B9%B6-%E6%96%AD%E5%BC%80-%E5%A1%AB%E5%85%85-%E5%88%87%E5%88%80-%E6%A1%A5%E6%8E%A5-%E5%88%86%E7%A6%BB"><span class="toc-text">2.2.3 六小：合并&#x2F;断开&#x2F;填充&#x2F;切刀&#x2F;桥接&#x2F;分离</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-3-%E5%B8%B8%E7%94%A8%E4%BF%AE%E6%94%B9%E5%99%A8"><span class="toc-text">2.3 常用修改器</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#2-3-1-%E5%B8%B8%E8%A7%84%E6%96%B9%E6%B3%95%E5%81%9A%E8%9E%BA%E6%AF%8D%EF%BC%9ALoopTools%E6%8F%92%E4%BB%B6"><span class="toc-text">2.3.1 常规方法做螺母：LoopTools插件</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#2-3-2-%E6%9C%80%E5%B8%B8%E7%94%A8%E7%9A%84%E4%B8%89%E4%B8%AA%E4%BF%AE%E6%94%B9%E5%99%A8%EF%BC%9A%E8%A1%A8%E9%9D%A2%E7%BB%86%E5%88%86-%E5%AE%9E%E4%BD%93%E5%8C%96-%E5%80%92%E8%A7%92%E4%BF%AE%E6%94%B9%E5%99%A8"><span class="toc-text">2.3.2 最常用的三个修改器：表面细分&#x2F;实体化&#x2F;倒角修改器</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#2-3-3-%E4%BF%AE%E6%94%B9%E5%99%A8%E6%96%B9%E6%B3%95%E5%81%9A%E8%9E%BA%E6%AF%8D"><span class="toc-text">2.3.3 修改器方法做螺母</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-4-%E5%BB%BA%E6%A8%A1%E9%A9%AC%E6%8B%89%E6%9D%BE"><span class="toc-text">2.4 建模马拉松</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#2-4-1-%E8%98%91%E8%8F%87-%E7%AE%80%E6%98%93%E5%BD%A2%E5%8F%98-%E5%90%B8%E9%99%84"><span class="toc-text">2.4.1 蘑菇 - 简易形变&#x2F;吸附</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#2-4-2-%E6%A0%91%E6%A1%A9-%E8%A1%B0%E5%87%8F-%E5%88%86%E7%A6%BB-%E6%8B%89%E5%B9%B3"><span class="toc-text">2.4.2 树桩 - 衰减&#x2F;分离&#x2F;拉平</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#2-4-3-%E8%8A%B1%E6%9C%B5-%E6%97%8B%E8%BD%AC%E5%B7%A5%E5%85%B7"><span class="toc-text">2.4.3 花朵 - 旋转工具</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#2-4-4-%E6%A0%91%E5%B9%B2-%E7%BC%A9%E8%A3%B9%E4%BF%AE%E6%94%B9%E5%99%A8"><span class="toc-text">2.4.4 树干 - 缩裹修改器</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#2-4-5-%E9%BE%9F%E8%83%8C%E7%AB%B9-%E6%8B%93%E6%89%91-%E5%90%88%E5%B9%B6-%E6%96%AD%E5%BC%80-%E5%88%87%E5%88%80"><span class="toc-text">2.4.5 龟背竹 - 拓扑&#x2F;合并&#x2F;断开&#x2F;切刀</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-5-%E9%98%B5%E5%88%97%E4%BF%AE%E6%94%B9%E5%99%A8%E4%B8%8E%E6%99%B6%E6%A0%BC%E5%BD%A2%E5%8F%98"><span class="toc-text">2.5 阵列修改器与晶格形变</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-6-%E6%9B%B2%E7%BA%BF%E4%BF%AE%E6%94%B9%E5%99%A8-%E8%92%99%E7%9A%AE%E4%BF%AE%E6%94%B9%E5%99%A8"><span class="toc-text">2.6 曲线修改器&#x2F;蒙皮修改器</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#2-6-1-%E6%9B%B2%E7%BA%BF%E7%9A%84%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86"><span class="toc-text">2.6.1 曲线的基础知识</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#2-6-2-%E6%9B%B2%E7%BA%BF%E4%BF%AE%E6%94%B9%E5%99%A8"><span class="toc-text">2.6.2 曲线修改器</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#2-6-3-%E7%88%B6%E5%AD%90%E7%BA%A7%E5%85%B3%E7%B3%BB%E8%AF%A6%E8%A7%A3"><span class="toc-text">2.6.3 父子级关系详解</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#2-6-4-%E8%92%99%E7%9A%AE%E4%BF%AE%E6%94%B9%E5%99%A8"><span class="toc-text">2.6.4 蒙皮修改器</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-7-%E7%BD%AE%E6%8D%A2%E4%BF%AE%E6%94%B9%E5%99%A8"><span class="toc-text">2.7 置换修改器</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#2-7-1-%E7%BD%AE%E6%8D%A2%E4%BF%AE%E6%94%B9%E5%99%A8%E7%9A%84%E5%9F%BA%E6%9C%AC%E6%AD%A5%E9%AA%A4"><span class="toc-text">2.7.1 置换修改器的基本步骤</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#2-7-2-%E7%BD%AE%E6%8D%A2%E4%BF%AE%E6%94%B9%E5%99%A8%E5%81%9A%E7%9F%B3%E5%A4%B4"><span class="toc-text">2.7.2 置换修改器做石头</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#03-%E6%9D%90%E8%B4%A8"><span class="toc-text">03 材质</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#3-1-%E6%9D%90%E8%B4%A8%E5%9F%BA%E7%A1%80"><span class="toc-text">3.1 材质基础</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#3-1-1-%E6%9D%90%E8%B4%A8%E7%AE%97%E6%B3%95"><span class="toc-text">3.1.1 材质算法</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#3-1-2-%E6%93%8D%E4%BD%9C%E6%9D%90%E8%B4%A8"><span class="toc-text">3.1.2 操作材质</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-2-%E7%BA%B9%E7%90%86"><span class="toc-text">3.2 纹理</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#3-2-1-%E6%B7%BB%E5%8A%A0%E5%9B%BE%E5%83%8F%E7%BA%B9%E7%90%86%EF%BC%88%E6%B7%BB%E5%8A%A0%E7%BA%B9%E7%90%86%E9%9C%80%E8%A6%815%E4%B8%AA%E8%8A%82%E7%82%B9%EF%BC%89"><span class="toc-text">3.2.1 添加图像纹理（添加纹理需要5个节点）</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#3-2-2-%E7%BA%B9%E7%90%86%E5%9D%90%E6%A0%87%E8%AF%A6%E8%A7%A3"><span class="toc-text">3.2.2 纹理坐标详解</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#3-2-3-%E6%98%A0%E5%B0%84%E8%8A%82%E7%82%B9%E8%AF%A6%E8%A7%A3"><span class="toc-text">3.2.3 映射节点详解</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#3-2-4-%E6%B7%BB%E5%8A%A0%E6%B8%90%E5%8F%98%E7%BA%B9%E7%90%86"><span class="toc-text">3.2.4 添加渐变纹理</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#3-2-5-%E7%A8%8B%E5%BA%8F%E5%8C%96%E7%BA%B9%E7%90%86"><span class="toc-text">3.2.5 程序化纹理</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-3-%E8%92%99%E7%89%88%E6%B7%BB%E5%8A%A0%E6%9D%90%E8%B4%A8"><span class="toc-text">3.3 蒙版添加材质</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-4-%E5%87%B9%E5%87%B8%E6%84%9F%E4%B8%8E%E7%BD%AE%E6%8D%A2%E5%BD%A2%E5%8F%98"><span class="toc-text">3.4 凹凸感与置换形变</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#3-4-1-%E5%87%B9%E5%87%B8%E6%84%9F"><span class="toc-text">3.4.1 凹凸感</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#3-4-2-%E7%BD%AE%E6%8D%A2%E5%BD%A2%E5%8F%98%EF%BC%88%E5%9C%A8%E5%87%B9%E5%87%B8%E6%84%9F%E8%AE%BE%E7%BD%AE%E7%9A%84%E5%9F%BA%E7%A1%80%E4%B8%8A%EF%BC%89"><span class="toc-text">3.4.2 置换形变（在凹凸感设置的基础上）</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-5-%E6%B7%B7%E5%90%88%E6%9D%90%E8%B4%A8%E4%B8%8ENode-Wrangler"><span class="toc-text">3.5 混合材质与Node Wrangler</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-6-%E7%AE%80%E5%8D%95UV%E7%BA%B9%E7%90%86%E7%BB%98%E5%88%B6"><span class="toc-text">3.6 简单UV纹理绘制</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#04-%E7%B2%92%E5%AD%90"><span class="toc-text">04 粒子</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#4-1-%E5%8F%91%E5%B0%84%E4%BD%93%E7%B2%92%E5%AD%90"><span class="toc-text">4.1 发射体粒子</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#4-1-1-%E5%8F%91%E5%B0%84%E4%BD%93%E7%B2%92%E5%AD%90%E7%9A%84%E5%9F%BA%E7%A1%80%E8%AE%BE%E7%BD%AE"><span class="toc-text">4.1.1 发射体粒子的基础设置</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#4-1-2-%E7%B2%92%E5%AD%90%E7%9A%84%E7%A2%B0%E6%92%9E"><span class="toc-text">4.1.2 粒子的碰撞</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#4-1-3-%E5%8A%9B%E5%9C%BA%E5%AF%B9%E7%B2%92%E5%AD%90%E7%9A%84%E4%BD%9C%E7%94%A8"><span class="toc-text">4.1.3 力场对粒子的作用</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#4-2-%E6%AF%9B%E5%8F%91%E7%B2%92%E5%AD%90"><span class="toc-text">4.2 毛发粒子</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#4-2-1-%E6%AF%9B%E5%8F%91%E6%A0%87%E7%AD%BE%E5%B1%9E%E6%80%A7"><span class="toc-text">4.2.1 毛发标签属性</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#4-2-2-%E6%AF%9B%E5%8F%91%E7%B2%92%E5%AD%90%E5%9F%BA%E7%A1%80-%E8%8D%89%E5%9C%B0"><span class="toc-text">4.2.2 毛发粒子基础 - 草地</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#4-2-3-%E6%AF%9B%E5%8F%91%E7%B2%92%E5%AD%90%E5%81%9A%E6%A3%AE%E6%9E%97"><span class="toc-text">4.2.3 毛发粒子做森林</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#4-2-4-%E5%A6%82%E4%BD%95%E7%BB%99%E7%89%A9%E4%BD%93%E9%9A%8F%E6%9C%BA%E5%88%86%E9%85%8D%E9%A2%9C%E8%89%B2"><span class="toc-text">4.2.4 如何给物体随机分配颜色</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#4-2-5%E5%B0%8F%E7%81%AB%E8%8B%97"><span class="toc-text">4.2.5小火苗</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#05-%E5%9C%BA%E6%99%AF%E7%81%AF%E5%85%89"><span class="toc-text">05 场景灯光</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#5-1-%E5%B0%8F%E7%99%BD%E5%B8%83%E5%85%89%E5%AE%9D%E5%85%B8"><span class="toc-text">5.1 小白布光宝典</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#5-1-1-%E8%AE%BE%E7%BD%AE%E4%B8%96%E7%95%8C%E7%8E%AF%E5%A2%83%E5%85%89"><span class="toc-text">5.1.1 设置世界环境光</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#5-1-2-%E5%B8%B8%E7%94%A8%E5%9B%9B%E7%A7%8D%E8%AE%BE%E7%BD%AE%E4%B8%96%E7%95%8C%E5%85%89"><span class="toc-text">5.1.2 常用四种设置世界光</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#5-1-3-HDRI%E8%B4%B4%E5%9B%BE%E6%89%93%E4%B8%96%E7%95%8C%E5%85%89-%E6%96%B9%E6%B3%95"><span class="toc-text">5.1.3 HDRI贴图打世界光 方法</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#5-1-4-%E5%A6%82%E4%BD%95%E8%AE%BE%E7%BD%AE%E5%9C%BA%E6%99%AF%E7%81%AF%E5%85%89"><span class="toc-text">5.1.4 如何设置场景灯光</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#5-1-5-%E5%B8%B8%E8%A7%84%E6%89%93%E5%85%89%E6%AD%A5%E9%AA%A4"><span class="toc-text">5.1.5 常规打光步骤</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#5-1-6-%E4%B8%89%E7%82%B9%E5%B8%83%E5%85%89%E6%B3%95%EF%BC%88%E9%9D%A2%E5%85%89%EF%BC%89"><span class="toc-text">5.1.6 三点布光法（面光）</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#5-2-%E4%B8%89%E6%96%B9%E7%B4%A0%E6%9D%90"><span class="toc-text">5.2 三方素材</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#06-%E5%8A%A8%E7%94%BB"><span class="toc-text">06 动画</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#6-1-%E5%8A%A8%E7%94%BB%E5%B7%A5%E5%85%B7"><span class="toc-text">6.1 动画工具</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#6-2-%E5%BD%A2%E6%80%81%E9%94%AE%E5%8A%A8%E7%94%BB"><span class="toc-text">6.2 形态键动画</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#6-3-%E9%AA%A8%E9%AA%BC%E7%BB%91%E5%AE%9A"><span class="toc-text">6.3 骨骼绑定</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#07-%E5%90%88%E6%88%90"><span class="toc-text">07 合成</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#7-1-%E5%90%88%E6%88%90%E5%99%A8%E4%BD%BF%E7%94%A8"><span class="toc-text">7.1 合成器使用</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#7-2-%E6%B8%B2%E6%9F%93%E8%BE%93%E5%87%BA"><span class="toc-text">7.2 渲染输出</span></a></li></ol></li></ol>
+        </div>
+    </aside>
+    <a class="btn-toc button" id="btn-toc" tabindex="0">
+        <svg viewBox="0 0 1024 1024" width="32" height="32" xmlns="http://www.w3.org/2000/svg">
+            <path d="M128 256h64V192H128zM320 256h576V192H320zM128 544h64v-64H128zM320 544h576v-64H320zM128 832h64v-64H128zM320 832h576v-64H320z" fill="currentColor"></path>
+        </svg>
+    </a>
+    <div class="toc-menus" id="toc-menus">
+        <div class="toc-title">文章目录</div>
+        <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#01-%E5%9F%BA%E7%A1%80%E6%93%8D%E4%BD%9C"><span class="toc-text">01 基础操作</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-1-%E5%9F%BA%E7%A1%80%E8%AE%BE%E7%BD%AE"><span class="toc-text">1.1 基础设置</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#1-2-%E6%8E%A7%E5%88%B6"><span class="toc-text">1.2 控制</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#1-2-1-%E8%A7%86%E8%A7%92%E6%8E%A7%E5%88%B6"><span class="toc-text">1.2.1 视角控制</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#1-2-2-%E7%89%A9%E4%BD%93%E6%8E%A7%E5%88%B6"><span class="toc-text">1.2.2 物体控制</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#1-2-3-%E8%A7%86%E5%9B%BE%E5%88%87%E6%8D%A2"><span class="toc-text">1.2.3 视图切换</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#1-3-%E7%90%86%E8%A7%A3%E7%95%8C%E9%9D%A2"><span class="toc-text">1.3 理解界面</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#1-3-1-%E7%95%8C%E9%9D%A2%E6%9E%84%E6%88%90%E5%92%8C%E6%95%B4%E7%90%86"><span class="toc-text">1.3.1 界面构成和整理</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#1-3-2-%E6%B8%B8%E6%A0%87%E5%92%8C%E5%8E%9F%E7%82%B9"><span class="toc-text">1.3.2 游标和原点</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#1-3-3-%E5%9D%90%E6%A0%87%E7%B3%BB%E5%92%8C%E8%BD%B4%E5%BF%83%E7%82%B9"><span class="toc-text">1.3.3 坐标系和轴心点</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#02-%E5%BB%BA%E6%A8%A1"><span class="toc-text">02 建模</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#2-1-%E7%82%B9%E7%BA%BF%E9%9D%A2%E7%9A%84%E9%80%89%E6%8B%A9%E4%B8%8E%E6%8E%A7%E5%88%B6"><span class="toc-text">2.1 点线面的选择与控制</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#2-1-1-%E7%BC%96%E8%BE%91%E6%A8%A1%E5%BC%8F%E7%9A%84%E5%88%87%E6%8D%A2"><span class="toc-text">2.1.1 编辑模式的切换</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#2-1-2-%E7%82%B9%E7%BA%BF%E9%9D%A2%E7%9A%84%E5%88%87%E6%8D%A2%E3%80%81%E9%80%89%E6%8B%A9%E3%80%81%E6%8E%A7%E5%88%B6"><span class="toc-text">2.1.2 点线面的切换、选择、控制</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#2-1-3-%E6%B3%95%E5%90%91%E5%92%8C%E6%B3%95%E7%BA%BF%E7%9A%84%E6%A6%82%E5%BF%B5"><span class="toc-text">2.1.3 法向和法线的概念</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-2-%E5%8D%81%E5%A4%A7%E5%BB%BA%E6%A8%A1%E6%93%8D%E4%BD%9C"><span class="toc-text">2.2 十大建模操作</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#2-2-1-%E5%9F%BA%E7%A1%80%E6%93%8D%E4%BD%9C%EF%BC%9A%E7%A7%BB%E5%8A%A8-%E6%97%8B%E8%BD%AC-%E7%BC%A9%E6%94%BE"><span class="toc-text">2.2.1 基础操作：移动&#x2F;旋转&#x2F;缩放</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#2-2-2-%E5%9B%9B%E5%A4%A7%EF%BC%9A%E6%8C%A4%E5%87%BA-%E5%90%91%E5%86%85%E6%8C%A4%E5%87%BA-%E5%80%92%E8%A7%92-%E5%BE%AA%E7%8E%AF%E5%88%87%E5%89%B2"><span class="toc-text">2.2.2 四大：挤出&#x2F;向内挤出&#x2F;倒角&#x2F;循环切割</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#2-2-3-%E5%85%AD%E5%B0%8F%EF%BC%9A%E5%90%88%E5%B9%B6-%E6%96%AD%E5%BC%80-%E5%A1%AB%E5%85%85-%E5%88%87%E5%88%80-%E6%A1%A5%E6%8E%A5-%E5%88%86%E7%A6%BB"><span class="toc-text">2.2.3 六小：合并&#x2F;断开&#x2F;填充&#x2F;切刀&#x2F;桥接&#x2F;分离</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-3-%E5%B8%B8%E7%94%A8%E4%BF%AE%E6%94%B9%E5%99%A8"><span class="toc-text">2.3 常用修改器</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#2-3-1-%E5%B8%B8%E8%A7%84%E6%96%B9%E6%B3%95%E5%81%9A%E8%9E%BA%E6%AF%8D%EF%BC%9ALoopTools%E6%8F%92%E4%BB%B6"><span class="toc-text">2.3.1 常规方法做螺母：LoopTools插件</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#2-3-2-%E6%9C%80%E5%B8%B8%E7%94%A8%E7%9A%84%E4%B8%89%E4%B8%AA%E4%BF%AE%E6%94%B9%E5%99%A8%EF%BC%9A%E8%A1%A8%E9%9D%A2%E7%BB%86%E5%88%86-%E5%AE%9E%E4%BD%93%E5%8C%96-%E5%80%92%E8%A7%92%E4%BF%AE%E6%94%B9%E5%99%A8"><span class="toc-text">2.3.2 最常用的三个修改器：表面细分&#x2F;实体化&#x2F;倒角修改器</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#2-3-3-%E4%BF%AE%E6%94%B9%E5%99%A8%E6%96%B9%E6%B3%95%E5%81%9A%E8%9E%BA%E6%AF%8D"><span class="toc-text">2.3.3 修改器方法做螺母</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-4-%E5%BB%BA%E6%A8%A1%E9%A9%AC%E6%8B%89%E6%9D%BE"><span class="toc-text">2.4 建模马拉松</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#2-4-1-%E8%98%91%E8%8F%87-%E7%AE%80%E6%98%93%E5%BD%A2%E5%8F%98-%E5%90%B8%E9%99%84"><span class="toc-text">2.4.1 蘑菇 - 简易形变&#x2F;吸附</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#2-4-2-%E6%A0%91%E6%A1%A9-%E8%A1%B0%E5%87%8F-%E5%88%86%E7%A6%BB-%E6%8B%89%E5%B9%B3"><span class="toc-text">2.4.2 树桩 - 衰减&#x2F;分离&#x2F;拉平</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#2-4-3-%E8%8A%B1%E6%9C%B5-%E6%97%8B%E8%BD%AC%E5%B7%A5%E5%85%B7"><span class="toc-text">2.4.3 花朵 - 旋转工具</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#2-4-4-%E6%A0%91%E5%B9%B2-%E7%BC%A9%E8%A3%B9%E4%BF%AE%E6%94%B9%E5%99%A8"><span class="toc-text">2.4.4 树干 - 缩裹修改器</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#2-4-5-%E9%BE%9F%E8%83%8C%E7%AB%B9-%E6%8B%93%E6%89%91-%E5%90%88%E5%B9%B6-%E6%96%AD%E5%BC%80-%E5%88%87%E5%88%80"><span class="toc-text">2.4.5 龟背竹 - 拓扑&#x2F;合并&#x2F;断开&#x2F;切刀</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-5-%E9%98%B5%E5%88%97%E4%BF%AE%E6%94%B9%E5%99%A8%E4%B8%8E%E6%99%B6%E6%A0%BC%E5%BD%A2%E5%8F%98"><span class="toc-text">2.5 阵列修改器与晶格形变</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-6-%E6%9B%B2%E7%BA%BF%E4%BF%AE%E6%94%B9%E5%99%A8-%E8%92%99%E7%9A%AE%E4%BF%AE%E6%94%B9%E5%99%A8"><span class="toc-text">2.6 曲线修改器&#x2F;蒙皮修改器</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#2-6-1-%E6%9B%B2%E7%BA%BF%E7%9A%84%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86"><span class="toc-text">2.6.1 曲线的基础知识</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#2-6-2-%E6%9B%B2%E7%BA%BF%E4%BF%AE%E6%94%B9%E5%99%A8"><span class="toc-text">2.6.2 曲线修改器</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#2-6-3-%E7%88%B6%E5%AD%90%E7%BA%A7%E5%85%B3%E7%B3%BB%E8%AF%A6%E8%A7%A3"><span class="toc-text">2.6.3 父子级关系详解</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#2-6-4-%E8%92%99%E7%9A%AE%E4%BF%AE%E6%94%B9%E5%99%A8"><span class="toc-text">2.6.4 蒙皮修改器</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-7-%E7%BD%AE%E6%8D%A2%E4%BF%AE%E6%94%B9%E5%99%A8"><span class="toc-text">2.7 置换修改器</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#2-7-1-%E7%BD%AE%E6%8D%A2%E4%BF%AE%E6%94%B9%E5%99%A8%E7%9A%84%E5%9F%BA%E6%9C%AC%E6%AD%A5%E9%AA%A4"><span class="toc-text">2.7.1 置换修改器的基本步骤</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#2-7-2-%E7%BD%AE%E6%8D%A2%E4%BF%AE%E6%94%B9%E5%99%A8%E5%81%9A%E7%9F%B3%E5%A4%B4"><span class="toc-text">2.7.2 置换修改器做石头</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#03-%E6%9D%90%E8%B4%A8"><span class="toc-text">03 材质</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#3-1-%E6%9D%90%E8%B4%A8%E5%9F%BA%E7%A1%80"><span class="toc-text">3.1 材质基础</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#3-1-1-%E6%9D%90%E8%B4%A8%E7%AE%97%E6%B3%95"><span class="toc-text">3.1.1 材质算法</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#3-1-2-%E6%93%8D%E4%BD%9C%E6%9D%90%E8%B4%A8"><span class="toc-text">3.1.2 操作材质</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-2-%E7%BA%B9%E7%90%86"><span class="toc-text">3.2 纹理</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#3-2-1-%E6%B7%BB%E5%8A%A0%E5%9B%BE%E5%83%8F%E7%BA%B9%E7%90%86%EF%BC%88%E6%B7%BB%E5%8A%A0%E7%BA%B9%E7%90%86%E9%9C%80%E8%A6%815%E4%B8%AA%E8%8A%82%E7%82%B9%EF%BC%89"><span class="toc-text">3.2.1 添加图像纹理（添加纹理需要5个节点）</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#3-2-2-%E7%BA%B9%E7%90%86%E5%9D%90%E6%A0%87%E8%AF%A6%E8%A7%A3"><span class="toc-text">3.2.2 纹理坐标详解</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#3-2-3-%E6%98%A0%E5%B0%84%E8%8A%82%E7%82%B9%E8%AF%A6%E8%A7%A3"><span class="toc-text">3.2.3 映射节点详解</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#3-2-4-%E6%B7%BB%E5%8A%A0%E6%B8%90%E5%8F%98%E7%BA%B9%E7%90%86"><span class="toc-text">3.2.4 添加渐变纹理</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#3-2-5-%E7%A8%8B%E5%BA%8F%E5%8C%96%E7%BA%B9%E7%90%86"><span class="toc-text">3.2.5 程序化纹理</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-3-%E8%92%99%E7%89%88%E6%B7%BB%E5%8A%A0%E6%9D%90%E8%B4%A8"><span class="toc-text">3.3 蒙版添加材质</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-4-%E5%87%B9%E5%87%B8%E6%84%9F%E4%B8%8E%E7%BD%AE%E6%8D%A2%E5%BD%A2%E5%8F%98"><span class="toc-text">3.4 凹凸感与置换形变</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#3-4-1-%E5%87%B9%E5%87%B8%E6%84%9F"><span class="toc-text">3.4.1 凹凸感</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#3-4-2-%E7%BD%AE%E6%8D%A2%E5%BD%A2%E5%8F%98%EF%BC%88%E5%9C%A8%E5%87%B9%E5%87%B8%E6%84%9F%E8%AE%BE%E7%BD%AE%E7%9A%84%E5%9F%BA%E7%A1%80%E4%B8%8A%EF%BC%89"><span class="toc-text">3.4.2 置换形变（在凹凸感设置的基础上）</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-5-%E6%B7%B7%E5%90%88%E6%9D%90%E8%B4%A8%E4%B8%8ENode-Wrangler"><span class="toc-text">3.5 混合材质与Node Wrangler</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-6-%E7%AE%80%E5%8D%95UV%E7%BA%B9%E7%90%86%E7%BB%98%E5%88%B6"><span class="toc-text">3.6 简单UV纹理绘制</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#04-%E7%B2%92%E5%AD%90"><span class="toc-text">04 粒子</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#4-1-%E5%8F%91%E5%B0%84%E4%BD%93%E7%B2%92%E5%AD%90"><span class="toc-text">4.1 发射体粒子</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#4-1-1-%E5%8F%91%E5%B0%84%E4%BD%93%E7%B2%92%E5%AD%90%E7%9A%84%E5%9F%BA%E7%A1%80%E8%AE%BE%E7%BD%AE"><span class="toc-text">4.1.1 发射体粒子的基础设置</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#4-1-2-%E7%B2%92%E5%AD%90%E7%9A%84%E7%A2%B0%E6%92%9E"><span class="toc-text">4.1.2 粒子的碰撞</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#4-1-3-%E5%8A%9B%E5%9C%BA%E5%AF%B9%E7%B2%92%E5%AD%90%E7%9A%84%E4%BD%9C%E7%94%A8"><span class="toc-text">4.1.3 力场对粒子的作用</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#4-2-%E6%AF%9B%E5%8F%91%E7%B2%92%E5%AD%90"><span class="toc-text">4.2 毛发粒子</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#4-2-1-%E6%AF%9B%E5%8F%91%E6%A0%87%E7%AD%BE%E5%B1%9E%E6%80%A7"><span class="toc-text">4.2.1 毛发标签属性</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#4-2-2-%E6%AF%9B%E5%8F%91%E7%B2%92%E5%AD%90%E5%9F%BA%E7%A1%80-%E8%8D%89%E5%9C%B0"><span class="toc-text">4.2.2 毛发粒子基础 - 草地</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#4-2-3-%E6%AF%9B%E5%8F%91%E7%B2%92%E5%AD%90%E5%81%9A%E6%A3%AE%E6%9E%97"><span class="toc-text">4.2.3 毛发粒子做森林</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#4-2-4-%E5%A6%82%E4%BD%95%E7%BB%99%E7%89%A9%E4%BD%93%E9%9A%8F%E6%9C%BA%E5%88%86%E9%85%8D%E9%A2%9C%E8%89%B2"><span class="toc-text">4.2.4 如何给物体随机分配颜色</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#4-2-5%E5%B0%8F%E7%81%AB%E8%8B%97"><span class="toc-text">4.2.5小火苗</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#05-%E5%9C%BA%E6%99%AF%E7%81%AF%E5%85%89"><span class="toc-text">05 场景灯光</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#5-1-%E5%B0%8F%E7%99%BD%E5%B8%83%E5%85%89%E5%AE%9D%E5%85%B8"><span class="toc-text">5.1 小白布光宝典</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#5-1-1-%E8%AE%BE%E7%BD%AE%E4%B8%96%E7%95%8C%E7%8E%AF%E5%A2%83%E5%85%89"><span class="toc-text">5.1.1 设置世界环境光</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#5-1-2-%E5%B8%B8%E7%94%A8%E5%9B%9B%E7%A7%8D%E8%AE%BE%E7%BD%AE%E4%B8%96%E7%95%8C%E5%85%89"><span class="toc-text">5.1.2 常用四种设置世界光</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#5-1-3-HDRI%E8%B4%B4%E5%9B%BE%E6%89%93%E4%B8%96%E7%95%8C%E5%85%89-%E6%96%B9%E6%B3%95"><span class="toc-text">5.1.3 HDRI贴图打世界光 方法</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#5-1-4-%E5%A6%82%E4%BD%95%E8%AE%BE%E7%BD%AE%E5%9C%BA%E6%99%AF%E7%81%AF%E5%85%89"><span class="toc-text">5.1.4 如何设置场景灯光</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#5-1-5-%E5%B8%B8%E8%A7%84%E6%89%93%E5%85%89%E6%AD%A5%E9%AA%A4"><span class="toc-text">5.1.5 常规打光步骤</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#5-1-6-%E4%B8%89%E7%82%B9%E5%B8%83%E5%85%89%E6%B3%95%EF%BC%88%E9%9D%A2%E5%85%89%EF%BC%89"><span class="toc-text">5.1.6 三点布光法（面光）</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#5-2-%E4%B8%89%E6%96%B9%E7%B4%A0%E6%9D%90"><span class="toc-text">5.2 三方素材</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#06-%E5%8A%A8%E7%94%BB"><span class="toc-text">06 动画</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#6-1-%E5%8A%A8%E7%94%BB%E5%B7%A5%E5%85%B7"><span class="toc-text">6.1 动画工具</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#6-2-%E5%BD%A2%E6%80%81%E9%94%AE%E5%8A%A8%E7%94%BB"><span class="toc-text">6.2 形态键动画</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#6-3-%E9%AA%A8%E9%AA%BC%E7%BB%91%E5%AE%9A"><span class="toc-text">6.3 骨骼绑定</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#07-%E5%90%88%E6%88%90"><span class="toc-text">07 合成</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#7-1-%E5%90%88%E6%88%90%E5%99%A8%E4%BD%BF%E7%94%A8"><span class="toc-text">7.1 合成器使用</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#7-2-%E6%B8%B2%E6%9F%93%E8%BE%93%E5%87%BA"><span class="toc-text">7.2 渲染输出</span></a></li></ol></li></ol>
+    </div>
+
+
+<article class="post post__with-toc content-card">
+    <div class="post__header"></div>
+    <div class="post__content">
+        <h2 id="01-基础操作"><a href="#01-基础操作" class="headerlink" title="01 基础操作"></a>01 基础操作</h2><h3 id="1-1-基础设置"><a href="#1-1-基础设置" class="headerlink" title="1.1 基础设置"></a>1.1 基础设置</h3><p>编辑 - 偏好设置 - 可修改文字大小、<br>编辑 - 偏好设置 - 视图切换 - 围绕选择物体旋转<br>编辑 - 偏好设置 - 视图切换 - 缩放至鼠标位置<br>编辑 - 偏好设置 - 键位映射 - 3D视图 - 拖动时的饼菜单</p>
+<hr>
+<h3 id="1-2-控制"><a href="#1-2-控制" class="headerlink" title="1.2 控制"></a>1.2 控制</h3><h4 id="1-2-1-视角控制"><a href="#1-2-1-视角控制" class="headerlink" title="1.2.1 视角控制"></a>1.2.1 视角控制</h4><p><strong>鼠标中建</strong></p>
+<ul>
+<li>旋转：按住 </li>
+<li>平移：Shift + 按住</li>
+<li>缩放：滚轮</li>
+</ul>
+<p><strong>按钮（视图右上角）</strong></p>
+<ul>
+<li>旋转：坐标系</li>
+<li>缩放：放大镜</li>
+<li>平移：小手</li>
+<li>摄像机视角（N侧边窗口）</li>
+</ul>
+<p><strong>按钮（视图左上角）</strong></p>
+<ul>
+<li>选择（可长按选择其他选择）</li>
+<li>游标</li>
+<li>移动</li>
+<li>旋转</li>
+<li>缩放</li>
+<li>变化</li>
+</ul>
+<hr>
+<h4 id="1-2-2-物体控制"><a href="#1-2-2-物体控制" class="headerlink" title="1.2.2 物体控制"></a>1.2.2 物体控制</h4><p>移动物体: G<br>旋转物体: R<br>缩放物体: S<br>恢复变换: Alt+G，Alt+R，Alt+S</p>
+<p>新建物体: Shift+A<br>复制物体: Shift+D（每个复制的物体都是独立的）<br>关联性复制：Alt+D（每个物体的改动都会影响其他的物体）<br>删除物体: X或者Delete </p>
+<p>隐藏物体: H<br>显示隐藏物体: Alt+H<br>隐藏没有被选中的物体: Shift+H</p>
+<p>选择物体刷选: C全选: A<br>按住Shift可以加选或者减选</p>
+<blockquote>
+<p>在对物体操作时，按X Y Z都可对该轴单独进行操作。<br>G状态移动下按住Ctrl，可吸附网格移动<br>缩放时，按住Shift+XYZ，可以保护对应轴不变。</p>
+</blockquote>
+<hr>
+<h4 id="1-2-3-视图切换"><a href="#1-2-3-视图切换" class="headerlink" title="1.2.3 视图切换"></a>1.2.3 视图切换</h4><p><strong>小键盘区</strong></p>
+<ul>
+<li>7 顶视图，ctrl+7底视图</li>
+<li>1 前视图，ctrl+1后视图</li>
+<li>3 右视图，ctrl+3左视图</li>
+<li>9 反转当前视图</li>
+<li>0 切换摄像机的视角</li>
+<li>5 切换透视投影和正交投影</li>
+<li>2, 4, 6, 8 前后左右角度微调（默认15°）</li>
+<li>+,-  缩放微调</li>
+<li>. 聚焦物体</li>
+</ul>
+<p><strong>键盘</strong></p>
+<ul>
+<li>~ + 鼠标：视图操作</li>
+<li>&#x2F;：聚焦物体</li>
+</ul>
+<hr>
+<h3 id="1-3-理解界面"><a href="#1-3-理解界面" class="headerlink" title="1.3 理解界面"></a>1.3 理解界面</h3><h4 id="1-3-1-界面构成和整理"><a href="#1-3-1-界面构成和整理" class="headerlink" title="1.3.1 界面构成和整理"></a>1.3.1 界面构成和整理</h4><blockquote>
+<p>基本3D创作Workflow：建模 - 布光 - 材质 - 渲染</p>
+</blockquote>
+<p>界面整理：用鼠标滑滑就知道了，省略！</p>
+<p>面板都是可以替换的、可以拆分的。<br>上方其他选区其实本质都是面板的组合。后方的+号可以增加新的工作区。</p>
+<p>Ctrl+空格：最大化和恢复当前面板。</p>
+<hr>
+<h4 id="1-3-2-游标和原点"><a href="#1-3-2-游标和原点" class="headerlink" title="1.3.2 游标和原点"></a>1.3.2 游标和原点</h4><p><strong>游标</strong></p>
+<ul>
+<li>游标在哪，新建物体就在哪。</li>
+<li>游标可用于定位和当轴心点</li>
+<li>移动游标：点击游标工具（左侧）或者Shift+右键</li>
+<li>Shift+S：游标派目录</li>
+<li>Shift+C：游标回归原点</li>
+</ul>
+<p><strong>原点</strong></p>
+<ul>
+<li>每个物体都有原点，在3D世界的计算机眼里，原点就是储存物体信息的数据点。</li>
+<li>通过 选项（视图右上角） - “仅影响原点”移动</li>
+<li>ALT+G将物体移动到视图中心。</li>
+</ul>
+<hr>
+<h4 id="1-3-3-坐标系和轴心点"><a href="#1-3-3-坐标系和轴心点" class="headerlink" title="1.3.3 坐标系和轴心点"></a>1.3.3 坐标系和轴心点</h4><p><strong>坐标系</strong></p>
+<ul>
+<li>分为全局坐标和局部坐标（物体自身坐标）</li>
+<li>快速切换全局局部坐标：G + Z，X，Y（按Z，X，Y切换局部与全局）</li>
+</ul>
+<p><strong>轴心点</strong></p>
+<ul>
+<li>解释：绕着什么中心点旋转</li>
+<li>切换轴心点：在视图上方第二个小按钮<ul>
+<li>质心点：物体模式下的重心点</li>
+<li>边界框中心：物体画框内的中心</li>
+<li>各自原点：字面意思</li>
+<li>活动元素：多选时最后选的那一个</li>
+</ul>
+</li>
+</ul>
+<hr>
+<h2 id="02-建模"><a href="#02-建模" class="headerlink" title="02 建模"></a>02 建模</h2><h3 id="2-1-点线面的选择与控制"><a href="#2-1-点线面的选择与控制" class="headerlink" title="2.1 点线面的选择与控制"></a>2.1 点线面的选择与控制</h3><h4 id="2-1-1-编辑模式的切换"><a href="#2-1-1-编辑模式的切换" class="headerlink" title="2.1.1 编辑模式的切换"></a>2.1.1 编辑模式的切换</h4><blockquote>
+<p>编辑 - 偏好设置 - 键位映射 - 3D视图 - 拖动时的饼菜单</p>
+</blockquote>
+<p>点击模型 - TAB键 - 切换编辑模式<br>按住TAB键可选更多模式（需要上边注释的设置后才能使用）</p>
+<blockquote>
+<p>按C进入刷选状态后，会出现无法退出的情况你可以按住键盘Esc退出刷选状态；或者用鼠标右键在空白处点一下也可以退出。</p>
+</blockquote>
+<hr>
+<h4 id="2-1-2-点线面的切换、选择、控制"><a href="#2-1-2-点线面的切换、选择、控制" class="headerlink" title="2.1.2 点线面的切换、选择、控制"></a>2.1.2 点线面的切换、选择、控制</h4><p><strong>切换</strong></p>
+<ul>
+<li>默认为点模式</li>
+<li>在视图左上角模式旁边可选择点线面的切换；快捷键为1 2 3 </li>
+<li>shift按住选择点线面可同时编辑点线面</li>
+</ul>
+<p><strong>选择（编辑模式下左侧工具栏）</strong></p>
+<ul>
+<li>调整、框选、刷选、套索选择</li>
+<li>W 选择工具切换</li>
+<li>框选快捷键B、刷选快捷键 C</li>
+<li>使用鼠标中键可以清除刚刚选中的点</li>
+<li>Ctrl+I 反选</li>
+<li>Shift 多选</li>
+<li>Ctrl 将两个点的最短路径连接起来</li>
+<li>L 相连元素相连；相当于选中所有的面</li>
+<li>循环选择<ul>
+<li>Alt+鼠标双击：选择和它相连的一圈点（默认横向）；将往纵向方向移动后双击则是纵向的一圈点。</li>
+<li>Ctrl+Alt+鼠标双击：可以选择与其垂直的线。</li>
+</ul>
+</li>
+<li>随机选择：视图上方 - 选择 - 随机选择</li>
+<li>扩展&#x2F;缩减选择：视图上方 - 选择 - 扩展&#x2F;缩减选择。快捷使用为Ctrl+(+&#x2F;-)（小键盘+-号）</li>
+<li>Alt + Z 透视视图，可以方便选择背面的点线面；按钮在视图右上角的视图左侧。</li>
+</ul>
+<p><strong>控制</strong></p>
+<ul>
+<li>移动 G、缩放 S、旋转 R</li>
+<li>删除快捷键X<ul>
+<li>直接删除会留下空洞。</li>
+<li>融并：删除后，会将剩下的点线面连接起来不会出现空洞。</li>
+</ul>
+</li>
+</ul>
+<hr>
+<h4 id="2-1-3-法向和法线的概念"><a href="#2-1-3-法向和法线的概念" class="headerlink" title="2.1.3 法向和法线的概念"></a>2.1.3 法向和法线的概念</h4><p><strong>法向</strong></p>
+<ul>
+<li>分辨物体的正面和反面</li>
+<li>查看法向：右上角视图左侧 - 向下小箭头 - 几何数据 - 面朝向</li>
+<li>物体默认正反面，蓝色正面红色反面。</li>
+</ul>
+<p><strong>法线</strong></p>
+<ul>
+<li>法线为垂直该面的线，代表正面朝向</li>
+<li>查看发线：进入编辑模式 - 同上的向下小箭头 - 法向</li>
+</ul>
+<hr>
+<h3 id="2-2-十大建模操作"><a href="#2-2-十大建模操作" class="headerlink" title="2.2 十大建模操作"></a>2.2 十大建模操作</h3><h4 id="2-2-1-基础操作：移动-旋转-缩放"><a href="#2-2-1-基础操作：移动-旋转-缩放" class="headerlink" title="2.2.1 基础操作：移动&#x2F;旋转&#x2F;缩放"></a>2.2.1 基础操作：移动&#x2F;旋转&#x2F;缩放</h4><ul>
+<li>编辑模式左侧工具栏，快捷键GRS</li>
+<li>标注：左侧工具栏画笔，按Ctrl清除。</li>
+<li>监测工具</li>
+<li>新建工具</li>
+</ul>
+<hr>
+<h4 id="2-2-2-四大：挤出-向内挤出-倒角-循环切割"><a href="#2-2-2-四大：挤出-向内挤出-倒角-循环切割" class="headerlink" title="2.2.2 四大：挤出&#x2F;向内挤出&#x2F;倒角&#x2F;循环切割"></a>2.2.2 四大：挤出&#x2F;向内挤出&#x2F;倒角&#x2F;循环切割</h4><p><strong>挤出 E</strong></p>
+<ul>
+<li>快速挤出：Ctrl + 右键。连续不断挤出新的线。</li>
+<li>点挤出就是线，线挤出就是面，面挤出就是体。</li>
+<li>挤出流形：不会有重复边的问题。</li>
+<li>沿法线挤出：字面意思</li>
+<li>挤出各个面：与相邻的面是分开的。</li>
+<li>挤出到光标：点到哪里挤出到哪里。</li>
+</ul>
+<p><strong>向内挤出 I</strong></p>
+<ul>
+<li>I之后用鼠标操作即可，不会有多余的点。</li>
+</ul>
+<p><strong>倒角 Ctrl+B</strong></p>
+<ul>
+<li>R切换到边模式 - Ctrl B拉出倒角 - 滚轮增加细分面（弹出窗口中 - 段数 也可以设置细分面）</li>
+</ul>
+<p><strong>环切 Ctrl+R</strong></p>
+<ul>
+<li>滑动滚轮增加减少切割面</li>
+<li>右键自动吸附在最中心的位置</li>
+</ul>
+<hr>
+<h4 id="2-2-3-六小：合并-断开-填充-切刀-桥接-分离"><a href="#2-2-3-六小：合并-断开-填充-切刀-桥接-分离" class="headerlink" title="2.2.3 六小：合并&#x2F;断开&#x2F;填充&#x2F;切刀&#x2F;桥接&#x2F;分离"></a>2.2.3 六小：合并&#x2F;断开&#x2F;填充&#x2F;切刀&#x2F;桥接&#x2F;分离</h4><p><strong>合并 M</strong></p>
+<ul>
+<li>字面意思</li>
+</ul>
+<p><strong>断开 V</strong></p>
+<ul>
+<li>字面意思</li>
+</ul>
+<p><strong>切刀 K</strong></p>
+<ul>
+<li>鼠标右键&#x2F;空格键 退出</li>
+</ul>
+<p><strong>填充 F</strong></p>
+<ul>
+<li>出现空洞时，ALt + 双击鼠标选择边 - F 将洞口封住。</li>
+<li>另一种方式：视图上方 - 面（Ctrl+F） - 栅格填充（前提是边必须是偶数的边）</li>
+</ul>
+<p><strong>桥接 Ctrl+E</strong></p>
+<ul>
+<li><ol>
+<li>需要将两个物体先合成为一个物体：Shift多选 - 快捷键Ctrl+J。（合并的部分最好先将各个物体连接面删除）</li>
+</ol>
+</li>
+<li><ol start="2">
+<li>按住Shift+Alt选择物体需要桥接的边 - Ctrl+E 桥接循环边</li>
+</ol>
+</li>
+</ul>
+<p><strong>分离 P</strong></p>
+<ul>
+<li>Alt+Z进透视模式 - P分离菜单 - 分离选中项</li>
+</ul>
+<hr>
+<h3 id="2-3-常用修改器"><a href="#2-3-常用修改器" class="headerlink" title="2.3 常用修改器"></a>2.3 常用修改器</h3><h4 id="2-3-1-常规方法做螺母：LoopTools插件"><a href="#2-3-1-常规方法做螺母：LoopTools插件" class="headerlink" title="2.3.1 常规方法做螺母：LoopTools插件"></a>2.3.1 常规方法做螺母：LoopTools插件</h4><ol>
+<li>柱体 - 六边形 - 高度降低</li>
+<li>编辑模式 - 选择上下两个面 - 向内挤出</li>
+<li>编辑模式 - 点控制 - Alt+Z透视模式选中中间的所有点 - 右键细分</li>
+<li>N召唤右侧菜单 - 编辑 - LoopTools - 圆环（不够圆可以继续第三步骤的细分再圆环）</li>
+<li>X - 删除这两个面</li>
+<li>选中上下的边 - Ctrl+E - 桥接循环边</li>
+<li>边模式 - 选择Alt双击旁边的边 + Shift以及下边 + 切换为点模式自动连接面（4.0不可需要手动选择垂直线）</li>
+<li>Ctrl+B  - 拉动滚轮加倒角细分（4.0不可用）</li>
+<li>剩下步骤4.0不可用</li>
+</ol>
+<hr>
+<h4 id="2-3-2-最常用的三个修改器：表面细分-实体化-倒角修改器"><a href="#2-3-2-最常用的三个修改器：表面细分-实体化-倒角修改器" class="headerlink" title="2.3.2 最常用的三个修改器：表面细分&#x2F;实体化&#x2F;倒角修改器"></a>2.3.2 最常用的三个修改器：表面细分&#x2F;实体化&#x2F;倒角修改器</h4><p><strong>添加修改器 - 右边窗口中的小扳手</strong></p>
+<ul>
+<li>表面细分修改器<ul>
+<li>将网格的面分割成更小的面，使其看起来更平滑。</li>
+</ul>
+</li>
+<li>实体化修改器<ul>
+<li>获取任意网格的表面，然后为之添加深度，使之变厚。</li>
+</ul>
+</li>
+<li>倒角<ul>
+<li>宽度是坡口形成的两条新边的距离，段数是增加细分。</li>
+</ul>
+</li>
+<li>布尔<ul>
+<li>可以对两个物体进行交集，差集，并集运算，偶尔会出现奇怪的问题，慎用。</li>
+</ul>
+</li>
+</ul>
+<p><strong>使用修改器建模的优势</strong></p>
+<ul>
+<li>建模快，效率高，能快速直观地实现一个效果。</li>
+<li>非破坏性，在不改变原来模型的基础上，可以很精确地控制参数。</li>
+<li>灵活，可重复使用，可叠加多个效果。（修改器的顺序就是执行的顺序）</li>
+</ul>
+<p>应用修改器数据：向下小箭头 - 应用，快捷键Ctrl+A。（不应用前可以一直修改）</p>
+<hr>
+<h4 id="2-3-3-修改器方法做螺母"><a href="#2-3-3-修改器方法做螺母" class="headerlink" title="2.3.3 修改器方法做螺母"></a>2.3.3 修改器方法做螺母</h4><ol>
+<li>新建圆环 - 六条边</li>
+<li>编辑模式 - 边模式 - Alt选中边 - F填充</li>
+<li>添加修改器 - 实体化 - 加厚度</li>
+<li>新建圆柱 - S瘦小 - Shift+Z保护Z轴</li>
+<li>添加布尔修改器 - 小吸管吸刚刚的圆柱体 - 隐藏圆柱体</li>
+<li>添加倒角修改器 - 修改数量和段数</li>
+<li>Ctrl+A应用</li>
+</ol>
+<hr>
+<h3 id="2-4-建模马拉松"><a href="#2-4-建模马拉松" class="headerlink" title="2.4 建模马拉松"></a>2.4 建模马拉松</h3><h4 id="2-4-1-蘑菇-简易形变-吸附"><a href="#2-4-1-蘑菇-简易形变-吸附" class="headerlink" title="2.4.1 蘑菇 - 简易形变&#x2F;吸附"></a>2.4.1 蘑菇 - 简易形变&#x2F;吸附</h4><p><strong>修改器</strong></p>
+<ul>
+<li>Ctrl+2：快捷键 细分为二的修改器</li>
+<li>简易形变：弯曲点是跟着物体的原点。</li>
+<li>Shift+D：可以复制修改器，修改器可以叠加使用。</li>
+</ul>
+<blockquote>
+<p>尽量不要在物体模式下缩放，尽量在编辑模式下缩放。<br>假如你在物体模式下做过缩放，记得应用这个缩放。<br>Ctrl+A 应用</p>
+</blockquote>
+<p><strong>设置父子级</strong></p>
+<ul>
+<li>先选择儿子 - Shift 选择爸爸 - Ctrl+P - 物体</li>
+</ul>
+<p><strong>吸附</strong></p>
+<ul>
+<li>打开视图上方小磁铁</li>
+<li>菜单里选择面投射</li>
+<li>打勾 - 旋转对其目标&amp;背面剔除</li>
+</ul>
+<hr>
+<h4 id="2-4-2-树桩-衰减-分离-拉平"><a href="#2-4-2-树桩-衰减-分离-拉平" class="headerlink" title="2.4.2 树桩 - 衰减&#x2F;分离&#x2F;拉平"></a>2.4.2 树桩 - 衰减&#x2F;分离&#x2F;拉平</h4><p><strong>拉平底座</strong></p>
+<ul>
+<li>切换到透视模式 - 选择下边所有的点</li>
+<li>进入正视图 - S Z 0（缩放所有点在Z轴上归于0）</li>
+</ul>
+<p><strong>苔藓</strong></p>
+<ul>
+<li>编辑模式 - 透视模式 - 选择最上面的点</li>
+<li>Shift+D复制并移动 - 撤销移动</li>
+<li>P - 分离选中项 - 然后就是单独的模型了</li>
+</ul>
+<hr>
+<h4 id="2-4-3-花朵-旋转工具"><a href="#2-4-3-花朵-旋转工具" class="headerlink" title="2.4.3 花朵 - 旋转工具"></a>2.4.3 花朵 - 旋转工具</h4><blockquote>
+<p>编辑模式下 - A快捷键全选</p>
+</blockquote>
+<p>旋转工具</p>
+<ul>
+<li>围绕着游标进行旋转。</li>
+<li>点击+号是自动旋转一周</li>
+<li>鼠标点击白线才能操控旋转工具</li>
+</ul>
+<hr>
+<h4 id="2-4-4-树干-缩裹修改器"><a href="#2-4-4-树干-缩裹修改器" class="headerlink" title="2.4.4 树干 - 缩裹修改器"></a>2.4.4 树干 - 缩裹修改器</h4><p><strong>缩裹修改器</strong></p>
+<ul>
+<li>可以吸附在物体上面进行修改，要求细分段数要足够高</li>
+<li>用小吸管吸，需要吸附的物体</li>
+</ul>
+<hr>
+<h4 id="2-4-5-龟背竹-拓扑-合并-断开-切刀"><a href="#2-4-5-龟背竹-拓扑-合并-断开-切刀" class="headerlink" title="2.4.5 龟背竹 - 拓扑&#x2F;合并&#x2F;断开&#x2F;切刀"></a>2.4.5 龟背竹 - 拓扑&#x2F;合并&#x2F;断开&#x2F;切刀</h4><p>K：画一条切开线 - 空格确定 - V切开</p>
+<hr>
+<h3 id="2-5-阵列修改器与晶格形变"><a href="#2-5-阵列修改器与晶格形变" class="headerlink" title="2.5 阵列修改器与晶格形变"></a>2.5 阵列修改器与晶格形变</h3><p><strong>阵列的相对偏移和恒定偏移</strong></p>
+<ul>
+<li>相对偏移是比例的关系，以物体的长宽高为比例去做不同程度的偏移。</li>
+<li>恒定偏移以原点为标地</li>
+<li>右键 - 转换到网格 - 一次性应用了所有修改器</li>
+</ul>
+<p><strong>晶格形变工具</strong></p>
+<ul>
+<li>Shift+A新建晶格</li>
+<li>将需要控制的物体包裹在内</li>
+<li>可以增加晶格细分以便后续更多控制物体</li>
+<li>选中本来的物体再选择晶格 - Ctrl+P - 晶格形变（这样就绑定在一起了）</li>
+<li>进入编辑模式，移动晶格时，物体也会跟着改变。</li>
+<li>应用晶格修改器：选中物体 - 右键 - 转换 - 网格</li>
+<li>之后晶格没用了就可以单独删除掉了</li>
+</ul>
+<hr>
+<h3 id="2-6-曲线修改器-蒙皮修改器"><a href="#2-6-曲线修改器-蒙皮修改器" class="headerlink" title="2.6 曲线修改器&#x2F;蒙皮修改器"></a>2.6 曲线修改器&#x2F;蒙皮修改器</h3><h4 id="2-6-1-曲线的基础知识"><a href="#2-6-1-曲线的基础知识" class="headerlink" title="2.6.1 曲线的基础知识"></a>2.6.1 曲线的基础知识</h4><p><strong>Blender曲线分类</strong></p>
+<ul>
+<li>贝塞尔曲线<ul>
+<li>有两个控制轴</li>
+</ul>
+</li>
+<li>圆环<ul>
+<li>其实是封闭的贝塞尔曲线</li>
+</ul>
+</li>
+<li>NURBS曲线<ul>
+<li>全称为 Non-Uniform Rational B-Spline</li>
+</ul>
+</li>
+<li>NURBS圆环</li>
+<li>路径曲线<ul>
+<li>通过点去拟合出一条曲线的走向；而贝塞尔是通过控制杆。</li>
+<li>每一个点都有一个W值，这个W值影响着曲线的曲率。</li>
+</ul>
+</li>
+<li>Fur</li>
+</ul>
+<p><strong>曲线控制</strong></p>
+<ul>
+<li>可以使用E延长</li>
+<li>连接曲线<ul>
+<li>点击两个点 - 按F可以将点连接起来</li>
+<li>Alt+C，选中任意一点后使用，自动闭合。</li>
+</ul>
+</li>
+<li>断开曲线<ul>
+<li>选中两个点 - X删除 - 段数</li>
+</ul>
+</li>
+<li>单独调整<ul>
+<li>选中点 - Alt+S - 拉动虚线，单独对部分位置调整粗细</li>
+</ul>
+</li>
+</ul>
+<p><strong>曲线工具 - 右侧绿色曲线小工具</strong></p>
+<ul>
+<li>几何数据 - 倒角<ul>
+<li>圆（四舍五入）<ul>
+<li>深度，控制粗细，设置深度可以使其直接变成一个管子。</li>
+<li>分辨率，可以使其更光滑。</li>
+</ul>
+</li>
+<li>物体<ul>
+<li>在本来曲线外新建一个曲线，调整新曲线到想要的弯曲度</li>
+<li>在本来曲线中曲线工具找到 - 倒角 - 物体，小吸管 吸新曲线</li>
+</ul>
+</li>
+<li>轮廓<ul>
+<li>可以自由拉出自己想要的曲线</li>
+<li>曲线的横截面就为该曲线</li>
+<li>小视图左下角是四种衰减方式</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<hr>
+<h4 id="2-6-2-曲线修改器"><a href="#2-6-2-曲线修改器" class="headerlink" title="2.6.2 曲线修改器"></a>2.6.2 曲线修改器</h4><ol>
+<li>新建一个曲线后调整到想要的角度</li>
+<li>给想要弯曲的物体添加曲线修改器</li>
+<li>在曲线修改器内用小吸管吸曲线</li>
+</ol>
+<blockquote>
+<p>对点进行Alt+S还可以控制部分曲线的半径</p>
+</blockquote>
+<hr>
+<h4 id="2-6-3-父子级关系详解"><a href="#2-6-3-父子级关系详解" class="headerlink" title="2.6.3 父子级关系详解"></a>2.6.3 父子级关系详解</h4><p><strong>绑定父子级关系 - Ctrl+P</strong></p>
+<ul>
+<li>物体：正常绑定</li>
+<li>物体（保持变换）：保持方向等变换</li>
+<li>物体（无反向）：会让父子 原点重合，把旋转缩放位置都清空</li>
+<li>物体（保持变化无反向）：以上两个相加。</li>
+<li>顶点：较为死板，只基于一个点吸附</li>
+<li>顶点（基于三点）：比较灵活，会跟着角度旋转</li>
+</ul>
+<p><strong>清空父子级关系 - Alt+P</strong></p>
+<hr>
+<h4 id="2-6-4-蒙皮修改器"><a href="#2-6-4-蒙皮修改器" class="headerlink" title="2.6.4 蒙皮修改器"></a>2.6.4 蒙皮修改器</h4><ul>
+<li>给线加一层罩子</li>
+<li>挤分叉：可以点其中容易可以点进行分叉</li>
+<li>加粗变细：选择任意点 - Ctrl+A - 可以改变半径</li>
+<li>平滑着色：修改器内自带。</li>
+</ul>
+<hr>
+<h3 id="2-7-置换修改器"><a href="#2-7-置换修改器" class="headerlink" title="2.7 置换修改器"></a>2.7 置换修改器</h3><h4 id="2-7-1-置换修改器的基本步骤"><a href="#2-7-1-置换修改器的基本步骤" class="headerlink" title="2.7.1 置换修改器的基本步骤"></a>2.7.1 置换修改器的基本步骤</h4><ol>
+<li>细分：<ul>
+<li>添加平面 - 编辑模式 - 右键添加细分（次数调得高一点） </li>
+<li>也可以添加细分修改器调整</li>
+</ul>
+</li>
+<li>添加置换修改器</li>
+<li>置换修改器中新建一个新纹理 - 最右边的小按钮<ul>
+<li>类型中可以选择贴图，有内置也可以自选。</li>
+</ul>
+</li>
+<li>调整参数<ul>
+<li>可以调整修改器的参数</li>
+<li>也可以调整纹理自带的标签</li>
+</ul>
+</li>
+</ol>
+<h4 id="2-7-2-置换修改器做石头"><a href="#2-7-2-置换修改器做石头" class="headerlink" title="2.7.2 置换修改器做石头"></a>2.7.2 置换修改器做石头</h4><ol>
+<li>添加立方体 - 细分（推荐表面细分修改器）</li>
+<li>添加置换修改器 - 添加贴图 - 沃罗诺伊图</li>
+<li>设置参数 - 纹理表情：尺寸放大；间隔矩阵 - 改为方形矩形间隔。</li>
+<li>设置参数 - 置换修改器：强度拉小</li>
+<li>编辑模式 - 置换修改器第二个小按钮，可以更方便修改石头形状。</li>
+</ol>
+<hr>
+<h2 id="03-材质"><a href="#03-材质" class="headerlink" title="03 材质"></a>03 材质</h2><h3 id="3-1-材质基础"><a href="#3-1-材质基础" class="headerlink" title="3.1 材质基础"></a>3.1 材质基础</h3><h4 id="3-1-1-材质算法"><a href="#3-1-1-材质算法" class="headerlink" title="3.1.1 材质算法"></a>3.1.1 材质算法</h4><p>PBR：Physically Based Rendering，基于物理的渲染。<br>BRDF：Bidirectional Reflectance Distribution Function，双向散射分布函数。<br>BSDF：BSDF包含了BRDF（反射）和BTDF（透射）。</p>
+<hr>
+<h4 id="3-1-2-操作材质"><a href="#3-1-2-操作材质" class="headerlink" title="3.1.2 操作材质"></a>3.1.2 操作材质</h4><p><strong>添加和删除材质</strong></p>
+<ul>
+<li>右侧倒数第二小标签</li>
+<li>小盾牌：保护材质，即使没有使用也不会被清除。</li>
+<li>添加多种材质：进入编辑模式 - 选中面，可以对不同的面添加不同的材质。</li>
+</ul>
+<p><strong>着色器编辑器</strong></p>
+<ul>
+<li>新拉一个窗口切换；与材质标签是相通的。</li>
+</ul>
+<p><strong>原理化BSDF</strong></p>
+<ul>
+<li>GGX：微表面反射光照模型。（多重散射GGX会更加细致，但肉眼看不出来，一般不用。）</li>
+<li>随机游走：模拟器表面的一种渲染方式，只针对CYCLES。</li>
+<li>基础色：模型的颜色，也可以接-个颜色贴图，-般不要纯黑或者纯白</li>
+<li>金属度：0是非金属，1是金属,一般我们要么选0，要么选1</li>
+<li>糙度：0代表越平滑，1代表越粗糙，确定漫反射和镜面反射时候物体表面的粗糙程度</li>
+<li>高光：代表物体的菲尼尔效应反射率程度，数值越大，高光反射量越大，高光越亮，<ul>
+<li>菲尼尔效应：你站在湖边，你能看清脚下的石头；看不清远方，远方的水面只能看见倒影。</li>
+<li>不同物质的高光都各不相同。</li>
+<li>因为所有物体都是有一些菲尼尔反射的，所以高光这个值不要设为零，多少给一点。默认是0.5</li>
+</ul>
+</li>
+<li>高光染色：将高光染上材质的颜色。<ul>
+<li>默认不设置的时候，物理默认的高光是白色的，</li>
+<li>但是你把高光染色调到1，就会被物体本身的颜色和谐，一般金属高光会染色，非金属高光不会染色</li>
+</ul>
+</li>
+<li>清漆：这个类似于给你的材质加了一层包光。多一层白色高光，常用与制作车漆材质<ul>
+<li>清漆粗糙度：就是你加这层清漆的粗糙度</li>
+<li>清漆法线：类似于汽车清漆的法线，可以接法线贴图</li>
+</ul>
+</li>
+<li>IOR折射率：不同材料的透射率。<ul>
+<li><a target="_blank" rel="noopener" href="https://www.bilibili.com/read/cv14333865/">数百种常见材质的折射率值</a></li>
+</ul>
+</li>
+<li>透射：透明度；让你的模型透明，只有打开这个，IOR折射率和透射粗糙度才起作用，</li>
+<li>透射粗糙度：物体内部的粗糙度，会有类似毛玻璃的效果。</li>
+<li>Alpha-默认是1，当是0的时候，物体完全消失不见</li>
+<li>次表面：决定你的模型是不是透光的，比如皮肤，窗帘等的通透程度， 一般不会调太大，没有那么通透的东西<ul>
+<li>简单设置：先给基础色 - 再给一个次表面颜色 - 拉大次表面数值。</li>
+<li>次表面半径：透光的程度和距离。</li>
+<li>次表面颜色决定透过去的颜色是什么样的，但是你指定的这个颜色，是跟次表面半径相乘后显示的效果；所以如果你想完全显示次表面颜色，次表面半径就全部设定为1。</li>
+<li>次表面IOR：次表面散射的折射率，仅支持cycles</li>
+<li>次表面各向异性：次表面散射的方向，仅支持cycles</li>
+</ul>
+</li>
+<li>各项异性过滤：调大的时候可以把一点的高光转换成沿切线方向的细长高光，仅支持cycles</li>
+<li>各项异性旋转：比较常使用的是金属的部分，他可以控制你的金属的高光分布的方向，仅支持cycles</li>
+<li>光泽：用于布料的部分，调到1，有天鹅绒的效果，控制的是褶皱反光的反射数量，数值越大越明显</li>
+<li>光泽染色：会把材质颜色和白色光色混合</li>
+<li>自发光-可以发光，霓虹灯</li>
+<li>法向-通常这个会链接PBR的normal map法线贴图</li>
+<li>切向-这个就是各向异性这种金属高光的方向。可以作为切向贴图接口</li>
+</ul>
+<p><img src="/images/20240610013932.png" class="lazy" data-srcset="/images/20240610013932.png" srcset="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABAQMAAAAl21bKAAAABlBMVEXMzMyWlpYU2uzLAAAACXBIWXMAAA7EAAAOxAGVKw4bAAAACklEQVQImWNgAAAAAgAB9HFkpgAAAABJRU5ErkJggg=="></p>
+<hr>
+<h3 id="3-2-纹理"><a href="#3-2-纹理" class="headerlink" title="3.2 纹理"></a>3.2 纹理</h3><h4 id="3-2-1-添加图像纹理（添加纹理需要5个节点）"><a href="#3-2-1-添加图像纹理（添加纹理需要5个节点）" class="headerlink" title="3.2.1 添加图像纹理（添加纹理需要5个节点）"></a>3.2.1 添加图像纹理（添加纹理需要5个节点）</h4><ol>
+<li>打开着色编辑器；Shift+A 新建纹理 - 图像纹理；图像纹理的颜色 连接 - BSDF基础色</li>
+<li>载入纹理</li>
+<li>Shift+A 添加矢量 - 映射；映射 矢量 连接到 - 纹理 矢量；</li>
+<li>Shift+A 添加输入 - 纹理坐标；<br><img src="/images/20240610043508.png" class="lazy" data-srcset="/images/20240610043508.png" srcset="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABAQMAAAAl21bKAAAABlBMVEXMzMyWlpYU2uzLAAAACXBIWXMAAA7EAAAOxAGVKw4bAAAACklEQVQImWNgAAAAAgAB9HFkpgAAAABJRU5ErkJggg=="></li>
+</ol>
+<hr>
+<h4 id="3-2-2-纹理坐标详解"><a href="#3-2-2-纹理坐标详解" class="headerlink" title="3.2.2 纹理坐标详解"></a>3.2.2 纹理坐标详解</h4><ul>
+<li>你想要以哪种方式呈现纹理。</li>
+<li>UV：计算机会把3D的模型先转换成一个2D平面UV图，然后再跟你的2D纹理做一个对应映射。<ul>
+<li>可以拉出UV编辑器编辑；选择物体进入编辑模式才会显示。</li>
+</ul>
+</li>
+<li>生成：只有上下有图像；投射方式由图像纹理控制的。用全局坐标系去做映射。</li>
+<li>物体：用物体坐标系做映射；可以指定坐标轴（可使用空物体坐标轴）。</li>
+<li>摄像机：摄像机坐标系。</li>
+</ul>
+<hr>
+<h4 id="3-2-3-映射节点详解"><a href="#3-2-3-映射节点详解" class="headerlink" title="3.2.3 映射节点详解"></a>3.2.3 映射节点详解</h4><ul>
+<li>改变纹理位置、旋转和缩放。</li>
+<li>点：该模式下移动，其实是移动的坐标轴。</li>
+<li>纹理：该模式下移动的就是纹理本身。</li>
+<li>矢量：只有旋转和缩放。</li>
+</ul>
+<blockquote>
+<p>Shift按住滑动上下选中XYZ，后左右即可一起改变数值。</p>
+</blockquote>
+<hr>
+<h4 id="3-2-4-添加渐变纹理"><a href="#3-2-4-添加渐变纹理" class="headerlink" title="3.2.4 添加渐变纹理"></a>3.2.4 添加渐变纹理</h4><ul>
+<li>在着色编辑器中 - Shift+A 添加转换器 - 颜色渐变 - 连上BSDF基础色</li>
+<li>Shift+A 添加矢量 - 映射；连接颜色渐变</li>
+<li>Shift+A 添加输入 - 纹理坐标；连接映射</li>
+<li>Shift+A 添加转换器 - 分离XYZ；拖到映射和纹理坐标中间（会自动连接）；</li>
+</ul>
+<blockquote>
+<p>矢量是既有大小又有方向的量。<br>纹理中，紫色代表矢量、灰色为常理、黄色为颜色相关、绿色代表颜色输出接口。</p>
+</blockquote>
+<hr>
+<h4 id="3-2-5-程序化纹理"><a href="#3-2-5-程序化纹理" class="headerlink" title="3.2.5 程序化纹理"></a>3.2.5 程序化纹理</h4><ul>
+<li>Shift+A 纹理；各种内置纹理</li>
+</ul>
+<hr>
+<h3 id="3-3-蒙版添加材质"><a href="#3-3-蒙版添加材质" class="headerlink" title="3.3 蒙版添加材质"></a>3.3 蒙版添加材质</h3><p><strong>给蘑菇上材质 - 常规方法</strong><br>Node Wrangler插件：先选中你要加的节点，按Ctrl+T就可以自动添加映射和纹理坐标。</p>
+<p><strong>混合节点详解</strong></p>
+<ul>
+<li>Shift+A 转换器 - 混合；</li>
+<li>颜色：连接BSDF基础色；<ul>
+<li>系数为调整两个颜色的比例</li>
+<li>颜色可以连接贴图</li>
+<li>钳制系数：将值限制在0~1</li>
+<li>可以用黑白颜色纹理图代替系数</li>
+</ul>
+</li>
+</ul>
+<p><strong>使用颜色渐变节点来改变颜色</strong></p>
+<ul>
+<li>Shift+A 转换器 - 颜色渐变</li>
+</ul>
+<blockquote>
+<p>单一图像时用颜色渐变更方便；多个纹理叠加使用混合。</p>
+</blockquote>
+<p><strong>给蘑菇嘉发光点</strong></p>
+<ul>
+<li>调整材质 自发光</li>
+<li>选择点点的文件包 - 右键 - 选择物体；Shift选最后上材质的物体 - Ctrl+L关联材质</li>
+</ul>
+<hr>
+<h3 id="3-4-凹凸感与置换形变"><a href="#3-4-凹凸感与置换形变" class="headerlink" title="3.4 凹凸感与置换形变"></a>3.4 凹凸感与置换形变</h3><h4 id="3-4-1-凹凸感"><a href="#3-4-1-凹凸感" class="headerlink" title="3.4.1 凹凸感"></a>3.4.1 凹凸感</h4><ol>
+<li>需要基础纹理：需要三个纹理贴图。</li>
+<li>需要一个凹凸节点</li>
+<li>纹理坐标映射</li>
+</ol>
+<blockquote>
+<p>计算机能模拟出凹凸感，其实是靠着给每个面的法向不同的值，然后模拟出凹凸感与对光线的反应。</p>
+</blockquote>
+<p>法向贴图为什么是蓝紫色的：法向是个矢量，矢量可以用XYZ坐标轴表示；计算机里有RGB颜色；用RGB代表XYZ，将值输入给法向。</p>
+<h4 id="3-4-2-置换形变（在凹凸感设置的基础上）"><a href="#3-4-2-置换形变（在凹凸感设置的基础上）" class="headerlink" title="3.4.2 置换形变（在凹凸感设置的基础上）"></a>3.4.2 置换形变（在凹凸感设置的基础上）</h4><p><strong>方法1：置换修改器</strong></p>
+<ol>
+<li>编辑模式 - 给物体加细分 - 细分段数越多形变越逼真</li>
+<li>添加置换修改器</li>
+<li>给物体本身添加纹理置换贴图Displacement（右侧小工具）；注意置换修改器中的强度设置；细节不够可以加表面修改器。<br><strong>方法2：添加置换节点（比较消耗电脑资源，不用）</strong></li>
+<li>右侧小工具 - 材质 - 设置 - 表（曲）面 - 置换 - 改为置换与凹凸</li>
+<li>添加新的纹理贴图 - 添加Displacement贴图 - 右侧通过 矢量 置换 - 直接连接输出</li>
+<li>添加细分修改器<br><strong>快速方法</strong></li>
+<li>材质界面 - 选中BSDF - Ctrl+Shift+T - 选择四张图：颜色图、displacement、roughness、法向图。</li>
+<li>右侧通过 矢量 置换 - 直接连接输出(Cycles引擎中才有)</li>
+</ol>
+<hr>
+<h3 id="3-5-混合材质与Node-Wrangler"><a href="#3-5-混合材质与Node-Wrangler" class="headerlink" title="3.5 混合材质与Node Wrangler"></a>3.5 混合材质与Node Wrangler</h3><p><strong>如何做混合材质</strong></p>
+<ul>
+<li>Shift+A - 着色器 - 混合着色器</li>
+</ul>
+<blockquote>
+<p>Ctrl+J，分组，将节点包裹到一个黑框内。</p>
+</blockquote>
+<p><strong>Node Wrangler常用快捷键</strong></p>
+<ul>
+<li>Ctrl+T：快速自动加上纹理坐标和映射。</li>
+<li>Ctrl+Shift+T：快速连接PBR材质。</li>
+<li>Ctrl+Shift+单击节点：快速预览</li>
+<li>Ctrl+Shift+右键拖拉：可以快速增加一个混合BSDF节点。</li>
+<li>Alt+S，快速切换混合节点的上下顺序</li>
+</ul>
+<hr>
+<h3 id="3-6-简单UV纹理绘制"><a href="#3-6-简单UV纹理绘制" class="headerlink" title="3.6 简单UV纹理绘制"></a>3.6 简单UV纹理绘制</h3><p>如何查看一个模型的UV展开图</p>
+<p><strong>UV纹理绘制的三个步骤</strong></p>
+<ol>
+<li>添加一个带图像纹理的材质</li>
+<li>新建一个图像纹理贴图做底</li>
+<li>进入纹理绘制模式绘制</li>
+</ol>
+<p><strong>绘制小狐狸</strong></p>
+<ol>
+<li>转换为网格（应用修改器）</li>
+<li>编辑模式 - U - 智能UV投射；按住Alt双击中间一条线 - U - 标记缝合边 - U - 展开</li>
+<li>新建材质 - Ctrl+T - 新建颜色；UV不会自动加载材质需要自己设置。</li>
+<li></li>
+</ol>
+<p>（待补充笔记）</p>
+<hr>
+<h2 id="04-粒子"><a href="#04-粒子" class="headerlink" title="04 粒子"></a>04 粒子</h2><h3 id="4-1-发射体粒子"><a href="#4-1-发射体粒子" class="headerlink" title="4.1 发射体粒子"></a>4.1 发射体粒子</h3><h4 id="4-1-1-发射体粒子的基础设置"><a href="#4-1-1-发射体粒子的基础设置" class="headerlink" title="4.1.1 发射体粒子的基础设置"></a>4.1.1 发射体粒子的基础设置</h4><p>添加粒子：右侧粒子标签栏 - 点击+号添加。</p>
+<ul>
+<li>自发光<ul>
+<li>Number：粒子个数</li>
+<li>随机种：随机分布；例如渲染为集合时会比较明显。</li>
+<li>起始与结束帧：播放帧数定义</li>
+<li>生命周期：每个粒子存活帧数</li>
+<li>生命周期随机性：随机分布粒子的随机性，最大为上边设定的生命周期。数字越大随机范围越广。</li>
+<li>源<ul>
+<li>发射源<ul>
+<li>面 - 在表面发射</li>
+<li>顶点 - 在顶点发射</li>
+<li>体积 - 在内部发射</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>速度<ul>
+<li>法向：法向就是每个面的方向或者切线方向</li>
+<li>物理对齐：可以给XYZ不同的力度，让粒子往想要的地方吹。</li>
+</ul>
+</li>
+<li>旋转<ul>
+<li>随机化阶段：让粒子运动过程不显得死板，随机增加旋转。</li>
+</ul>
+</li>
+<li>物理<ul>
+<li>力场<ul>
+<li>布朗运动：随机运动。</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>渲染<ul>
+<li>渲染为：<ul>
+<li>改为物体 - 可以在下边物体栏用小吸管提取别的物体作为粒子。</li>
+<li>改为集合 - 粒子变为集合内所包含的物体</li>
+</ul>
+</li>
+<li>缩放：缩放粒子</li>
+<li>缩放随机性：随机缩放各个粒子的大小，越往1靠缩放范围越大；注意不要超过自己定义的缩放值。</li>
+<li>显示发射体：射发粒子的模型；比如云朵。</li>
+</ul>
+</li>
+<li>力场权重<ul>
+<li>重力：顾名思义。</li>
+</ul>
+</li>
+</ul>
+<h4 id="4-1-2-粒子的碰撞"><a href="#4-1-2-粒子的碰撞" class="headerlink" title="4.1.2 粒子的碰撞"></a>4.1.2 粒子的碰撞</h4><ul>
+<li>选择需要被碰撞的物体 - 侧边的物理标签 - 添加碰撞</li>
+<li>碰撞<ul>
+<li>粒子<ul>
+<li>阻尼：阻尼越小弹力越大</li>
+<li>随机：随机分布粒子的阻尼</li>
+<li>摩擦：摩擦力小时，粒子会在倾斜的地方滑落</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h4 id="4-1-3-力场对粒子的作用"><a href="#4-1-3-力场对粒子的作用" class="headerlink" title="4.1.3 力场对粒子的作用"></a>4.1.3 力场对粒子的作用</h4><ul>
+<li>场景中默认是有重力的 - 右侧小山标签</li>
+<li>新建力场 - 常力 - 物理标签属性<ul>
+<li>类型中可以快速改为其他力</li>
+<li>力度：加大就是吹风机，减少到低于零就是吸力。</li>
+</ul>
+</li>
+</ul>
+<hr>
+<h3 id="4-2-毛发粒子"><a href="#4-2-毛发粒子" class="headerlink" title="4.2 毛发粒子"></a>4.2 毛发粒子</h3><h4 id="4-2-1-毛发标签属性"><a href="#4-2-1-毛发标签属性" class="headerlink" title="4.2.1 毛发标签属性"></a>4.2.1 毛发标签属性</h4><ul>
+<li>自发光<ul>
+<li>段数：如果需要弯曲需要增加段数。</li>
+</ul>
+</li>
+<li>旋转（需要勾选高级选项；毛发必勾选高级）<ul>
+<li>坐标系轴向：粒子生长方向<ul>
+<li>默认法向方向</li>
+<li>全局Z</li>
+</ul>
+</li>
+<li>相位：控制所有粒子的旋转</li>
+<li>随机化阶段：随机化控制每个粒子旋转角度。</li>
+</ul>
+</li>
+<li>物理（需要勾选高级选项）<ul>
+<li>让粒子有随机化的形变。</li>
+</ul>
+</li>
+<li>渲染<ul>
+<li>缩放随机化</li>
+</ul>
+</li>
+<li>子级<ul>
+<li>简单型<ul>
+<li>显示数量：在显示器预览时看见的数量；每个单独粒子代表的数量。</li>
+<li>渲染数量：渲染时的数量；方便在操作时节省电脑资源。</li>
+<li>长度</li>
+</ul>
+</li>
+<li>簇集<ul>
+<li>簇：1为上边形成集成一团；-1下面形成一团。</li>
+<li>扭曲：顾名思义。</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h4 id="4-2-2-毛发粒子基础-草地"><a href="#4-2-2-毛发粒子基础-草地" class="headerlink" title="4.2.2 毛发粒子基础 - 草地"></a>4.2.2 毛发粒子基础 - 草地</h4><ol>
+<li>添加粒子属性</li>
+<li>添加材质；草地颜色默认是跟着图片的颜色走的。</li>
+</ol>
+<h4 id="4-2-3-毛发粒子做森林"><a href="#4-2-3-毛发粒子做森林" class="headerlink" title="4.2.3 毛发粒子做森林"></a>4.2.3 毛发粒子做森林</h4><ol>
+<li>给物体添加粒子系统 - 选择毛发</li>
+<li>渲染 - 改为物体；勾选 物体 - 旋转</li>
+<li>找到原物体；原物体的旋转角度影响着粒子物体（需要勾选粒子标签中渲染的物体旋转）；记得先检查物体的局部坐标。（右上角弓箭小图标 - 移动，可以打开轴）</li>
+</ol>
+<h4 id="4-2-4-如何给物体随机分配颜色"><a href="#4-2-4-如何给物体随机分配颜色" class="headerlink" title="4.2.4 如何给物体随机分配颜色"></a>4.2.4 如何给物体随机分配颜色</h4><ol>
+<li>添加材质</li>
+<li>物体信息（随机） - 颜色渐变 - 输出</li>
+<li><img src="/images/20240611212504.png" class="lazy" data-srcset="/images/20240611212504.png" srcset="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABAQMAAAAl21bKAAAABlBMVEXMzMyWlpYU2uzLAAAACXBIWXMAAA7EAAAOxAGVKw4bAAAACklEQVQImWNgAAAAAgAB9HFkpgAAAABJRU5ErkJggg=="></li>
+</ol>
+<h4 id="4-2-5小火苗"><a href="#4-2-5小火苗" class="headerlink" title="4.2.5小火苗"></a>4.2.5小火苗</h4><ol>
+<li>顶点组权重设置<ol>
+<li>进入编辑模式 - 进入透视模式</li>
+<li>选中部分 - 点击右侧倒三角物体属性标签 - 顶点组 添加 指定</li>
+<li>切换权重模式 - 左上角权重菜单 - 光滑 - 随着迭代增多越来越平滑</li>
+<li>物体模式 - 置换修改器 - 添加顶点组</li>
+</ol>
+</li>
+<li>新建空物体 纯轴 - 置换修改器坐标改为物体 - 吸纯轴</li>
+<li>选择纯轴 - N - 在变化Z轴中输入#frame&#x2F;10</li>
+</ol>
+<hr>
+<h2 id="05-场景灯光"><a href="#05-场景灯光" class="headerlink" title="05 场景灯光"></a>05 场景灯光</h2><h3 id="5-1-小白布光宝典"><a href="#5-1-小白布光宝典" class="headerlink" title="5.1 小白布光宝典"></a>5.1 小白布光宝典</h3><h4 id="5-1-1-设置世界环境光"><a href="#5-1-1-设置世界环境光" class="headerlink" title="5.1.1 设置世界环境光"></a>5.1.1 设置世界环境光</h4><ul>
+<li>右侧 小地球标签 世界属性<ul>
+<li>颜色：默认深灰色；点击小点可以添加其他工具<ul>
+<li>天空纹理（部分内容只在Cycles下能用）</li>
+</ul>
+</li>
+<li>强度&#x2F;力度：世界光强度</li>
+</ul>
+</li>
+<li>着色编辑器<ul>
+<li>物体 切换为 世界环境</li>
+</ul>
+</li>
+</ul>
+<h4 id="5-1-2-常用四种设置世界光"><a href="#5-1-2-常用四种设置世界光" class="headerlink" title="5.1.2 常用四种设置世界光"></a>5.1.2 常用四种设置世界光</h4><ol>
+<li>修改默认背景节点</li>
+<li>天空纹理</li>
+<li>渐变纹理</li>
+<li>环境纹理 - HDRI贴图</li>
+</ol>
+<h4 id="5-1-3-HDRI贴图打世界光-方法"><a href="#5-1-3-HDRI贴图打世界光-方法" class="headerlink" title="5.1.3 HDRI贴图打世界光 方法"></a>5.1.3 HDRI贴图打世界光 方法</h4><ol>
+<li>着色编辑器 世界环境中</li>
+<li>添加 环境纹理 连接到输出</li>
+<li>新建或打开； 以下为blender内置HDRI<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">D:\Software\Blender\4.1\datafiles\studiolights\world</span><br></pre></td></tr></table></figure></li>
+<li>只想要光照效果：在渲染引擎 - 胶片 - 勾选透明</li>
+<li>旋转贴图：Ctrl+T - 调整Z轴</li>
+</ol>
+<h4 id="5-1-4-如何设置场景灯光"><a href="#5-1-4-如何设置场景灯光" class="headerlink" title="5.1.4 如何设置场景灯光"></a>5.1.4 如何设置场景灯光</h4><p><strong>点光</strong></p>
+<ul>
+<li>右侧小标签灯光属性；可以即时切换不同的灯光</li>
+<li>能量：瓦数。</li>
+<li>半径：半径越大影子越虚</li>
+<li>最多反弹次数：光线模拟光在不同面上的被反弹的次数；比较耗性能。（Cycles）</li>
+</ul>
+<p><strong>日光</strong></p>
+<ul>
+<li>日光位置不影响照明效果，但角度非常重要。是个平行光。</li>
+</ul>
+<p><strong>聚光</strong></p>
+<ul>
+<li>单方向的光，聚光灯。</li>
+<li>光束形状<ul>
+<li>光圈尺寸：喇叭口开口大小</li>
+<li>混合：聚光发散程度</li>
+</ul>
+</li>
+</ul>
+<p><strong>面光</strong></p>
+<ul>
+<li>柔光板；</li>
+<li>可以R旋转；拉小黄点可以直接指向目标</li>
+<li>形状：可以改变不同形状。</li>
+<li>尺寸：越大，光线越发散越柔和</li>
+</ul>
+<h4 id="5-1-5-常规打光步骤"><a href="#5-1-5-常规打光步骤" class="headerlink" title="5.1.5 常规打光步骤"></a>5.1.5 常规打光步骤</h4><ol>
+<li>世界光：定基调，打造基础光环境</li>
+<li>场景光：让布光有主次，有逻辑，有美感</li>
+</ol>
+<h4 id="5-1-6-三点布光法（面光）"><a href="#5-1-6-三点布光法（面光）" class="headerlink" title="5.1.6 三点布光法（面光）"></a>5.1.6 三点布光法（面光）</h4><ol>
+<li>主光<ul>
+<li>把主要对象照亮</li>
+</ul>
+</li>
+<li>副光<ul>
+<li>不能喧宾夺主；不能抢主光的风头</li>
+</ul>
+</li>
+<li>轮廓光<ul>
+<li>一般从主体背面打，逆光，主要用于勾勒物体轮廓；</li>
+<li>不想让轮廓光影响到阴影：灯光设置 - 取消勾选 投射阴影</li>
+</ul>
+</li>
+</ol>
+<hr>
+<h3 id="5-2-三方素材"><a href="#5-2-三方素材" class="headerlink" title="5.2 三方素材"></a>5.2 三方素材</h3><p><strong>导入第三方素材</strong><br>关联与追加</p>
+<ul>
+<li>关联：关联源文件，只能从源文件修改。</li>
+<li>追加：可以直接修改，但会导致场景文件过大。（直接复制粘贴也可以）<br>FBX与OBJ</li>
+<li>两种模型文件</li>
+<li>OBJ一般带有mtl材质文件</li>
+</ul>
+<p><img src="/images/20240612023519.png" class="lazy" data-srcset="/images/20240612023519.png" srcset="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABAQMAAAAl21bKAAAABlBMVEXMzMyWlpYU2uzLAAAACXBIWXMAAA7EAAAOxAGVKw4bAAAACklEQVQImWNgAAAAAgAB9HFkpgAAAABJRU5ErkJggg=="></p>
+<hr>
+<h2 id="06-动画"><a href="#06-动画" class="headerlink" title="06 动画"></a>06 动画</h2><h3 id="6-1-动画工具"><a href="#6-1-动画工具" class="headerlink" title="6.1 动画工具"></a>6.1 动画工具</h3><p><strong>时间轴动画基础</strong></p>
+<ul>
+<li>blender下方拉开 就是时间轴；数字表示为帧数</li>
+<li>打关键帧<ul>
+<li>右键 - 插入关键帧；快捷键I</li>
+<li>不同位置打上不同关键帧，即可做动画</li>
+<li>关键帧窗口最左侧 点开 是所有关键帧的汇总</li>
+<li>其他属性打关键帧：在属性位置上按I；属性右侧的小点也可以加关键帧</li>
+</ul>
+</li>
+</ul>
+<p><strong>动画工具（关键帧左上角时间图标）</strong></p>
+<ul>
+<li>曲线编辑器<ul>
+<li>任意一条线都有控制轴，通过调整控制轴调整动画的速率；</li>
+<li>按Ctrl拉动会有吸附效果，让你的线更平缓。</li>
+<li>N召唤小窗口 - 右侧可添加修改器</li>
+</ul>
+</li>
+</ul>
+<blockquote>
+<p>帧率最好设定为偶数</p>
+</blockquote>
+<p>形态键动画<br>摄像机动画<br>骨骼绑定<br>物体约束跟随<br>动画修改器<br>粒子动画</p>
+<hr>
+<h3 id="6-2-形态键动画"><a href="#6-2-形态键动画" class="headerlink" title="6.2 形态键动画"></a>6.2 形态键动画</h3><ul>
+<li>从一种形态变为另外一种形态</li>
+<li>给物体添加形态键：右侧绿色标签栏 - 添加形态键<ul>
+<li>基型：变身前的形态</li>
+<li>键1：分身</li>
+</ul>
+</li>
+</ul>
+<hr>
+<h3 id="6-3-骨骼绑定"><a href="#6-3-骨骼绑定" class="headerlink" title="6.3 骨骼绑定"></a>6.3 骨骼绑定</h3><p>新建 骨架：包含骨架和姿态，骨架是骨头，姿态为动作<br>骨骼属性 - 右侧标签栏小人</p>
+<p><strong>骨骼的三种模式</strong></p>
+<ul>
+<li>物体模式<ul>
+<li>物体模式下只能新建骨骼，编辑模式下才能在原本骨骼上建立新的骨骼。</li>
+</ul>
+</li>
+<li>编辑模式<ul>
+<li>在尾端可以E新拉出来一条骨骼、还可以细分。从尾部拉出和细分，都为原本的子级。</li>
+<li>从头部挤出的骨骼为同级。</li>
+</ul>
+</li>
+<li>姿态模式<ul>
+<li>只有在姿态模式才能给单个骨骼打关键帧；物体模式只能给整个骨架打关键帧。</li>
+</ul>
+</li>
+</ul>
+<p><strong>骨骼绑定模型</strong></p>
+<ol>
+<li>绑定要在物体模式下；绑定是用模型作为骨架的子级（看不到骨架就到骨架属性里边 - 视图显示 - 勾选 在前面）</li>
+<li>先选择模型 - 再选择骨架 - Ctrl+P 骨架形变 附带自动权重</li>
+</ol>
+<p><strong>权重的概念</strong></p>
+<ul>
+<li>物体模式 - 切换到权重绘制</li>
+<li>通过渐变的权重能让弯曲的时候不会太硬</li>
+</ul>
+<p>初始化：姿态模式 - 姿态 - 清空变换 - 全部</p>
+<p><strong>狐狸尾巴</strong></p>
+<ol>
+<li>Alt+P 清空父级</li>
+<li>放置好原点与物体的位置</li>
+<li>新建骨骼 - 使和物体重合；进入编辑模式 - 缩小</li>
+<li>Ctrl+Shift+Alt+S 放大</li>
+<li>侧视图 - 点击骨骼小圆球 - 拉长到整个物体</li>
+<li>选择中间骨骼 - Ctrl+Shift+Alt+S 变细</li>
+<li>中间骨骼 - 骨骼属性（骨头标签） - 柔性骨骼 - 增加段数</li>
+<li>进入姿态模式</li>
+<li>给两端的骨骼改名，以及中间的骨骼</li>
+<li>需要将top骨骼独立出来；编辑模式下 - Alt+P清空父级</li>
+<li>选择top骨骼进入姿态模式 - Shift先选择控制器再选择body骨骼 - Ctrl+Shift+C 加约束- 拉伸到</li>
+<li>选择body骨骼 - 小骨头标签 - 柔性骨骼 - 起始结束控制柄选择绝对 - 自定义选择两端的骨骼</li>
+<li>物体模式进行绑定 - （top控制骨骼 - 小绿骨头标签 - 取消勾选形变）</li>
+<li>Shift先选模型 再选骨骼 - Ctrl+P - 骨架形变 - 附带自动权重</li>
+<li>绑定回原fox（记得应用缩放）</li>
+<li>制作动画省略..</li>
+<li>重复动画循环，需要把第一帧复制到最后一帧；曲线编辑器中选择骨骼下所有点 添加循环修改器</li>
+</ol>
+<p><strong>狐狸头问题</strong></p>
+<ol>
+<li>先选择鼻子眼睛嘴巴 - Alt+P清空并保持变换结果</li>
+<li>之后选择头 + Ctrl+P 绑定父级</li>
+</ol>
+<p><strong>物体约束 - 标准跟随</strong></p>
+<ol>
+<li>右侧修改带样式标签（约束） - 标准跟随</li>
+<li>吸管提取物体</li>
+<li>跟随轴是按照局部坐标来的</li>
+<li>向上是全局坐标</li>
+</ol>
+<blockquote>
+<p>选中你想要查看的物体按小键盘的小数点可以快速定位,方便查找</p>
+</blockquote>
+<hr>
+<h2 id="07-合成"><a href="#07-合成" class="headerlink" title="07 合成"></a>07 合成</h2><h3 id="7-1-合成器使用"><a href="#7-1-合成器使用" class="headerlink" title="7.1 合成器使用"></a>7.1 合成器使用</h3><p>合成器窗口 - 勾选使用节点</p>
+<p><strong>合成器的使用步骤</strong></p>
+<ol>
+<li>先渲染出一张图</li>
+<li>V缩小；Alt+V放大</li>
+<li>Shift右键划一刀合成；连接上预览器</li>
+<li>M暂时预览</li>
+</ol>
+<p>Cycles引擎采样中降噪一定要打开；采样率不是越高越好，打开降噪，它们显示效果是看不出来差别的。</p>
+<p>VFX特效</p>
+<blockquote>
+<p>如果你安装了Node Wrangler可以按住shift ctrl单击渲染层可以自动给你连接一个渲染器</p>
+</blockquote>
+<p><img src="/images/20240612125831.png" class="lazy" data-srcset="/images/20240612125831.png" srcset="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABAQMAAAAl21bKAAAABlBMVEXMzMyWlpYU2uzLAAAACXBIWXMAAA7EAAAOxAGVKw4bAAAACklEQVQImWNgAAAAAgAB9HFkpgAAAABJRU5ErkJggg=="></p>
+<hr>
+<h3 id="7-2-渲染输出"><a href="#7-2-渲染输出" class="headerlink" title="7.2 渲染输出"></a>7.2 渲染输出</h3><p>待补充</p>
+
+    </div>
+     
+    <div class="post-footer__meta"><p>更新于 2024-06-15</p></div> 
+    <div class="post-entry__tags"></div> 
+</article>
+
+
+    <div class="nav">
+        <div class="nav__prev">
+            
+        </div>
+        <div class="nav__next">
+            
+                <a href="/%E5%93%B2%E5%AD%A6/2024-06-16-mental/Crash%20Course%20Philosophy%20%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0.html" class="nav__link">
+                    <div>
+                        <div class="nav__label">
+                            下一篇
+                        </div>
+                        <div class="nav__title">
+                            Crash Course Philosophy 课程笔记
+                        </div>
+                    </div>
+                    <div>
+                        <svg viewBox="0 0 1024 1024" xmlns="http://www.w3.org/2000/svg" width="24" height="24"><path d="M434.944 790.624l-45.248-45.248L623.04 512l-233.376-233.376 45.248-45.248L713.568 512z" fill="#808080"></path></svg>
+                    </div>
+                </a>
+            
+        </div>
+    </div>
+
+
+
+
+
+</main>
+
+            <footer class="footer">
+     
+    <a href="#" class="button" id="b2t" aria-label="回到顶部" title="回到顶部">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1024 1024" width="32" height="32">
+            <path d="M233.376 722.752L278.624 768 512 534.624 745.376 768l45.248-45.248L512 444.128zM192 352h640V288H192z" fill="currentColor"></path>
+        </svg>
+    </a>
+
+    
+
+
+    
+     
+ 
+
+ 
+    
+        
+        <p class="footer-copyright">
+            Copyright © 2024 <a href="/">YEYEYETO</a>
+        </p>
+    
+    
+    <p>Powered by <a href="https://hexo.io" target="_blank">Hexo</a> | Theme - <a href="https://github.com/ChrAlpha/hexo-theme-cards" target="_blank">Cards</a></p>
+</footer>
+
+        </div>
+        
+    <script defer src="https://cdn.jsdelivr.net/npm/vanilla-lazyload@17.1.0/dist/lazyload.min.js"></script>
+    <script>
+        window.lazyLoadOptions = {
+            elements_selector: ".lazy",
+            threshold: 0
+        };
+    </script>
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+
+
+ 
+
+
+
+ 
+
+
+    
+ 
+
+
+    
+<script src="https://cdn.jsdelivr.net/npm/jquery@3.4.1/dist/jquery.min.js"></script>
+
+    
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.4.1/dist/jquery.fancybox.min.css">
+
+    
+<script src="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.4.1/dist/jquery.fancybox.min.js"></script>
+
+    <script>
+        let lazyloadT = Boolean('true'),
+            auto_fancybox = Boolean('false')
+        if (auto_fancybox) {
+            $(".post__content").find('img').each(function () {
+                var element = document.createElement("a");
+                $(element).attr("data-fancybox", "gallery");
+                $(element).attr("href", $(this).attr("src"));
+                if (lazyloadT) {
+                    $(element).attr("href", $(this).attr("data-srcset"));
+                }
+                $(this).wrap(element);
+            });
+        } else {
+            $(".post__content").find("fancybox").find('img').each(function () {
+                var element = document.createElement("a");
+                $(element).attr("data-fancybox", "gallery");
+                $(element).attr("href", $(this).attr("src"));
+                if (lazyloadT) {
+                    $(element).attr("href", $(this).attr("data-srcset"));
+                }
+                $(this).wrap(element);
+            });
+        }
+    </script>
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+
+
+
+    </body>
+</html>
