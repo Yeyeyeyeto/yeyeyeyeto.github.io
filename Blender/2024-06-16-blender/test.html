@@ -1,0 +1,385 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+    <head>
+    <meta charset="utf-8">
+
+    
+
+    <!-- 渲染优化 -->
+    <meta name="renderer" content="webkit">
+    <meta name="force-rendering" content="webkit">
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
+    <meta name="HandheldFriendly" content="True" >
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+    <!--icon-->
+
+    
+    
+    
+    
+    
+
+
+    <!-- meta -->
+
+
+<title>Blender动画教程 - 熊猫跳舞 - 课程笔记 | Eternal&#39;s Blog</title>
+
+
+    <meta name="keywords" content="ARP, AutoRigPro, 角色绑定, AI动作捕捉">
+
+
+
+
+    <!-- OpenGraph -->
+ 
+    <meta name="description" content="1 绑定前预检查 缩放旋转检查：Ctrl+A应用全部变化 模型对称检查&amp;朝向检查：X轴对称，脚站在红线上，脸朝向-y 曲线检查 大小检查：最好符合实际高度 模型面数检查：面数不能太多也太少。不足可以进入编辑模式Ctrl+R添加 父子级检查 修改器检查 绑定前应用：镜像修改器、实体化修改器、布尔修改器；（会参与变形的修改器） 可保留：细分表面修改器、阵列修改器、倒角修改器   备份检查：在修">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Blender动画教程 - 熊猫跳舞 - 课程笔记">
+<meta property="og:url" content="http://example.com/Blender/2024-06-16-blender/test.html">
+<meta property="og:site_name" content="Eternal&#39;s Blog">
+<meta property="og:description" content="1 绑定前预检查 缩放旋转检查：Ctrl+A应用全部变化 模型对称检查&amp;朝向检查：X轴对称，脚站在红线上，脸朝向-y 曲线检查 大小检查：最好符合实际高度 模型面数检查：面数不能太多也太少。不足可以进入编辑模式Ctrl+R添加 父子级检查 修改器检查 绑定前应用：镜像修改器、实体化修改器、布尔修改器；（会参与变形的修改器） 可保留：细分表面修改器、阵列修改器、倒角修改器   备份检查：在修">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2024-06-15T16:08:08.000Z">
+<meta property="article:modified_time" content="2024-06-15T08:11:25.588Z">
+<meta property="article:author" content="Eternal">
+<meta property="article:tag" content="ARP">
+<meta property="article:tag" content="AutoRigPro">
+<meta property="article:tag" content="角色绑定">
+<meta property="article:tag" content="AI动作捕捉">
+<meta name="twitter:card" content="summary_large_image">
+
+
+    
+<link rel="stylesheet" href="/css/style/main.css">
+ 
+
+    
+    
+        <link rel="stylesheet" id="hl-default-theme" href="/css/highlight/highlight.css" media="none" >
+        
+            <link rel="stylesheet" id="hl-dark-theme" href="/css/highlight/highlight.dark.css" media="none">
+        
+    
+
+    
+    
+
+    
+    
+<link rel="stylesheet" href="/css/style/dark.css">
+
+    
+<script src="/js/darkmode.js"></script>
+
+
+
+     
+
+    <!-- custom head -->
+
+<meta name="generator" content="Hexo 7.2.0"></head>
+
+    <body>
+        <div id="app" tabindex="-1">
+            <header class="header">
+    <div class="header__left">
+        <a href="/" class="button">
+            <span class="logo__text">YEYEYEYETO</span>
+        </a>
+    </div>
+    <div class="header__right">
+        
+            <div class="navbar__menus">
+                
+                    <a href="/" class="navbar-menu button">首页</a>
+                
+                    <a href="/tags/" class="navbar-menu button">标签</a>
+                
+                    <a href="/categories/" class="navbar-menu button">分类</a>
+                
+                    <a href="/archives/" class="navbar-menu button">归档</a>
+                
+            </div>
+        
+        
+        
+    <a href="/search/" id="btn-search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1024 1024" width="24" height="24" fill="currentColor" stroke="currentColor" stroke-width="32"><path d="M192 448c0-141.152 114.848-256 256-256s256 114.848 256 256-114.848 256-256 256-256-114.848-256-256z m710.624 409.376l-206.88-206.88A318.784 318.784 0 0 0 768 448c0-176.736-143.264-320-320-320S128 271.264 128 448s143.264 320 320 320a318.784 318.784 0 0 0 202.496-72.256l206.88 206.88 45.248-45.248z"></path></svg>
+    </a>
+
+
+        
+        
+    <a href="javaScript:void(0);" id="btn-toggle-dark">
+        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path></svg>
+    </a>
+
+
+        
+            <a class="dropdown-icon button" id="btn-dropdown" tabindex="0"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" width='24' height='24' fill="none" stroke="currentColor" stroke-width="0.7" stroke-linecap="round" stroke-linejoin="round"><path fill="currentColor" d="M3.314,4.8h13.372c0.41,0,0.743-0.333,0.743-0.743c0-0.41-0.333-0.743-0.743-0.743H3.314c-0.41,0-0.743,0.333-0.743,0.743C2.571,4.467,2.904,4.8,3.314,4.8z M16.686,15.2H3.314c-0.41,0-0.743,0.333-0.743,0.743s0.333,0.743,0.743,0.743h13.372c0.41,0,0.743-0.333,0.743-0.743S17.096,15.2,16.686,15.2z M16.686,9.257H3.314c-0.41,0-0.743,0.333-0.743,0.743s0.333,0.743,0.743,0.743h13.372c0.41,0,0.743-0.333,0.743-0.743S17.096,9.257,16.686,9.257z"></path></svg></a>
+            <div class="dropdown-menus" id="dropdown-menus">
+                
+                    <a href="/" class="dropdown-menu button">首页</a>
+                
+                    <a href="/tags/" class="dropdown-menu button">标签</a>
+                
+                    <a href="/categories/" class="dropdown-menu button">分类</a>
+                
+                    <a href="/archives/" class="dropdown-menu button">归档</a>
+                
+            </div>
+        
+    </div>
+</header>
+
+
+            <main class="main">
+    
+
+<div class="post-title">
+    <h1 class="post-title__text">
+        Blender动画教程 - 熊猫跳舞 - 课程笔记
+    </h1>
+    <div class="post-title__meta">
+        <a href="/archives/2024/06/" class="post-meta__date button">2024-06-15</a>
+        
+    <span class="separate-dot"></span><a href="/categories/Blender/" class="button">Blender</a>
+
+ 
+        
+    
+    
+
+
+ 
+
+ 
+    </div>
+</div>
+
+
+
+<article class="post content-card">
+    <div class="post__header"></div>
+    <div class="post__content">
+        <h5 id="1-绑定前预检查"><a href="#1-绑定前预检查" class="headerlink" title="1 绑定前预检查"></a>1 绑定前预检查</h5><ol>
+<li>缩放旋转检查：Ctrl+A应用全部变化</li>
+<li>模型对称检查&amp;朝向检查：X轴对称，脚站在红线上，脸朝向-y</li>
+<li>曲线检查</li>
+<li>大小检查：最好符合实际高度</li>
+<li>模型面数检查：面数不能太多也太少。不足可以进入编辑模式Ctrl+R添加</li>
+<li>父子级检查</li>
+<li>修改器检查<ul>
+<li>绑定前应用：镜像修改器、实体化修改器、布尔修改器；（会参与变形的修改器）</li>
+<li>可保留：细分表面修改器、阵列修改器、倒角修改器</li>
+</ul>
+</li>
+<li>备份检查：在修改器应用前也最好备份一下</li>
+</ol>
+<hr>
+<h5 id="2-ARP绑定"><a href="#2-ARP绑定" class="headerlink" title="2 ARP绑定"></a>2 ARP绑定</h5><ol>
+<li>选中绑定的主体</li>
+<li>打开ARP菜单：智能绑定 - 全身 确定</li>
+<li>在智能绑定中添加各个节点；不需要手指可以选择取消；添加之后go会自动添加骨骼</li>
+<li>调整骨骼 - ok之后在第一个菜单选择与绑定匹配；自动切换为姿态模式 - 右侧小窗口 物体属性 - 视图显示 勾选显示在前面</li>
+<li>将模型绑定在控制器：切换为物体模式 - 选中模型 再选择控制器 - ARP菜单 切换蒙皮 - 绑定菜单 绑定</li>
+</ol>
+<hr>
+<h5 id="3-3-FBX的导入和重映射"><a href="#3-3-FBX的导入和重映射" class="headerlink" title="3.3 FBX的导入和重映射"></a>3.3 FBX的导入和重映射</h5><ol>
+<li>导入 - FBX文件</li>
+<li>勾选 骨架 - 自动骨骼坐标系</li>
+<li>FBX会影响帧率；输出设置中可更改帧输出<ul>
+<li>ARP菜单 重映射 - 源骨架 点击骨骼 再点击菜单的吸管 - 目标骨架 点击控制器 再点击吸管 - 自动缩放 - 构建骨骼列表；</li>
+<li>选择hips骨骼 设置为根（告诉插件熊猫的屁股根骨骼是该骨骼） - 重新定义静止姿态 - 当前姿态 - 应用 - 重新定义 - 确定 - 重新定位</li>
+</ul>
+</li>
+</ol>
+<hr>
+<h5 id="3-4-FBX文件获取（使用方式）"><a href="#3-4-FBX文件获取（使用方式）" class="headerlink" title="3.4 FBX文件获取（使用方式）"></a>3.4 FBX文件获取（<a target="_blank" rel="noopener" href="https://www.bilibili.com/video/BV1bu4y1g7Vs?p=4">使用方式</a>）</h5><p><strong>AI动作捕捉工具</strong></p>
+<ul>
+<li><a target="_blank" rel="noopener" href="https://plask.ai/">https://plask.ai/</a></li>
+<li><a target="_blank" rel="noopener" href="https://www.rokoko.com/">https://www.rokoko.com/</a><br><strong>AI动作生成工具</strong></li>
+<li><a target="_blank" rel="noopener" href="https://mootion.com/">https://mootion.com/</a><br><strong>动作库</strong></li>
+<li><a target="_blank" rel="noopener" href="http://mixamo.com/">http://mixamo.com/</a></li>
+</ul>
+<hr>
+<h5 id="3-5-动画基础"><a href="#3-5-动画基础" class="headerlink" title="3.5 动画基础"></a>3.5 动画基础</h5><p><strong>自动插帧</strong></p>
+<ul>
+<li>动画插口左侧的小圆点，是一个实时打关键帧的功能；激活之后自动记录所有变化。<br><strong>动画摄影表（动画标签中打开，一般与非线性动画搭配使用）</strong></li>
+<li>切换为动作编辑器模式，该模型下才能编辑和改名；下推 会移动到非线性动画编辑器里<br><strong>非线性动画</strong></li>
+<li>被下推的动作会显示为小黄块；选择小黄块按TAB推回动画摄影表</li>
+<li>右侧标签 - 外插：保持 保持最帧的状态；保持前进 最后一帧保持</li>
+<li>右侧标签 - 混合：替换和合并；可以设置多个动画之间的搭配</li>
+</ul>
+<hr>
+<h5 id="3-6-动作捕捉的修补与清理"><a href="#3-6-动作捕捉的修补与清理" class="headerlink" title="3.6 动作捕捉的修补与清理"></a>3.6 动作捕捉的修补与清理</h5><ol>
+<li>检查项目设置</li>
+<li>将骨骼从FK模式转换为IK模式<ul>
+<li>ARP菜单 - 姿态模式 - 选择手上的小方块 - ARP 绑定主要特性 设置 - 右侧小齿轮 - 烘焙FK&gt;IK - 设定帧数 确定；</li>
+<li>四肢都要设定FK&gt;IK（都是为了方便后续做动作的清理）</li>
+</ul>
+</li>
+<li>修补<ul>
+<li>展开动画摄影表 - 动作编辑器，非线性动画；下推 后就可以开始K动作快捷键K</li>
+<li>抖动太厉害可以切换到曲线编辑器：选中两只脚 A全选所有帧数 - 关键帧 平滑 高斯平滑 - 拉一下 20%就可以了</li>
+<li>调整ok就下推</li>
+</ul>
+</li>
+<li>烘焙调整好的动作<ul>
+<li>非线性编辑器 - 片段  烘焙动作 - 取消 仅选中的骨骼</li>
+<li>它会把所有合并到一个到动作编辑器</li>
+<li>可以将其他的动作流删掉了，需要保存可以TAB上推回动作编辑器，改名后添加小盾牌</li>
+</ul>
+</li>
+</ol>
+<blockquote>
+<p>动作捕捉文件是FK运动模式（大臂带动小臂 正向运动学），需要改为IK模式（反向移动学）。</p>
+</blockquote>
+<hr>
+
+    </div>
+     
+    <div class="post-footer__meta"><p>更新于 2024-06-15</p></div> 
+    <div class="post-entry__tags"><a href="/tags/ARP/" class="post-tags__link button"># ARP</a><a href="/tags/AutoRigPro/" class="post-tags__link button"># AutoRigPro</a><a href="/tags/%E8%A7%92%E8%89%B2%E7%BB%91%E5%AE%9A/" class="post-tags__link button"># 角色绑定</a><a href="/tags/AI%E5%8A%A8%E4%BD%9C%E6%8D%95%E6%8D%89/" class="post-tags__link button"># AI动作捕捉</a></div> 
+</article>
+
+
+    <div class="nav">
+        <div class="nav__prev">
+            
+        </div>
+        <div class="nav__next">
+            
+                <a href="/%E6%97%A5%E8%AE%B0/2023-11-26-diary/%E5%86%9C%E5%A4%AB%E4%B8%8E%E8%9B%87.html" class="nav__link">
+                    <div>
+                        <div class="nav__label">
+                            下一篇
+                        </div>
+                        <div class="nav__title">
+                            农夫与蛇
+                        </div>
+                    </div>
+                    <div>
+                        <svg viewBox="0 0 1024 1024" xmlns="http://www.w3.org/2000/svg" width="24" height="24"><path d="M434.944 790.624l-45.248-45.248L623.04 512l-233.376-233.376 45.248-45.248L713.568 512z" fill="#808080"></path></svg>
+                    </div>
+                </a>
+            
+        </div>
+    </div>
+
+
+
+
+
+</main>
+
+            <footer class="footer">
+     
+    <a href="#" class="button" id="b2t" aria-label="回到顶部" title="回到顶部">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1024 1024" width="32" height="32">
+            <path d="M233.376 722.752L278.624 768 512 534.624 745.376 768l45.248-45.248L512 444.128zM192 352h640V288H192z" fill="currentColor"></path>
+        </svg>
+    </a>
+
+    
+
+
+    
+     
+ 
+
+ 
+    
+        
+        <p class="footer-copyright">
+            Copyright © 2024 <a href="/">Eternal&#39;s Blog</a>
+        </p>
+    
+    
+    <p>Powered by <a href="https://hexo.io" target="_blank">Hexo</a> | Theme - <a href="https://github.com/ChrAlpha/hexo-theme-cards" target="_blank">Cards</a></p>
+</footer>
+
+        </div>
+        
+    <script defer src="https://cdn.jsdelivr.net/npm/vanilla-lazyload@17.1.0/dist/lazyload.min.js"></script>
+    <script>
+        window.lazyLoadOptions = {
+            elements_selector: ".lazy",
+            threshold: 0
+        };
+    </script>
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+
+
+ 
+
+
+
+ 
+
+
+    
+ 
+
+
+    
+<script src="https://cdn.jsdelivr.net/npm/jquery@3.4.1/dist/jquery.min.js"></script>
+
+    
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.4.1/dist/jquery.fancybox.min.css">
+
+    
+<script src="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.4.1/dist/jquery.fancybox.min.js"></script>
+
+    <script>
+        let lazyloadT = Boolean('true'),
+            auto_fancybox = Boolean('false')
+        if (auto_fancybox) {
+            $(".post__content").find('img').each(function () {
+                var element = document.createElement("a");
+                $(element).attr("data-fancybox", "gallery");
+                $(element).attr("href", $(this).attr("src"));
+                if (lazyloadT) {
+                    $(element).attr("href", $(this).attr("data-srcset"));
+                }
+                $(this).wrap(element);
+            });
+        } else {
+            $(".post__content").find("fancybox").find('img').each(function () {
+                var element = document.createElement("a");
+                $(element).attr("data-fancybox", "gallery");
+                $(element).attr("href", $(this).attr("src"));
+                if (lazyloadT) {
+                    $(element).attr("href", $(this).attr("data-srcset"));
+                }
+                $(this).wrap(element);
+            });
+        }
+    </script>
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+
+
+
+    </body>
+</html>
