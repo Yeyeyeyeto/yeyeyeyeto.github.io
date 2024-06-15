@@ -25,10 +25,10 @@
     <!-- meta -->
 
 
-<title>Blender动画教程 - 熊猫跳舞 - 课程笔记 | Eternal&#39;s Blog</title>
+<title>Blender动画教程 - 熊猫跳舞 - 课程笔记 | YEYEYETO</title>
 
 
-    <meta name="keywords" content="ARP, AutoRigPro, 角色绑定, AI动作捕捉">
+    <meta name="keywords" content="角色绑定, AI动作捕捉">
 
 
 
@@ -38,15 +38,13 @@
     <meta name="description" content="1 绑定前预检查 缩放旋转检查：Ctrl+A应用全部变化 模型对称检查&amp;朝向检查：X轴对称，脚站在红线上，脸朝向-y 曲线检查 大小检查：最好符合实际高度 模型面数检查：面数不能太多也太少。不足可以进入编辑模式Ctrl+R添加 父子级检查 修改器检查 绑定前应用：镜像修改器、实体化修改器、布尔修改器；（会参与变形的修改器） 可保留：细分表面修改器、阵列修改器、倒角修改器   备份检查：在修">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Blender动画教程 - 熊猫跳舞 - 课程笔记">
-<meta property="og:url" content="http://example.com/Blender/2024-06-16-blender/test.html">
-<meta property="og:site_name" content="Eternal&#39;s Blog">
+<meta property="og:url" content="https://yeyeyeyeto.github.io/Blender/2024-06-16-blender/Blender%E5%8A%A8%E7%94%BB%E6%95%99%E7%A8%8B%20-%20%E7%86%8A%E7%8C%AB%E8%B7%B3%E8%88%9E%20-%20%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0.html">
+<meta property="og:site_name" content="YEYEYETO">
 <meta property="og:description" content="1 绑定前预检查 缩放旋转检查：Ctrl+A应用全部变化 模型对称检查&amp;朝向检查：X轴对称，脚站在红线上，脸朝向-y 曲线检查 大小检查：最好符合实际高度 模型面数检查：面数不能太多也太少。不足可以进入编辑模式Ctrl+R添加 父子级检查 修改器检查 绑定前应用：镜像修改器、实体化修改器、布尔修改器；（会参与变形的修改器） 可保留：细分表面修改器、阵列修改器、倒角修改器   备份检查：在修">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2024-06-15T16:08:08.000Z">
-<meta property="article:modified_time" content="2024-06-15T08:11:25.588Z">
+<meta property="article:modified_time" content="2024-06-15T12:35:41.868Z">
 <meta property="article:author" content="Eternal">
-<meta property="article:tag" content="ARP">
-<meta property="article:tag" content="AutoRigPro">
 <meta property="article:tag" content="角色绑定">
 <meta property="article:tag" content="AI动作捕捉">
 <meta name="twitter:card" content="summary_large_image">
@@ -102,6 +100,8 @@
                 
                     <a href="/archives/" class="navbar-menu button">归档</a>
                 
+                    <a href="/about/" class="navbar-menu button">关于</a>
+                
             </div>
         
         
@@ -129,6 +129,8 @@
                     <a href="/categories/" class="dropdown-menu button">分类</a>
                 
                     <a href="/archives/" class="dropdown-menu button">归档</a>
+                
+                    <a href="/about/" class="dropdown-menu button">关于</a>
                 
             </div>
         
@@ -161,8 +163,23 @@
 </div>
 
 
+    <aside class="post-side">
+        <div class="post-side__toc">
+            <ol class="toc"><li class="toc-item toc-level-5"><a class="toc-link" href="#1-%E7%BB%91%E5%AE%9A%E5%89%8D%E9%A2%84%E6%A3%80%E6%9F%A5"><span class="toc-text">1 绑定前预检查</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#2-ARP%E7%BB%91%E5%AE%9A"><span class="toc-text">2 ARP绑定</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#3-FBX%E7%9A%84%E5%AF%BC%E5%85%A5%E5%92%8C%E9%87%8D%E6%98%A0%E5%B0%84"><span class="toc-text">3 FBX的导入和重映射</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#4-FBX%E6%96%87%E4%BB%B6%E8%8E%B7%E5%8F%96%EF%BC%88%E4%BD%BF%E7%94%A8%E6%96%B9%E5%BC%8F%EF%BC%89"><span class="toc-text">4 FBX文件获取（使用方式）</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#5-%E5%8A%A8%E7%94%BB%E5%9F%BA%E7%A1%80"><span class="toc-text">5 动画基础</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#6-%E5%8A%A8%E4%BD%9C%E6%8D%95%E6%8D%89%E7%9A%84%E4%BF%AE%E8%A1%A5%E4%B8%8E%E6%B8%85%E7%90%86"><span class="toc-text">6 动作捕捉的修补与清理</span></a></li></ol>
+        </div>
+    </aside>
+    <a class="btn-toc button" id="btn-toc" tabindex="0">
+        <svg viewBox="0 0 1024 1024" width="32" height="32" xmlns="http://www.w3.org/2000/svg">
+            <path d="M128 256h64V192H128zM320 256h576V192H320zM128 544h64v-64H128zM320 544h576v-64H320zM128 832h64v-64H128zM320 832h576v-64H320z" fill="currentColor"></path>
+        </svg>
+    </a>
+    <div class="toc-menus" id="toc-menus">
+        <div class="toc-title">文章目录</div>
+        <ol class="toc"><li class="toc-item toc-level-5"><a class="toc-link" href="#1-%E7%BB%91%E5%AE%9A%E5%89%8D%E9%A2%84%E6%A3%80%E6%9F%A5"><span class="toc-text">1 绑定前预检查</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#2-ARP%E7%BB%91%E5%AE%9A"><span class="toc-text">2 ARP绑定</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#3-FBX%E7%9A%84%E5%AF%BC%E5%85%A5%E5%92%8C%E9%87%8D%E6%98%A0%E5%B0%84"><span class="toc-text">3 FBX的导入和重映射</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#4-FBX%E6%96%87%E4%BB%B6%E8%8E%B7%E5%8F%96%EF%BC%88%E4%BD%BF%E7%94%A8%E6%96%B9%E5%BC%8F%EF%BC%89"><span class="toc-text">4 FBX文件获取（使用方式）</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#5-%E5%8A%A8%E7%94%BB%E5%9F%BA%E7%A1%80"><span class="toc-text">5 动画基础</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#6-%E5%8A%A8%E4%BD%9C%E6%8D%95%E6%8D%89%E7%9A%84%E4%BF%AE%E8%A1%A5%E4%B8%8E%E6%B8%85%E7%90%86"><span class="toc-text">6 动作捕捉的修补与清理</span></a></li></ol>
+    </div>
 
-<article class="post content-card">
+
+<article class="post post__with-toc content-card">
     <div class="post__header"></div>
     <div class="post__content">
         <h5 id="1-绑定前预检查"><a href="#1-绑定前预检查" class="headerlink" title="1 绑定前预检查"></a>1 绑定前预检查</h5><ol>
@@ -188,7 +205,7 @@
 <li>将模型绑定在控制器：切换为物体模式 - 选中模型 再选择控制器 - ARP菜单 切换蒙皮 - 绑定菜单 绑定</li>
 </ol>
 <hr>
-<h5 id="3-3-FBX的导入和重映射"><a href="#3-3-FBX的导入和重映射" class="headerlink" title="3.3 FBX的导入和重映射"></a>3.3 FBX的导入和重映射</h5><ol>
+<h5 id="3-FBX的导入和重映射"><a href="#3-FBX的导入和重映射" class="headerlink" title="3 FBX的导入和重映射"></a>3 FBX的导入和重映射</h5><ol>
 <li>导入 - FBX文件</li>
 <li>勾选 骨架 - 自动骨骼坐标系</li>
 <li>FBX会影响帧率；输出设置中可更改帧输出<ul>
@@ -198,24 +215,36 @@
 </li>
 </ol>
 <hr>
-<h5 id="3-4-FBX文件获取（使用方式）"><a href="#3-4-FBX文件获取（使用方式）" class="headerlink" title="3.4 FBX文件获取（使用方式）"></a>3.4 FBX文件获取（<a target="_blank" rel="noopener" href="https://www.bilibili.com/video/BV1bu4y1g7Vs?p=4">使用方式</a>）</h5><p><strong>AI动作捕捉工具</strong></p>
+<h5 id="4-FBX文件获取（使用方式）"><a href="#4-FBX文件获取（使用方式）" class="headerlink" title="4 FBX文件获取（使用方式）"></a>4 FBX文件获取（<a target="_blank" rel="noopener" href="https://www.bilibili.com/video/BV1bu4y1g7Vs?p=4">使用方式</a>）</h5><p><strong>AI动作捕捉工具</strong></p>
 <ul>
 <li><a target="_blank" rel="noopener" href="https://plask.ai/">https://plask.ai/</a></li>
-<li><a target="_blank" rel="noopener" href="https://www.rokoko.com/">https://www.rokoko.com/</a><br><strong>AI动作生成工具</strong></li>
-<li><a target="_blank" rel="noopener" href="https://mootion.com/">https://mootion.com/</a><br><strong>动作库</strong></li>
+<li><a target="_blank" rel="noopener" href="https://www.rokoko.com/">https://www.rokoko.com/</a></li>
+</ul>
+<p><strong>AI动作生成工具</strong></p>
+<ul>
+<li><a target="_blank" rel="noopener" href="https://mootion.com/">https://mootion.com/</a></li>
+</ul>
+<p><strong>动作库</strong></p>
+<ul>
 <li><a target="_blank" rel="noopener" href="http://mixamo.com/">http://mixamo.com/</a></li>
 </ul>
 <hr>
-<h5 id="3-5-动画基础"><a href="#3-5-动画基础" class="headerlink" title="3.5 动画基础"></a>3.5 动画基础</h5><p><strong>自动插帧</strong></p>
+<h5 id="5-动画基础"><a href="#5-动画基础" class="headerlink" title="5 动画基础"></a>5 动画基础</h5><p><strong>自动插帧</strong></p>
 <ul>
-<li>动画插口左侧的小圆点，是一个实时打关键帧的功能；激活之后自动记录所有变化。<br><strong>动画摄影表（动画标签中打开，一般与非线性动画搭配使用）</strong></li>
-<li>切换为动作编辑器模式，该模型下才能编辑和改名；下推 会移动到非线性动画编辑器里<br><strong>非线性动画</strong></li>
+<li>动画插口左侧的小圆点，是一个实时打关键帧的功能；激活之后自动记录所有变化。</li>
+</ul>
+<p><strong>动画摄影表（动画标签中打开，一般与非线性动画搭配使用）</strong></p>
+<ul>
+<li>切换为动作编辑器模式，该模型下才能编辑和改名；下推 会移动到非线性动画编辑器里</li>
+</ul>
+<p><strong>非线性动画</strong></p>
+<ul>
 <li>被下推的动作会显示为小黄块；选择小黄块按TAB推回动画摄影表</li>
 <li>右侧标签 - 外插：保持 保持最帧的状态；保持前进 最后一帧保持</li>
 <li>右侧标签 - 混合：替换和合并；可以设置多个动画之间的搭配</li>
 </ul>
 <hr>
-<h5 id="3-6-动作捕捉的修补与清理"><a href="#3-6-动作捕捉的修补与清理" class="headerlink" title="3.6 动作捕捉的修补与清理"></a>3.6 动作捕捉的修补与清理</h5><ol>
+<h5 id="6-动作捕捉的修补与清理"><a href="#6-动作捕捉的修补与清理" class="headerlink" title="6 动作捕捉的修补与清理"></a>6 动作捕捉的修补与清理</h5><ol>
 <li>检查项目设置</li>
 <li>将骨骼从FK模式转换为IK模式<ul>
 <li>ARP菜单 - 姿态模式 - 选择手上的小方块 - ARP 绑定主要特性 设置 - 右侧小齿轮 - 烘焙FK&gt;IK - 设定帧数 确定；</li>
@@ -243,12 +272,26 @@
     </div>
      
     <div class="post-footer__meta"><p>更新于 2024-06-15</p></div> 
-    <div class="post-entry__tags"><a href="/tags/ARP/" class="post-tags__link button"># ARP</a><a href="/tags/AutoRigPro/" class="post-tags__link button"># AutoRigPro</a><a href="/tags/%E8%A7%92%E8%89%B2%E7%BB%91%E5%AE%9A/" class="post-tags__link button"># 角色绑定</a><a href="/tags/AI%E5%8A%A8%E4%BD%9C%E6%8D%95%E6%8D%89/" class="post-tags__link button"># AI动作捕捉</a></div> 
+    <div class="post-entry__tags"><a href="/tags/%E8%A7%92%E8%89%B2%E7%BB%91%E5%AE%9A/" class="post-tags__link button"># 角色绑定</a><a href="/tags/AI%E5%8A%A8%E4%BD%9C%E6%8D%95%E6%8D%89/" class="post-tags__link button"># AI动作捕捉</a></div> 
 </article>
 
 
     <div class="nav">
         <div class="nav__prev">
+            
+                <a href="/%E6%97%A5%E8%AE%B0/2024-06-16-diary/%E7%A7%AF%E6%9E%81%E5%BF%83%E7%90%86%E5%AD%A6%E8%AF%BE%E5%90%8E%E6%84%9F%E6%82%9F.html" class="nav__link">
+                    <div>
+                        <svg viewBox="0 0 1024 1024" xmlns="http://www.w3.org/2000/svg" width="24" height="24"><path d="M589.088 790.624L310.464 512l278.624-278.624 45.248 45.248L400.96 512l233.376 233.376z" fill="#808080"></path></svg>
+                    </div>
+                    <div>
+                        <div class="nav__label">
+                            上一篇
+                        </div>
+                        <div class="nav__title">
+                            积极心理学课后感悟
+                        </div>
+                    </div>
+                </a>
             
         </div>
         <div class="nav__next">
@@ -295,7 +338,7 @@
     
         
         <p class="footer-copyright">
-            Copyright © 2024 <a href="/">Eternal&#39;s Blog</a>
+            Copyright © 2024 <a href="/">YEYEYETO</a>
         </p>
     
     

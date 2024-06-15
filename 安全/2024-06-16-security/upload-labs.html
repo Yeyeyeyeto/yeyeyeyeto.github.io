@@ -1,0 +1,405 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+    <head>
+    <meta charset="utf-8">
+
+    
+
+    <!-- 渲染优化 -->
+    <meta name="renderer" content="webkit">
+    <meta name="force-rendering" content="webkit">
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
+    <meta name="HandheldFriendly" content="True" >
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+    <!--icon-->
+
+    
+    
+    
+    
+    
+
+
+    <!-- meta -->
+
+
+<title>upload-labs 通关笔记 | YEYEYETO</title>
+
+
+
+
+
+    <!-- OpenGraph -->
+ 
+    <meta name="description" content="Pass1前端验证 方法1：F12 - F1 - Debugger - Disable JavaScript（禁用JS）方法2：使用BP抓包工具改后缀名方法3：通过修改对方html提交的action，使用自己的js文件。  Pass2文件类型验证，验证MIME信息。 进行抓包，将Content-Type修改为允许上传的类型（image&#x2F;jpeg、image&#x2F;png、image&amp;">
+<meta property="og:type" content="article">
+<meta property="og:title" content="upload-labs 通关笔记">
+<meta property="og:url" content="https://yeyeyeyeto.github.io/%E5%AE%89%E5%85%A8/2024-06-16-security/upload-labs.html">
+<meta property="og:site_name" content="YEYEYETO">
+<meta property="og:description" content="Pass1前端验证 方法1：F12 - F1 - Debugger - Disable JavaScript（禁用JS）方法2：使用BP抓包工具改后缀名方法3：通过修改对方html提交的action，使用自己的js文件。  Pass2文件类型验证，验证MIME信息。 进行抓包，将Content-Type修改为允许上传的类型（image&#x2F;jpeg、image&#x2F;png、image&amp;">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://yeyeyeyeto.github.io/images/20230701162736.png">
+<meta property="article:published_time" content="2024-06-15T19:54:37.000Z">
+<meta property="article:modified_time" content="2024-06-15T12:30:31.932Z">
+<meta property="article:author" content="Eternal">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://yeyeyeyeto.github.io/images/20230701162736.png">
+
+
+    
+<link rel="stylesheet" href="/css/style/main.css">
+ 
+
+    
+    
+        <link rel="stylesheet" id="hl-default-theme" href="/css/highlight/highlight.css" media="none" >
+        
+            <link rel="stylesheet" id="hl-dark-theme" href="/css/highlight/highlight.dark.css" media="none">
+        
+    
+
+    
+    
+
+    
+    
+<link rel="stylesheet" href="/css/style/dark.css">
+
+    
+<script src="/js/darkmode.js"></script>
+
+
+
+     
+
+    <!-- custom head -->
+
+<meta name="generator" content="Hexo 7.2.0"></head>
+
+    <body>
+        <div id="app" tabindex="-1">
+            <header class="header">
+    <div class="header__left">
+        <a href="/" class="button">
+            <span class="logo__text">YEYEYEYETO</span>
+        </a>
+    </div>
+    <div class="header__right">
+        
+            <div class="navbar__menus">
+                
+                    <a href="/" class="navbar-menu button">首页</a>
+                
+                    <a href="/tags/" class="navbar-menu button">标签</a>
+                
+                    <a href="/categories/" class="navbar-menu button">分类</a>
+                
+                    <a href="/archives/" class="navbar-menu button">归档</a>
+                
+                    <a href="/about/" class="navbar-menu button">关于</a>
+                
+            </div>
+        
+        
+        
+    <a href="/search/" id="btn-search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1024 1024" width="24" height="24" fill="currentColor" stroke="currentColor" stroke-width="32"><path d="M192 448c0-141.152 114.848-256 256-256s256 114.848 256 256-114.848 256-256 256-256-114.848-256-256z m710.624 409.376l-206.88-206.88A318.784 318.784 0 0 0 768 448c0-176.736-143.264-320-320-320S128 271.264 128 448s143.264 320 320 320a318.784 318.784 0 0 0 202.496-72.256l206.88 206.88 45.248-45.248z"></path></svg>
+    </a>
+
+
+        
+        
+    <a href="javaScript:void(0);" id="btn-toggle-dark">
+        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path></svg>
+    </a>
+
+
+        
+            <a class="dropdown-icon button" id="btn-dropdown" tabindex="0"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" width='24' height='24' fill="none" stroke="currentColor" stroke-width="0.7" stroke-linecap="round" stroke-linejoin="round"><path fill="currentColor" d="M3.314,4.8h13.372c0.41,0,0.743-0.333,0.743-0.743c0-0.41-0.333-0.743-0.743-0.743H3.314c-0.41,0-0.743,0.333-0.743,0.743C2.571,4.467,2.904,4.8,3.314,4.8z M16.686,15.2H3.314c-0.41,0-0.743,0.333-0.743,0.743s0.333,0.743,0.743,0.743h13.372c0.41,0,0.743-0.333,0.743-0.743S17.096,15.2,16.686,15.2z M16.686,9.257H3.314c-0.41,0-0.743,0.333-0.743,0.743s0.333,0.743,0.743,0.743h13.372c0.41,0,0.743-0.333,0.743-0.743S17.096,9.257,16.686,9.257z"></path></svg></a>
+            <div class="dropdown-menus" id="dropdown-menus">
+                
+                    <a href="/" class="dropdown-menu button">首页</a>
+                
+                    <a href="/tags/" class="dropdown-menu button">标签</a>
+                
+                    <a href="/categories/" class="dropdown-menu button">分类</a>
+                
+                    <a href="/archives/" class="dropdown-menu button">归档</a>
+                
+                    <a href="/about/" class="dropdown-menu button">关于</a>
+                
+            </div>
+        
+    </div>
+</header>
+
+
+            <main class="main">
+    
+
+<div class="post-title">
+    <h1 class="post-title__text">
+        upload-labs 通关笔记
+    </h1>
+    <div class="post-title__meta">
+        <a href="/archives/2024/06/" class="post-meta__date button">2024-06-15</a>
+        
+    <span class="separate-dot"></span><a href="/categories/%E5%AE%89%E5%85%A8/" class="button">安全</a>
+
+ 
+        
+    
+    
+
+
+ 
+
+ 
+    </div>
+</div>
+
+
+    <aside class="post-side">
+        <div class="post-side__toc">
+            <ol class="toc"><li class="toc-item toc-level-4"><a class="toc-link" href="#Pass1"><span class="toc-text">Pass1</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#Pass2"><span class="toc-text">Pass2</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#Pass3"><span class="toc-text">Pass3</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#Pass4"><span class="toc-text">Pass4</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#Pass5"><span class="toc-text">Pass5</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#Pass6"><span class="toc-text">Pass6</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#Pass7"><span class="toc-text">Pass7</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#Pass8"><span class="toc-text">Pass8</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#Pass9"><span class="toc-text">Pass9</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#Pass10"><span class="toc-text">Pass10</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#Pass11"><span class="toc-text">Pass11</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#Pass12"><span class="toc-text">Pass12</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#Pass13"><span class="toc-text">Pass13</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#Pass14"><span class="toc-text">Pass14</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#Pass15"><span class="toc-text">Pass15</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#Pass16"><span class="toc-text">Pass16</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#Pass17"><span class="toc-text">Pass17</span></a></li></ol>
+        </div>
+    </aside>
+    <a class="btn-toc button" id="btn-toc" tabindex="0">
+        <svg viewBox="0 0 1024 1024" width="32" height="32" xmlns="http://www.w3.org/2000/svg">
+            <path d="M128 256h64V192H128zM320 256h576V192H320zM128 544h64v-64H128zM320 544h576v-64H320zM128 832h64v-64H128zM320 832h576v-64H320z" fill="currentColor"></path>
+        </svg>
+    </a>
+    <div class="toc-menus" id="toc-menus">
+        <div class="toc-title">文章目录</div>
+        <ol class="toc"><li class="toc-item toc-level-4"><a class="toc-link" href="#Pass1"><span class="toc-text">Pass1</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#Pass2"><span class="toc-text">Pass2</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#Pass3"><span class="toc-text">Pass3</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#Pass4"><span class="toc-text">Pass4</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#Pass5"><span class="toc-text">Pass5</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#Pass6"><span class="toc-text">Pass6</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#Pass7"><span class="toc-text">Pass7</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#Pass8"><span class="toc-text">Pass8</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#Pass9"><span class="toc-text">Pass9</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#Pass10"><span class="toc-text">Pass10</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#Pass11"><span class="toc-text">Pass11</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#Pass12"><span class="toc-text">Pass12</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#Pass13"><span class="toc-text">Pass13</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#Pass14"><span class="toc-text">Pass14</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#Pass15"><span class="toc-text">Pass15</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#Pass16"><span class="toc-text">Pass16</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#Pass17"><span class="toc-text">Pass17</span></a></li></ol>
+    </div>
+
+
+<article class="post post__with-toc content-card">
+    <div class="post__header"></div>
+    <div class="post__content">
+        <h4 id="Pass1"><a href="#Pass1" class="headerlink" title="Pass1"></a>Pass1</h4><p>前端验证</p>
+<p>方法1：F12 - F1 - Debugger - Disable JavaScript（禁用JS）<br>方法2：使用BP抓包工具改后缀名<br>方法3：通过修改对方html提交的action，使用自己的js文件。</p>
+<hr>
+<h4 id="Pass2"><a href="#Pass2" class="headerlink" title="Pass2"></a>Pass2</h4><p>文件类型验证，验证MIME信息。</p>
+<p>进行抓包，将Content-Type修改为允许上传的类型（image&#x2F;jpeg、image&#x2F;png、image&#x2F;gif）三选一。</p>
+<hr>
+<h4 id="Pass3"><a href="#Pass3" class="headerlink" title="Pass3"></a>Pass3</h4><p>黑名单验证 - 特殊后缀。<br>分析代码，进行黑名单验证，但是黑名单不全，可以使用php3、php5、phtml等等绕过</p>
+<hr>
+<h4 id="Pass4"><a href="#Pass4" class="headerlink" title="Pass4"></a>Pass4</h4><p>黑名单验证 - .htaccess</p>
+<p>上传.htaccess文件，文件内容为</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">AddType application/x-httpd-php .png</span><br></pre></td></tr></table></figure>
+
+<p>之后上传png图片即可，访问这个png图片时，网站会当做是php进行解析。</p>
+<hr>
+<h4 id="Pass5"><a href="#Pass5" class="headerlink" title="Pass5"></a>Pass5</h4><p>黑名单验证 - 没有循环验证（同Pass9）<br>也就是说这些收尾去空，删除末尾的点，去除字符串::$DATA，转换为小写这些东西只是验证了一次。</p>
+<p>BP抓包修改后缀名为 .php. .</p>
+<p>此处源码没有使用strtolower转换大小写，可以使用.PHP绕过。</p>
+<hr>
+<h4 id="Pass6"><a href="#Pass6" class="headerlink" title="Pass6"></a>Pass6</h4><p>黑名单验证 - 没有收尾去空</p>
+<p>上传php文件，抓包后在后缀加空格。</p>
+<hr>
+<h4 id="Pass7"><a href="#Pass7" class="headerlink" title="Pass7"></a>Pass7</h4><p>黑名单验证 - 没有收尾去点</p>
+<p>上传php文件，抓包后在后缀加点</p>
+<hr>
+<h4 id="Pass8"><a href="#Pass8" class="headerlink" title="Pass8"></a>Pass8</h4><p>黑名单验证 - 没有去::$DATA</p>
+<p>上传php文件，抓包后在后缀::$DATA</p>
+<hr>
+<h4 id="Pass9"><a href="#Pass9" class="headerlink" title="Pass9"></a>Pass9</h4><p>黑名单验证 - 没有循环验证<br>也就是说这些收尾去空，删除末尾的点，去除字符串::$DATA，转换为小写这些东西只是验证了一次。</p>
+<p>BP抓包修改后缀名为 .php. .</p>
+<hr>
+<h4 id="Pass10"><a href="#Pass10" class="headerlink" title="Pass10"></a>Pass10</h4><p>黑名单绕过 - 单次过滤php</p>
+<p>更改后缀为phpphp</p>
+<hr>
+<h4 id="Pass11"><a href="#Pass11" class="headerlink" title="Pass11"></a>Pass11</h4><p>白名单 - 上传路径可控</p>
+<p>可以使用%00进行截断，%00截断的条件是要满足以下两点：</p>
+<ol>
+<li>php 版本小于 5.3.4</li>
+<li>php的magic_quotes_gpc为OFF状态</li>
+</ol>
+<p>上传zoe.php用BP抓包修改参数，把upload&#x2F;后面加上zoe.php%00（即图二），下面的filename&#x3D;”zoe.php”改为zoe.png</p>
+<p><img src="/images/20230701162736.png" class="lazy" data-srcset="/images/20230701162736.png" srcset="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABAQMAAAAl21bKAAAABlBMVEXMzMyWlpYU2uzLAAAACXBIWXMAAA7EAAAOxAGVKw4bAAAACklEQVQImWNgAAAAAgAB9HFkpgAAAABJRU5ErkJggg=="></p>
+<hr>
+<h4 id="Pass12"><a href="#Pass12" class="headerlink" title="Pass12"></a>Pass12</h4><p>白名单 - 和上一关差不多，区别在于变成了post。<br>get会自行编码，post不会。</p>
+<p>这里我们要自己对%00编码</p>
+<hr>
+<h4 id="Pass13"><a href="#Pass13" class="headerlink" title="Pass13"></a>Pass13</h4><p>图片码 - 图片+PHP组成图片码进行上传</p>
+<p>CMD生成：copy 14.jpg &#x2F;b + 14.php &#x2F;a webshell.jpg</p>
+<p>也可以直接用Notepad直接打开图片后面加一个php代码，但是需要16进制，要不然图片可能出错。</p>
+<hr>
+<h4 id="Pass14"><a href="#Pass14" class="headerlink" title="Pass14"></a>Pass14</h4><p>图片码 - 本文使用getimagesize检测是否为图片文件</p>
+<p>getimagesize()：会对目标文件的16进制去进行一个读取，去读取头几个字符串是不是符合图片的要求的</p>
+<p>和上一关一样，生成带有php代码的图片上传。</p>
+<hr>
+<h4 id="Pass15"><a href="#Pass15" class="headerlink" title="Pass15"></a>Pass15</h4><p>图片码 - 使用exif_imagetype()检查是否为图片文件</p>
+<p>exif_imagetype()：读取一个图像的第一个字节并检查其后缀名。速度比getimage快得多</p>
+<p>和前面一致</p>
+<hr>
+<h4 id="Pass16"><a href="#Pass16" class="headerlink" title="Pass16"></a>Pass16</h4><p>图片码 - 二次渲染</p>
+<p>imagecreatefromjpeg()：二次渲染是由Gif文件或 URL 创建一个新图象。成功则返回一图像标识符&#x2F;图像资源，失败则返回false，导致图片马的数据丢失，上传图片马失败。</p>
+<p>按照原来的方法进行上传，我们可以发现还是可以上传的，但是配合包含漏洞却无法解析，这时我们把上传的图片复制下来用Notepad打开，发现我们原来写的php代码没有了，这就是二次渲染把我们里面的php代码删掉了。<br>我们把原图和他修改过的图片进行比较，看看哪个部分没有被修改。将php代码放到没有被更改的部分，配合包含漏洞，就可以了。<br>使用HxD Hex Editor进行比较</p>
+<p>具体实现需要自己编写Python程序，人工尝试基本是不可能构造出能绕过渲染函数的图片webshell的，知道怎么解就可以了。</p>
+<hr>
+<h4 id="Pass17"><a href="#Pass17" class="headerlink" title="Pass17"></a>Pass17</h4><p>条件竞争</p>
+<p>（需要搭配BP，先跳过）</p>
+<hr>
+
+    </div>
+     
+    <div class="post-footer__meta"><p>更新于 2024-06-15</p></div> 
+    <div class="post-entry__tags"></div> 
+</article>
+
+
+    <div class="nav">
+        <div class="nav__prev">
+            
+                <a href="/%E5%AE%89%E5%85%A8/2024-06-16-security/sqli-labs.html" class="nav__link">
+                    <div>
+                        <svg viewBox="0 0 1024 1024" xmlns="http://www.w3.org/2000/svg" width="24" height="24"><path d="M589.088 790.624L310.464 512l278.624-278.624 45.248 45.248L400.96 512l233.376 233.376z" fill="#808080"></path></svg>
+                    </div>
+                    <div>
+                        <div class="nav__label">
+                            上一篇
+                        </div>
+                        <div class="nav__title">
+                            sqli-labs 通关笔记
+                        </div>
+                    </div>
+                </a>
+            
+        </div>
+        <div class="nav__next">
+            
+                <a href="/%E5%AE%89%E5%85%A8/2024-06-16-security/xss-labs.html" class="nav__link">
+                    <div>
+                        <div class="nav__label">
+                            下一篇
+                        </div>
+                        <div class="nav__title">
+                            xss-labs 通关笔记
+                        </div>
+                    </div>
+                    <div>
+                        <svg viewBox="0 0 1024 1024" xmlns="http://www.w3.org/2000/svg" width="24" height="24"><path d="M434.944 790.624l-45.248-45.248L623.04 512l-233.376-233.376 45.248-45.248L713.568 512z" fill="#808080"></path></svg>
+                    </div>
+                </a>
+            
+        </div>
+    </div>
+
+
+
+
+
+</main>
+
+            <footer class="footer">
+     
+    <a href="#" class="button" id="b2t" aria-label="回到顶部" title="回到顶部">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1024 1024" width="32" height="32">
+            <path d="M233.376 722.752L278.624 768 512 534.624 745.376 768l45.248-45.248L512 444.128zM192 352h640V288H192z" fill="currentColor"></path>
+        </svg>
+    </a>
+
+    
+
+
+    
+     
+ 
+
+ 
+    
+        
+        <p class="footer-copyright">
+            Copyright © 2024 <a href="/">YEYEYETO</a>
+        </p>
+    
+    
+    <p>Powered by <a href="https://hexo.io" target="_blank">Hexo</a> | Theme - <a href="https://github.com/ChrAlpha/hexo-theme-cards" target="_blank">Cards</a></p>
+</footer>
+
+        </div>
+        
+    <script defer src="https://cdn.jsdelivr.net/npm/vanilla-lazyload@17.1.0/dist/lazyload.min.js"></script>
+    <script>
+        window.lazyLoadOptions = {
+            elements_selector: ".lazy",
+            threshold: 0
+        };
+    </script>
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+
+
+ 
+
+
+
+ 
+
+
+    
+ 
+
+
+    
+<script src="https://cdn.jsdelivr.net/npm/jquery@3.4.1/dist/jquery.min.js"></script>
+
+    
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.4.1/dist/jquery.fancybox.min.css">
+
+    
+<script src="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.4.1/dist/jquery.fancybox.min.js"></script>
+
+    <script>
+        let lazyloadT = Boolean('true'),
+            auto_fancybox = Boolean('false')
+        if (auto_fancybox) {
+            $(".post__content").find('img').each(function () {
+                var element = document.createElement("a");
+                $(element).attr("data-fancybox", "gallery");
+                $(element).attr("href", $(this).attr("src"));
+                if (lazyloadT) {
+                    $(element).attr("href", $(this).attr("data-srcset"));
+                }
+                $(this).wrap(element);
+            });
+        } else {
+            $(".post__content").find("fancybox").find('img').each(function () {
+                var element = document.createElement("a");
+                $(element).attr("data-fancybox", "gallery");
+                $(element).attr("href", $(this).attr("src"));
+                if (lazyloadT) {
+                    $(element).attr("href", $(this).attr("data-srcset"));
+                }
+                $(this).wrap(element);
+            });
+        }
+    </script>
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+
+
+
+    </body>
+</html>

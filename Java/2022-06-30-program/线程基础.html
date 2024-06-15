@@ -25,7 +25,7 @@
     <!-- meta -->
 
 
-<title>线程基础 | Eternal&#39;s Blog</title>
+<title>线程基础 | YEYEYETO</title>
 
 
 
@@ -36,12 +36,12 @@
     <meta name="description" content="01 线程简介程序是指令和数据的有序集合，其本身没有任何运行的含义，是一个静态的概念。 进程则是执行程序的一次执行过程，它是一个动态的概念。 是系统资源分配的单通常在一个进程中可以包含若干个线程，当然一个进程中至少有一 个线程，不然没有存在的意义。 线程是CPU调度和执行的的单位。 注意：很多多线程是模拟出来的，真正的多线程是指有多个cpu，即多核，如服务器。如果是模拟出来的多线程，即在一个cpu">
 <meta property="og:type" content="article">
 <meta property="og:title" content="线程基础">
-<meta property="og:url" content="http://example.com/%E7%AE%97%E6%B3%95/2022-06-30-program/%E7%BA%BF%E7%A8%8B%E5%9F%BA%E7%A1%80.html">
-<meta property="og:site_name" content="Eternal&#39;s Blog">
+<meta property="og:url" content="https://yeyeyeyeto.github.io/Java/2022-06-30-program/%E7%BA%BF%E7%A8%8B%E5%9F%BA%E7%A1%80.html">
+<meta property="og:site_name" content="YEYEYETO">
 <meta property="og:description" content="01 线程简介程序是指令和数据的有序集合，其本身没有任何运行的含义，是一个静态的概念。 进程则是执行程序的一次执行过程，它是一个动态的概念。 是系统资源分配的单通常在一个进程中可以包含若干个线程，当然一个进程中至少有一 个线程，不然没有存在的意义。 线程是CPU调度和执行的的单位。 注意：很多多线程是模拟出来的，真正的多线程是指有多个cpu，即多核，如服务器。如果是模拟出来的多线程，即在一个cpu">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2022-06-30T13:02:00.000Z">
-<meta property="article:modified_time" content="2024-06-15T07:54:13.482Z">
+<meta property="article:modified_time" content="2024-06-15T11:30:12.997Z">
 <meta property="article:author" content="Eternal">
 <meta name="twitter:card" content="summary_large_image">
 
@@ -96,6 +96,8 @@
                 
                     <a href="/archives/" class="navbar-menu button">归档</a>
                 
+                    <a href="/about/" class="navbar-menu button">关于</a>
+                
             </div>
         
         
@@ -124,6 +126,8 @@
                 
                     <a href="/archives/" class="dropdown-menu button">归档</a>
                 
+                    <a href="/about/" class="dropdown-menu button">关于</a>
+                
             </div>
         
     </div>
@@ -140,7 +144,7 @@
     <div class="post-title__meta">
         <a href="/archives/2022/06/" class="post-meta__date button">2022-06-30</a>
         
-    <span class="separate-dot"></span><a href="/categories/%E7%AE%97%E6%B3%95/" class="button">算法</a>
+    <span class="separate-dot"></span><a href="/categories/Java/" class="button">Java</a>
 
  
         
@@ -155,8 +159,23 @@
 </div>
 
 
+    <aside class="post-side">
+        <div class="post-side__toc">
+            <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#01-%E7%BA%BF%E7%A8%8B%E7%AE%80%E4%BB%8B"><span class="toc-text">01 线程简介</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#1-1-%E6%A0%B8%E5%BF%83%E6%A6%82%E5%BF%B5"><span class="toc-text">1.1 核心概念</span></a></li></ol></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#02-%E7%BA%BF%E7%A8%8B%E5%88%9B%E5%BB%BA"><span class="toc-text">02 线程创建</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#2-1-%E7%BB%A7%E6%89%BFThread"><span class="toc-text">2.1 继承Thread</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#2-2-%E5%AE%9E%E7%8E%B0Runnable%E6%8E%A5%E5%8F%A3"><span class="toc-text">2.2 实现Runnable接口</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#2-3%E5%AE%9E%E7%8E%B0Callable%E6%8E%A5%E5%8F%A3"><span class="toc-text">2.3实现Callable接口</span></a></li></ol></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#03-%E7%BA%BF%E7%A8%8B%E7%8A%B6%E6%80%81"><span class="toc-text">03 线程状态</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#3-1-%E7%BA%BF%E7%A8%8B%E5%81%9C%E6%AD%A2"><span class="toc-text">3.1 线程停止</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#3-2-%E7%BA%BF%E7%A8%8B%E4%BC%91%E7%9C%A0"><span class="toc-text">3.2 线程休眠</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#3-3-%E7%BA%BF%E7%A8%8B%E7%A4%BC%E8%AE%A9"><span class="toc-text">3.3 线程礼让</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#3-4-%E7%BA%BF%E7%A8%8B%E5%BC%BA%E5%88%B6%E6%89%A7%E8%A1%8C"><span class="toc-text">3.4 线程强制执行</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#3-5-%E7%BA%BF%E7%A8%8B%E7%8A%B6%E6%80%81%E8%A7%82%E6%B5%8B"><span class="toc-text">3.5 线程状态观测</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#3-6-%E7%BA%BF%E7%A8%8B%E4%BC%98%E5%85%88%E7%BA%A7"><span class="toc-text">3.6 线程优先级</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#3-7-%E5%AE%88%E6%8A%A4%E7%BA%BF%E7%A8%8B-daemon"><span class="toc-text">3. 7 守护线程 daemon</span></a></li></ol></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#04-%E7%BA%BF%E7%A8%8B%E5%90%8C%E6%AD%A5"><span class="toc-text">04 线程同步</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#4-1-%E5%B9%B6%E5%8F%91"><span class="toc-text">4.1 并发</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#4-2-%E5%90%8C%E6%AD%A5%E6%96%B9%E6%B3%95"><span class="toc-text">4.2 同步方法</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#4-3-%E5%90%8C%E6%AD%A5%E5%9D%97"><span class="toc-text">4.3 同步块</span></a></li></ol></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#05-%E9%94%81"><span class="toc-text">05 锁</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#5-1-%E6%AD%BB%E9%94%81"><span class="toc-text">5.1 死锁</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#5-2-%E6%AD%BB%E9%94%81%E9%81%BF%E5%85%8D%E6%96%B9%E6%B3%95"><span class="toc-text">5.2 死锁避免方法</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#5-3-Lock"><span class="toc-text">5.3 Lock</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#5-4-synchronized-%E4%B8%8E-Lock-%E7%9A%84%E5%AF%B9%E6%AF%94"><span class="toc-text">5.4 synchronized 与 Lock 的对比</span></a></li></ol></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#06-%E7%BA%BF%E7%A8%8B%E5%8D%8F%E4%BD%9C"><span class="toc-text">06 线程协作</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#%E7%BA%BF%E7%A8%8B%E9%80%9A%E4%BF%A1-%E7%94%9F%E4%BA%A7%E8%80%85%E5%92%8C%E6%B6%88%E8%B4%B9%E8%80%85%E6%A8%A1%E5%BC%8F"><span class="toc-text">线程通信 - 生产者和消费者模式</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#%E7%BA%BF%E7%A8%8B%E9%80%9A%E4%BF%A1-%E5%88%86%E6%9E%90"><span class="toc-text">线程通信 - 分析</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#%E8%A7%A3%E5%86%B3%E6%96%B9%E5%BC%8F1-%E7%AE%A1%E7%A8%8B%E6%B3%95"><span class="toc-text">解决方式1 - 管程法</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#%E8%A7%A3%E5%86%B3%E6%96%B9%E5%BC%8F2-%E4%BF%A1%E5%8F%B7%E7%81%AF%E6%B3%95"><span class="toc-text">解决方式2 - 信号灯法</span></a></li></ol></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#07-%E7%BA%BF%E7%A8%8B%E6%B1%A0"><span class="toc-text">07 线程池</span></a></li></ol>
+        </div>
+    </aside>
+    <a class="btn-toc button" id="btn-toc" tabindex="0">
+        <svg viewBox="0 0 1024 1024" width="32" height="32" xmlns="http://www.w3.org/2000/svg">
+            <path d="M128 256h64V192H128zM320 256h576V192H320zM128 544h64v-64H128zM320 544h576v-64H320zM128 832h64v-64H128zM320 832h576v-64H320z" fill="currentColor"></path>
+        </svg>
+    </a>
+    <div class="toc-menus" id="toc-menus">
+        <div class="toc-title">文章目录</div>
+        <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#01-%E7%BA%BF%E7%A8%8B%E7%AE%80%E4%BB%8B"><span class="toc-text">01 线程简介</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#1-1-%E6%A0%B8%E5%BF%83%E6%A6%82%E5%BF%B5"><span class="toc-text">1.1 核心概念</span></a></li></ol></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#02-%E7%BA%BF%E7%A8%8B%E5%88%9B%E5%BB%BA"><span class="toc-text">02 线程创建</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#2-1-%E7%BB%A7%E6%89%BFThread"><span class="toc-text">2.1 继承Thread</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#2-2-%E5%AE%9E%E7%8E%B0Runnable%E6%8E%A5%E5%8F%A3"><span class="toc-text">2.2 实现Runnable接口</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#2-3%E5%AE%9E%E7%8E%B0Callable%E6%8E%A5%E5%8F%A3"><span class="toc-text">2.3实现Callable接口</span></a></li></ol></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#03-%E7%BA%BF%E7%A8%8B%E7%8A%B6%E6%80%81"><span class="toc-text">03 线程状态</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#3-1-%E7%BA%BF%E7%A8%8B%E5%81%9C%E6%AD%A2"><span class="toc-text">3.1 线程停止</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#3-2-%E7%BA%BF%E7%A8%8B%E4%BC%91%E7%9C%A0"><span class="toc-text">3.2 线程休眠</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#3-3-%E7%BA%BF%E7%A8%8B%E7%A4%BC%E8%AE%A9"><span class="toc-text">3.3 线程礼让</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#3-4-%E7%BA%BF%E7%A8%8B%E5%BC%BA%E5%88%B6%E6%89%A7%E8%A1%8C"><span class="toc-text">3.4 线程强制执行</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#3-5-%E7%BA%BF%E7%A8%8B%E7%8A%B6%E6%80%81%E8%A7%82%E6%B5%8B"><span class="toc-text">3.5 线程状态观测</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#3-6-%E7%BA%BF%E7%A8%8B%E4%BC%98%E5%85%88%E7%BA%A7"><span class="toc-text">3.6 线程优先级</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#3-7-%E5%AE%88%E6%8A%A4%E7%BA%BF%E7%A8%8B-daemon"><span class="toc-text">3. 7 守护线程 daemon</span></a></li></ol></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#04-%E7%BA%BF%E7%A8%8B%E5%90%8C%E6%AD%A5"><span class="toc-text">04 线程同步</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#4-1-%E5%B9%B6%E5%8F%91"><span class="toc-text">4.1 并发</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#4-2-%E5%90%8C%E6%AD%A5%E6%96%B9%E6%B3%95"><span class="toc-text">4.2 同步方法</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#4-3-%E5%90%8C%E6%AD%A5%E5%9D%97"><span class="toc-text">4.3 同步块</span></a></li></ol></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#05-%E9%94%81"><span class="toc-text">05 锁</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#5-1-%E6%AD%BB%E9%94%81"><span class="toc-text">5.1 死锁</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#5-2-%E6%AD%BB%E9%94%81%E9%81%BF%E5%85%8D%E6%96%B9%E6%B3%95"><span class="toc-text">5.2 死锁避免方法</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#5-3-Lock"><span class="toc-text">5.3 Lock</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#5-4-synchronized-%E4%B8%8E-Lock-%E7%9A%84%E5%AF%B9%E6%AF%94"><span class="toc-text">5.4 synchronized 与 Lock 的对比</span></a></li></ol></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#06-%E7%BA%BF%E7%A8%8B%E5%8D%8F%E4%BD%9C"><span class="toc-text">06 线程协作</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#%E7%BA%BF%E7%A8%8B%E9%80%9A%E4%BF%A1-%E7%94%9F%E4%BA%A7%E8%80%85%E5%92%8C%E6%B6%88%E8%B4%B9%E8%80%85%E6%A8%A1%E5%BC%8F"><span class="toc-text">线程通信 - 生产者和消费者模式</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#%E7%BA%BF%E7%A8%8B%E9%80%9A%E4%BF%A1-%E5%88%86%E6%9E%90"><span class="toc-text">线程通信 - 分析</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#%E8%A7%A3%E5%86%B3%E6%96%B9%E5%BC%8F1-%E7%AE%A1%E7%A8%8B%E6%B3%95"><span class="toc-text">解决方式1 - 管程法</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#%E8%A7%A3%E5%86%B3%E6%96%B9%E5%BC%8F2-%E4%BF%A1%E5%8F%B7%E7%81%AF%E6%B3%95"><span class="toc-text">解决方式2 - 信号灯法</span></a></li></ol></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#07-%E7%BA%BF%E7%A8%8B%E6%B1%A0"><span class="toc-text">07 线程池</span></a></li></ol>
+    </div>
 
-<article class="post content-card">
+
+<article class="post post__with-toc content-card">
     <div class="post__header"></div>
     <div class="post__content">
         <h3 id="01-线程简介"><a href="#01-线程简介" class="headerlink" title="01 线程简介"></a>01 线程简介</h3><p>程序是指令和数据的有序集合，其本身没有任何运行的含义，是一个静态的概念。</p>
@@ -421,7 +440,7 @@
     
         
         <p class="footer-copyright">
-            Copyright © 2024 <a href="/">Eternal&#39;s Blog</a>
+            Copyright © 2024 <a href="/">YEYEYETO</a>
         </p>
     
     
