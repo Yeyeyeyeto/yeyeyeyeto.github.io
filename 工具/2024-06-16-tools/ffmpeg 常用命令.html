@@ -47,7 +47,7 @@
 <meta property="og:description" content="视频12345678# 视频裁断：从-ss开始 截取 -t 时长ffmpeg -ss 01:04:54 -i org.mp4 -t 00:07:45 -c:v copy -c:a copy p2.mp4# MKV转MP4ffmpeg -i input.mkv -vcodec copy -acodec copy out.mp4# 提取无音视频ffmpeg -i input.mp4 -vcodec c">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2024-06-15T19:15:15.000Z">
-<meta property="article:modified_time" content="2024-06-15T12:30:38.458Z">
+<meta property="article:modified_time" content="2024-06-16T02:40:21.611Z">
 <meta property="article:author" content="Eternal">
 <meta name="twitter:card" content="summary_large_image">
 
@@ -188,7 +188,7 @@
 
 <h3 id="音频"><a href="#音频" class="headerlink" title="音频"></a>音频</h3><figure class="highlight cmd"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"># 提取音频</span><br><span class="line">ffmpeg -i sample.mp4 -q:a <span class="number">0</span> -map a sample.mp3</span><br><span class="line">ffmpeg -i input.mp4 -acodec <span class="built_in">copy</span> -vn out.aac</span><br><span class="line"></span><br><span class="line"># 提取指定时段的音频</span><br><span class="line">ffmpeg -i sample.mp4 -ss <span class="number">00</span>:<span class="number">03</span>:<span class="number">05</span> -t <span class="number">00</span>:<span class="number">00</span>:<span class="number">45</span>.<span class="number">0</span> -q:a <span class="number">0</span> -map a sample.mp3</span><br><span class="line"></span><br><span class="line"># 只提取音频流而不进行重新编码；只能是aac和m4a</span><br><span class="line">ffmpeg -i sample.avi -vn -acodec <span class="built_in">copy</span> sample.aac</span><br><span class="line"></span><br></pre></td></tr></table></figure>
 
-<h3 id="合成"><a href="#合成" class="headerlink" title="合成"></a>合成</h3><figure class="highlight cmd"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"># 音频视频合并</span><br><span class="line">ffmpeg -i out.mp4 -i out.aac -vcodec <span class="built_in">copy</span> -acodec <span class="built_in">copy</span> new.mp4</span><br></pre></td></tr></table></figure>
+<h3 id="合成"><a href="#合成" class="headerlink" title="合成"></a>合成</h3><figure class="highlight cmd"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"># 音频视频合并</span><br><span class="line">ffmpeg -i out.mp4 -i out.aac -vcodec <span class="built_in">copy</span> -acodec <span class="built_in">copy</span> new.mp4</span><br><span class="line">ffmpeg -i video.mp4 -i audio.mp3 -c:v <span class="built_in">copy</span> -c:a aac -strict experimental output.mp4</span><br></pre></td></tr></table></figure>
 
 <h3 id="参数"><a href="#参数" class="headerlink" title="参数"></a>参数</h3><ul>
 <li>vcodec：指定视频编码器</li>
@@ -200,7 +200,7 @@
 
     </div>
      
-    <div class="post-footer__meta"><p>更新于 2024-06-15</p></div> 
+    <div class="post-footer__meta"><p>更新于 2024-06-16</p></div> 
     <div class="post-entry__tags"></div> 
 </article>
 
