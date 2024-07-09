@@ -39,15 +39,15 @@
 
     <!-- OpenGraph -->
  
-    <meta name="description" content="视频12345678# 视频裁断：从-ss开始 截取 -t 时长ffmpeg -ss 01:04:54 -i org.mp4 -t 00:07:45 -c:v copy -c:a copy p2.mp4# MKV转MP4ffmpeg -i input.mkv -vcodec copy -acodec copy out.mp4# 提取无音视频ffmpeg -i input.mp4 -vcodec c">
+    <meta name="description" content="视频123456789# 视频裁断：从-ss开始 截取 -t 时长ffmpeg -ss 01:04:54 -i org.mp4 -t 00:07:45 -c:v copy -c:a copy p2.mp4ffmpeg -i org.mp4 -ss 01:22:15 -to 01:31:15 -c:v copy p2.mp4# MKV转MP4ffmpeg -i input.mkv -vcodec c">
 <meta property="og:type" content="article">
 <meta property="og:title" content="ffmpeg 常用命令">
 <meta property="og:url" content="https://yeyeyeyeto.github.io/%E5%B7%A5%E5%85%B7/2024-06-16-tools/ffmpeg%20%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4.html">
 <meta property="og:site_name" content="YEYEYEYETO">
-<meta property="og:description" content="视频12345678# 视频裁断：从-ss开始 截取 -t 时长ffmpeg -ss 01:04:54 -i org.mp4 -t 00:07:45 -c:v copy -c:a copy p2.mp4# MKV转MP4ffmpeg -i input.mkv -vcodec copy -acodec copy out.mp4# 提取无音视频ffmpeg -i input.mp4 -vcodec c">
+<meta property="og:description" content="视频123456789# 视频裁断：从-ss开始 截取 -t 时长ffmpeg -ss 01:04:54 -i org.mp4 -t 00:07:45 -c:v copy -c:a copy p2.mp4ffmpeg -i org.mp4 -ss 01:22:15 -to 01:31:15 -c:v copy p2.mp4# MKV转MP4ffmpeg -i input.mkv -vcodec c">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2024-06-15T19:15:15.000Z">
-<meta property="article:modified_time" content="2024-06-16T02:40:21.611Z">
+<meta property="article:modified_time" content="2024-07-09T14:17:22.403Z">
 <meta property="article:author" content="Eternal">
 <meta name="twitter:card" content="summary_large_image">
 
@@ -184,7 +184,7 @@
 <article class="post post__with-toc content-card">
     <div class="post__header"></div>
     <div class="post__content">
-        <h3 id="视频"><a href="#视频" class="headerlink" title="视频"></a>视频</h3><figure class="highlight cmd"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"># 视频裁断：从-ss开始 截取 -t 时长</span><br><span class="line">ffmpeg -ss <span class="number">01</span>:<span class="number">04</span>:<span class="number">54</span> -i org.mp4 -t <span class="number">00</span>:<span class="number">07</span>:<span class="number">45</span> -c:v <span class="built_in">copy</span> -c:a <span class="built_in">copy</span> p2.mp4</span><br><span class="line"></span><br><span class="line"># MKV转MP4</span><br><span class="line">ffmpeg -i input.mkv -vcodec <span class="built_in">copy</span> -acodec <span class="built_in">copy</span> out.mp4</span><br><span class="line"></span><br><span class="line"># 提取无音视频</span><br><span class="line">ffmpeg -i input.mp4 -vcodec <span class="built_in">copy</span> -an out.mp4</span><br></pre></td></tr></table></figure>
+        <h3 id="视频"><a href="#视频" class="headerlink" title="视频"></a>视频</h3><figure class="highlight cmd"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"># 视频裁断：从-ss开始 截取 -t 时长</span><br><span class="line">ffmpeg -ss <span class="number">01</span>:<span class="number">04</span>:<span class="number">54</span> -i org.mp4 -t <span class="number">00</span>:<span class="number">07</span>:<span class="number">45</span> -c:v <span class="built_in">copy</span> -c:a <span class="built_in">copy</span> p2.mp4</span><br><span class="line">ffmpeg -i org.mp4 -ss <span class="number">01</span>:<span class="number">22</span>:<span class="number">15</span> -to <span class="number">01</span>:<span class="number">31</span>:<span class="number">15</span> -c:v <span class="built_in">copy</span> p2.mp4</span><br><span class="line"></span><br><span class="line"># MKV转MP4</span><br><span class="line">ffmpeg -i input.mkv -vcodec <span class="built_in">copy</span> -acodec <span class="built_in">copy</span> out.mp4</span><br><span class="line"></span><br><span class="line"># 提取无音视频</span><br><span class="line">ffmpeg -i input.mp4 -vcodec <span class="built_in">copy</span> -an out.mp4</span><br></pre></td></tr></table></figure>
 
 <h3 id="音频"><a href="#音频" class="headerlink" title="音频"></a>音频</h3><figure class="highlight cmd"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"># 提取音频</span><br><span class="line">ffmpeg -i sample.mp4 -q:a <span class="number">0</span> -map a sample.mp3</span><br><span class="line">ffmpeg -i input.mp4 -acodec <span class="built_in">copy</span> -vn out.aac</span><br><span class="line"></span><br><span class="line"># 提取指定时段的音频</span><br><span class="line">ffmpeg -i sample.mp4 -ss <span class="number">00</span>:<span class="number">03</span>:<span class="number">05</span> -t <span class="number">00</span>:<span class="number">00</span>:<span class="number">45</span>.<span class="number">0</span> -q:a <span class="number">0</span> -map a sample.mp3</span><br><span class="line"></span><br><span class="line"># 只提取音频流而不进行重新编码；只能是aac和m4a</span><br><span class="line">ffmpeg -i sample.avi -vn -acodec <span class="built_in">copy</span> sample.aac</span><br><span class="line"></span><br></pre></td></tr></table></figure>
 
@@ -200,7 +200,7 @@
 
     </div>
      
-    <div class="post-footer__meta"><p>更新于 2024-06-16</p></div> 
+    <div class="post-footer__meta"><p>更新于 2024-07-09</p></div> 
     <div class="post-entry__tags"></div> 
 </article>
 
